@@ -1,0 +1,45 @@
+{
+  "appId": "com.amourcomplices.app",
+  "appName": "Amour & Complices",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true,
+    "iosScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#181324",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "iosSplashStyle": "fullscreen",
+      "showSpinner": false,
+      "spinnerStyle": "large"
+    },
+    "LocalNotifications": {
+      "presentationOptions": {
+        "badge": true,
+        "sound": true,
+        "banner": true
+      }
+    },
+    "PushNotifications": {
+      "presentationOptions": {
+        "badge": true,
+        "sound": true,
+        "alert": true
+      }
+    },
+    "StatusBar": {
+      "style": "DARK"
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "DARK",
+      "resizeOnFullScreen": true
+    }
+  }
+}

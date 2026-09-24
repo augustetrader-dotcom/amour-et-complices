@@ -1,0 +1,752 @@
+[
+  {
+    "id": 1,
+    "category": "nostalgie",
+    "prompt": "Quel est ton souvenir préféré de nous deux ?"
+  },
+  {
+    "id": 2,
+    "category": "nostalgie",
+    "prompt": "Décris le moment précis où tu as su que tu m'aimais."
+  },
+  {
+    "id": 3,
+    "category": "nostalgie",
+    "prompt": "Quelle a été notre meilleure sortie improvisée ?"
+  },
+  {
+    "id": 4,
+    "category": "nostalgie",
+    "prompt": "Quel souvenir de nos débuts te fait encore sourire ?"
+  },
+  {
+    "id": 5,
+    "category": "nostalgie",
+    "prompt": "Quelle chanson te rappelle un moment fort entre nous ?"
+  },
+  {
+    "id": 6,
+    "category": "nostalgie",
+    "prompt": "Quel a été ton fou rire préféré avec moi ?"
+  },
+  {
+    "id": 7,
+    "category": "nostalgie",
+    "prompt": "Quel est le premier truc que tu as remarqué chez moi ?"
+  },
+  {
+    "id": 8,
+    "category": "nostalgie",
+    "prompt": "Quel souvenir de voyage garde une place spéciale ?"
+  },
+  {
+    "id": 9,
+    "category": "nostalgie",
+    "prompt": "Quelle dispute nous a rendus plus forts, après coup ?"
+  },
+  {
+    "id": 10,
+    "category": "nostalgie",
+    "prompt": "Quel jour ordinaire est devenu un souvenir marquant ?"
+  },
+  {
+    "id": 11,
+    "category": "nostalgie",
+    "prompt": "Quel a été notre meilleur repas ensemble ?"
+  },
+  {
+    "id": 12,
+    "category": "nostalgie",
+    "prompt": "Quelle photo de nous préfères-tu et pourquoi ?"
+  },
+  {
+    "id": 13,
+    "category": "nostalgie",
+    "prompt": "Quel a été ton moment de fierté en me regardant ?"
+  },
+  {
+    "id": 14,
+    "category": "nostalgie",
+    "prompt": "Quel souvenir d'hiver ou d'été préfères-tu avec moi ?"
+  },
+  {
+    "id": 15,
+    "category": "nostalgie",
+    "prompt": "Quelle habitude qu'on avait au début te manque ?"
+  },
+  {
+    "id": 16,
+    "category": "nostalgie",
+    "prompt": "Quel a été le moment le plus drôle de notre histoire ?"
+  },
+  {
+    "id": 17,
+    "category": "nostalgie",
+    "prompt": "Quelle a été notre première vraie complicité ?"
+  },
+  {
+    "id": 18,
+    "category": "nostalgie",
+    "prompt": "Quel cadeau que je t'ai fait t'a le plus marqué ?"
+  },
+  {
+    "id": 19,
+    "category": "nostalgie",
+    "prompt": "Quel souvenir de nous te rend nostalgique aujourd'hui ?"
+  },
+  {
+    "id": 20,
+    "category": "nostalgie",
+    "prompt": "Quelle soirée simple garde une place à part ?"
+  },
+  {
+    "id": 21,
+    "category": "nostalgie",
+    "prompt": "Quel moment as-tu voulu figer dans le temps ?"
+  },
+  {
+    "id": 22,
+    "category": "nostalgie",
+    "prompt": "Quelle a été notre plus belle surprise mutuelle ?"
+  },
+  {
+    "id": 23,
+    "category": "nostalgie",
+    "prompt": "Quel souvenir te fait dire qu'on a bien fait de rester ensemble ?"
+  },
+  {
+    "id": 24,
+    "category": "nostalgie",
+    "prompt": "Quel moment de complicité silencieuse te revient en tête ?"
+  },
+  {
+    "id": 25,
+    "category": "nostalgie",
+    "prompt": "Quelle étape de notre histoire referais-tu exactement pareil ?"
+  },
+  {
+    "id": 26,
+    "category": "reves",
+    "prompt": "Où m'emmènerais-tu si on pouvait partir demain ?"
+  },
+  {
+    "id": 27,
+    "category": "reves",
+    "prompt": "Quel est ton rêve pour nous dans 5 ans ?"
+  },
+  {
+    "id": 28,
+    "category": "reves",
+    "prompt": "Quel projet aimerais-tu qu'on construise ensemble ?"
+  },
+  {
+    "id": 29,
+    "category": "reves",
+    "prompt": "Quelle tradition aimerais-tu qu'on invente à nous deux ?"
+  },
+  {
+    "id": 30,
+    "category": "reves",
+    "prompt": "Quel voyage aimerais-tu vraiment faire avec moi un jour ?"
+  },
+  {
+    "id": 31,
+    "category": "reves",
+    "prompt": "À quoi ressemble notre maison idéale ?"
+  },
+  {
+    "id": 32,
+    "category": "reves",
+    "prompt": "Quel objectif commun on devrait se fixer cette année ?"
+  },
+  {
+    "id": 33,
+    "category": "reves",
+    "prompt": "Quelle compétence aimerais-tu qu'on apprenne à deux ?"
+  },
+  {
+    "id": 34,
+    "category": "reves",
+    "prompt": "Quel serait notre plan parfait pour un an sabbatique ?"
+  },
+  {
+    "id": 35,
+    "category": "reves",
+    "prompt": "Quelle vie imagines-tu pour nous dans dix ans ?"
+  },
+  {
+    "id": 36,
+    "category": "reves",
+    "prompt": "Quel type de célébration aimerais-tu qu'on organise un jour ?"
+  },
+  {
+    "id": 37,
+    "category": "reves",
+    "prompt": "Quel rêve professionnel aimerais-tu que je poursuive ?"
+  },
+  {
+    "id": 38,
+    "category": "reves",
+    "prompt": "Quelle expérience folle aimerais-tu qu'on tente ensemble ?"
+  },
+  {
+    "id": 39,
+    "category": "reves",
+    "prompt": "Où aimerais-tu vieillir avec moi ?"
+  },
+  {
+    "id": 40,
+    "category": "reves",
+    "prompt": "Quel serait ton cadeau d'anniversaire de rêve pour moi ?"
+  },
+  {
+    "id": 41,
+    "category": "reves",
+    "prompt": "Quel projet créatif on pourrait faire ensemble ?"
+  },
+  {
+    "id": 42,
+    "category": "reves",
+    "prompt": "Quelle serait notre journée parfaite, du matin au soir ?"
+  },
+  {
+    "id": 43,
+    "category": "reves",
+    "prompt": "Quel héritage aimerais-tu qu'on laisse ensemble ?"
+  },
+  {
+    "id": 44,
+    "category": "reves",
+    "prompt": "Quelle nouvelle habitude on devrait adopter à deux ?"
+  },
+  {
+    "id": 45,
+    "category": "reves",
+    "prompt": "Quel rêve d'enfance aimerais-tu réaliser avec moi ?"
+  },
+  {
+    "id": 46,
+    "category": "reves",
+    "prompt": "Quelle serait la surprise ultime que tu me ferais si tu pouvais tout te permettre ?"
+  },
+  {
+    "id": 47,
+    "category": "reves",
+    "prompt": "Quel type de maison nous ressemblerait le plus ?"
+  },
+  {
+    "id": 48,
+    "category": "reves",
+    "prompt": "Quelle aventure aimerais-tu qu'on raconte à nos proches plus tard ?"
+  },
+  {
+    "id": 49,
+    "category": "reves",
+    "prompt": "Quel serait notre rituel du dimanche parfait ?"
+  },
+  {
+    "id": 50,
+    "category": "reves",
+    "prompt": "Quelle promesse veux-tu qu'on se fasse aujourd'hui ?"
+  },
+  {
+    "id": 51,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce qui te fait te sentir désiré·e par moi ?"
+  },
+  {
+    "id": 52,
+    "category": "tendresse",
+    "prompt": "Quel geste tendre aimerais-tu recevoir plus souvent ?"
+  },
+  {
+    "id": 53,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce que tu trouves le plus attirant chez moi ?"
+  },
+  {
+    "id": 54,
+    "category": "tendresse",
+    "prompt": "Quel compliment physique t'a le plus marqué·e venant de moi ?"
+  },
+  {
+    "id": 55,
+    "category": "tendresse",
+    "prompt": "Comment aimes-tu qu'on te montre de l'affection en public ?"
+  },
+  {
+    "id": 56,
+    "category": "tendresse",
+    "prompt": "Quel moment de proximité te manque le plus en ce moment ?"
+  },
+  {
+    "id": 57,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce qui te donne le plus envie de te rapprocher de moi ?"
+  },
+  {
+    "id": 58,
+    "category": "tendresse",
+    "prompt": "Quel souvenir de tendresse entre nous te touche encore ?"
+  },
+  {
+    "id": 59,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce que je pourrais faire pour te faire rougir ?"
+  },
+  {
+    "id": 60,
+    "category": "tendresse",
+    "prompt": "Quel geste simple te fait fondre à chaque fois ?"
+  },
+  {
+    "id": 61,
+    "category": "tendresse",
+    "prompt": "Comment aimerais-tu qu'on se retrouve après une longue journée ?"
+  },
+  {
+    "id": 62,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce qui te fait te sentir en sécurité avec moi ?"
+  },
+  {
+    "id": 63,
+    "category": "tendresse",
+    "prompt": "Quel mot doux préfères-tu entendre de ma part ?"
+  },
+  {
+    "id": 64,
+    "category": "tendresse",
+    "prompt": "Quel moment de complicité physique voudrais-tu revivre ?"
+  },
+  {
+    "id": 65,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce que tu aimerais qu'on essaie pour se rapprocher ?"
+  },
+  {
+    "id": 66,
+    "category": "tendresse",
+    "prompt": "Comment sais-tu que je pense à toi sans que je le dise ?"
+  },
+  {
+    "id": 67,
+    "category": "tendresse",
+    "prompt": "Quel geste d'affection aimerais-tu m'offrir plus souvent ?"
+  },
+  {
+    "id": 68,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce qui te rend le plus vulnérable avec moi, dans le bon sens ?"
+  },
+  {
+    "id": 69,
+    "category": "tendresse",
+    "prompt": "Quel souvenir sensoriel de nous (odeur, son, image) te reste en tête ?"
+  },
+  {
+    "id": 70,
+    "category": "tendresse",
+    "prompt": "Comment aimes-tu être rassuré·e quand tu doutes de toi ?"
+  },
+  {
+    "id": 71,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce qui te fait te sentir désiré·e au quotidien ?"
+  },
+  {
+    "id": 72,
+    "category": "tendresse",
+    "prompt": "Quel petit rituel intime aimerais-tu qu'on garde pour nous ?"
+  },
+  {
+    "id": 73,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce que tu aimerais que je remarque plus chez toi ?"
+  },
+  {
+    "id": 74,
+    "category": "tendresse",
+    "prompt": "Quel moment de tendresse aimerais-tu qu'on planifie cette semaine ?"
+  },
+  {
+    "id": 75,
+    "category": "tendresse",
+    "prompt": "Qu'est-ce qui te ferait sentir irrésistible en ce moment ?"
+  },
+  {
+    "id": 76,
+    "category": "fun",
+    "prompt": "Décris-moi en trois mots, là, sans réfléchir."
+  },
+  {
+    "id": 77,
+    "category": "fun",
+    "prompt": "Sur une échelle de 1 à 10, à quel point je te manque là, maintenant ?"
+  },
+  {
+    "id": 78,
+    "category": "fun",
+    "prompt": "Quel est mon tic le plus drôle selon toi ?"
+  },
+  {
+    "id": 79,
+    "category": "fun",
+    "prompt": "Si j'étais un plat, lequel serais-je et pourquoi ?"
+  },
+  {
+    "id": 80,
+    "category": "fun",
+    "prompt": "Quelle chanson résume notre relation en ce moment ?"
+  },
+  {
+    "id": 81,
+    "category": "fun",
+    "prompt": "Quel super-pouvoir voudrais-tu qu'on ait à deux ?"
+  },
+  {
+    "id": 82,
+    "category": "fun",
+    "prompt": "Si on tournait un film sur nous, quel en serait le titre ?"
+  },
+  {
+    "id": 83,
+    "category": "fun",
+    "prompt": "Quelle est la chose la plus bizarre que tu apprécies chez moi ?"
+  },
+  {
+    "id": 84,
+    "category": "fun",
+    "prompt": "Si tu devais m'imiter 10 secondes, tu ferais quoi ?"
+  },
+  {
+    "id": 85,
+    "category": "fun",
+    "prompt": "Quel est mon talent caché selon toi ?"
+  },
+  {
+    "id": 86,
+    "category": "fun",
+    "prompt": "Quel animal me représente le mieux ?"
+  },
+  {
+    "id": 87,
+    "category": "fun",
+    "prompt": "Quelle serait notre réplique culte si on avait une sitcom ?"
+  },
+  {
+    "id": 88,
+    "category": "fun",
+    "prompt": "Si on devait fuir un pays ensemble ce soir, on irait où ?"
+  },
+  {
+    "id": 89,
+    "category": "fun",
+    "prompt": "Quel est le truc le plus ridicule qu'on ait fait ensemble ?"
+  },
+  {
+    "id": 90,
+    "category": "fun",
+    "prompt": "Si j'étais un emoji, lequel serais-je tout le temps ?"
+  },
+  {
+    "id": 91,
+    "category": "fun",
+    "prompt": "Quelle serait ma phrase préférée si j'avais un slogan ?"
+  },
+  {
+    "id": 92,
+    "category": "fun",
+    "prompt": "Quel jeu vidéo ou jeu de société nous représenterait le mieux ?"
+  },
+  {
+    "id": 93,
+    "category": "fun",
+    "prompt": "Si on devait improviser un rendez-vous en 10 minutes, tu ferais quoi ?"
+  },
+  {
+    "id": 94,
+    "category": "fun",
+    "prompt": "Quel est le compliment le plus bizarre que tu pourrais me faire ?"
+  },
+  {
+    "id": 95,
+    "category": "fun",
+    "prompt": "Si notre couple avait une mascotte, ce serait quoi ?"
+  },
+  {
+    "id": 96,
+    "category": "fun",
+    "prompt": "Quelle danse ridicule pourrait devenir notre truc à nous ?"
+  },
+  {
+    "id": 97,
+    "category": "fun",
+    "prompt": "Quel surnom improbable pourrais-tu m'inventer là, maintenant ?"
+  },
+  {
+    "id": 98,
+    "category": "fun",
+    "prompt": "Si on devait se déguiser en duo, on serait qui ?"
+  },
+  {
+    "id": 99,
+    "category": "fun",
+    "prompt": "Quelle est la pire blague que tu pourrais me raconter ?"
+  },
+  {
+    "id": 100,
+    "category": "fun",
+    "prompt": "Si notre relation était une météo, ce serait laquelle aujourd'hui ?"
+  },
+  {
+    "id": 101,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce que je fais qui te fait toujours sourire ?"
+  },
+  {
+    "id": 102,
+    "category": "profondeur",
+    "prompt": "Raconte-moi un truc sur toi que je ne sais peut-être pas encore."
+  },
+  {
+    "id": 103,
+    "category": "profondeur",
+    "prompt": "Quelle est la chose la plus douce que je t'ai dite ?"
+  },
+  {
+    "id": 104,
+    "category": "profondeur",
+    "prompt": "Quel est notre prochain défi à relever ensemble ?"
+  },
+  {
+    "id": 105,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce qui te fait peur dans notre relation en ce moment ?"
+  },
+  {
+    "id": 106,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce que tu aimerais que je comprenne mieux sur toi ?"
+  },
+  {
+    "id": 107,
+    "category": "profondeur",
+    "prompt": "Quelle blessure du passé influence encore la façon dont tu aimes ?"
+  },
+  {
+    "id": 108,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce qui te rassure le plus quand tu doutes de nous ?"
+  },
+  {
+    "id": 109,
+    "category": "profondeur",
+    "prompt": "Quel besoin as-tu que tu n'exprimes pas assez souvent ?"
+  },
+  {
+    "id": 110,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce que tu changerais dans notre façon de communiquer ?"
+  },
+  {
+    "id": 111,
+    "category": "profondeur",
+    "prompt": "Quelle qualité chez moi t'aide à devenir une meilleure personne ?"
+  },
+  {
+    "id": 112,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce que tu n'as jamais osé me dire complètement ?"
+  },
+  {
+    "id": 113,
+    "category": "profondeur",
+    "prompt": "Quel est ton plus grand espoir pour notre relation ?"
+  },
+  {
+    "id": 114,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce qui te fait te sentir seul·e même à deux ?"
+  },
+  {
+    "id": 115,
+    "category": "profondeur",
+    "prompt": "Quelle leçon sur l'amour as-tu apprise grâce à moi ?"
+  },
+  {
+    "id": 116,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce que tu admires chez moi que tu ne me dis pas assez ?"
+  },
+  {
+    "id": 117,
+    "category": "profondeur",
+    "prompt": "Quel est ton plus grand besoin émotionnel en ce moment ?"
+  },
+  {
+    "id": 118,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce qui t'a le plus fait grandir depuis qu'on est ensemble ?"
+  },
+  {
+    "id": 119,
+    "category": "profondeur",
+    "prompt": "Quelle part de toi as-tu peur de me montrer ?"
+  },
+  {
+    "id": 120,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce que tu attends de moi dans les moments difficiles ?"
+  },
+  {
+    "id": 121,
+    "category": "profondeur",
+    "prompt": "Quelle valeur est non négociable pour toi dans une relation ?"
+  },
+  {
+    "id": 122,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce qui te ferait te sentir plus soutenu·e au quotidien ?"
+  },
+  {
+    "id": 123,
+    "category": "profondeur",
+    "prompt": "Quel souvenir douloureux t'a appris à mieux aimer ?"
+  },
+  {
+    "id": 124,
+    "category": "profondeur",
+    "prompt": "Qu'est-ce que tu aimerais qu'on se promette l'un à l'autre ?"
+  },
+  {
+    "id": 125,
+    "category": "profondeur",
+    "prompt": "Quelle vérité sur toi as-tu envie de partager ce soir ?"
+  },
+  {
+    "id": 126,
+    "category": "distance",
+    "prompt": "Quel est le truc qui te manque le plus de moi quand on n'est pas ensemble ?"
+  },
+  {
+    "id": 127,
+    "category": "distance",
+    "prompt": "Comment aimerais-tu qu'on garde le lien pendant nos journées séparées ?"
+  },
+  {
+    "id": 128,
+    "category": "distance",
+    "prompt": "Quel rituel à distance aimerais-tu qu'on mette en place ?"
+  },
+  {
+    "id": 129,
+    "category": "distance",
+    "prompt": "Qu'est-ce qui te rassure quand on est loin l'un de l'autre ?"
+  },
+  {
+    "id": 130,
+    "category": "distance",
+    "prompt": "Quel message aimerais-tu recevoir de moi en pleine journée ?"
+  },
+  {
+    "id": 131,
+    "category": "distance",
+    "prompt": "Comment sais-tu que je pense à toi même quand je ne le dis pas ?"
+  },
+  {
+    "id": 132,
+    "category": "distance",
+    "prompt": "Quel est le moment de la journée où tu penses le plus à moi ?"
+  },
+  {
+    "id": 133,
+    "category": "distance",
+    "prompt": "Qu'est-ce qu'on pourrait faire ensemble à distance ce soir ?"
+  },
+  {
+    "id": 134,
+    "category": "distance",
+    "prompt": "Quel souvenir garde ta motivation intacte pendant la distance ?"
+  },
+  {
+    "id": 135,
+    "category": "distance",
+    "prompt": "Comment aimerais-tu qu'on célèbre nos retrouvailles ?"
+  },
+  {
+    "id": 136,
+    "category": "distance",
+    "prompt": "Quel objet à moi aimerais-tu garder près de toi ?"
+  },
+  {
+    "id": 137,
+    "category": "distance",
+    "prompt": "Qu'est-ce qui rend la distance plus douce pour toi ?"
+  },
+  {
+    "id": 138,
+    "category": "distance",
+    "prompt": "Quel appel ou message t'a le plus marqué récemment ?"
+  },
+  {
+    "id": 139,
+    "category": "distance",
+    "prompt": "Comment gères-tu les jours où l'absence pèse plus que d'habitude ?"
+  },
+  {
+    "id": 140,
+    "category": "distance",
+    "prompt": "Quel plan pour notre prochaine retrouvaille te fait le plus rêver ?"
+  },
+  {
+    "id": 141,
+    "category": "distance",
+    "prompt": "Qu'est-ce que tu voudrais qu'on partage plus souvent malgré la distance ?"
+  },
+  {
+    "id": 142,
+    "category": "distance",
+    "prompt": "Quel geste à distance te touche le plus (message, appel, surprise) ?"
+  },
+  {
+    "id": 143,
+    "category": "distance",
+    "prompt": "Comment aimerais-tu qu'on gère les décalages horaires ou les emplois du temps ?"
+  },
+  {
+    "id": 144,
+    "category": "distance",
+    "prompt": "Quel est ton moment préféré de nos appels vidéo ?"
+  },
+  {
+    "id": 145,
+    "category": "distance",
+    "prompt": "Qu'est-ce qui te fait te sentir proche de moi malgré les kilomètres ?"
+  },
+  {
+    "id": 146,
+    "category": "distance",
+    "prompt": "Quelle habitude à distance voudrais-tu qu'on garde même une fois réunis ?"
+  },
+  {
+    "id": 147,
+    "category": "distance",
+    "prompt": "Quel est le message que tu relis le plus souvent de ma part ?"
+  },
+  {
+    "id": 148,
+    "category": "distance",
+    "prompt": "Comment aimerais-tu qu'on prépare nos prochaines retrouvailles ?"
+  },
+  {
+    "id": 149,
+    "category": "distance",
+    "prompt": "Qu'est-ce qui t'aide à tenir les jours où je te manque trop ?"
+  },
+  {
+    "id": 150,
+    "category": "distance",
+    "prompt": "Quelle surprise à distance rêverais-tu de recevoir de moi ?"
+  }
+]

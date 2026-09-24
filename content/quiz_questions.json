@@ -1,0 +1,1042 @@
+[
+  {
+    "id": 1,
+    "order_index": 1,
+    "option_a_text": "Un cadeau fait à la main plutôt qu'acheté",
+    "option_a_language": "gifts",
+    "option_b_text": "Passer une soirée entière rien que tous les deux, sans téléphone",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 2,
+    "order_index": 2,
+    "option_a_text": "Un câlin qui dure jusqu'à ce que le stress redescende",
+    "option_a_language": "touch",
+    "option_b_text": "Recevoir un message qui me dit à quel point je compte pour toi",
+    "option_b_language": "words"
+  },
+  {
+    "id": 3,
+    "order_index": 3,
+    "option_a_text": "Un souvenir que tu gardes précieusement de nous",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu m'aides avec une tâche que je ne maîtrise pas",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 4,
+    "order_index": 4,
+    "option_a_text": "Que tu m'offres mon plat préféré sans raison",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu prennes le relais quand je suis épuisé·e",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 5,
+    "order_index": 5,
+    "option_a_text": "Un petit quelque chose glissé dans mon sac sans prévenir",
+    "option_a_language": "gifts",
+    "option_b_text": "Une balade sans but précis, juste pour parler",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 6,
+    "order_index": 6,
+    "option_a_text": "Une caresse dans les cheveux",
+    "option_a_language": "touch",
+    "option_b_text": "Un moment rien qu'à nous, sans distraction",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 7,
+    "order_index": 7,
+    "option_a_text": "Que tu défendes mes idées devant les autres",
+    "option_a_language": "words",
+    "option_b_text": "Que tu résolves un problème pratique dont je me plaignais",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 8,
+    "order_index": 8,
+    "option_a_text": "Que tu m'apportes quelque chose après une longue journée",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu prennes en charge une corvée sans que je te le demande",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 9,
+    "order_index": 9,
+    "option_a_text": "Que tu m'encourages avant un moment stressant",
+    "option_a_language": "words",
+    "option_b_text": "Un café tranquille juste tous les deux",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 10,
+    "order_index": 10,
+    "option_a_text": "Un cadeau pour une occasion qu'on invente",
+    "option_a_language": "gifts",
+    "option_b_text": "Un café tranquille juste tous les deux",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 11,
+    "order_index": 11,
+    "option_a_text": "Un message du matin qui commence bien ma journée",
+    "option_a_language": "words",
+    "option_b_text": "Que tu t'occupes d'une tâche que je déteste faire",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 12,
+    "order_index": 12,
+    "option_a_text": "Que tu prépares mes affaires pour un déplacement",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'on parte à l'improviste juste tous les deux",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 13,
+    "order_index": 13,
+    "option_a_text": "Rester au lit à discuter le matin",
+    "option_a_language": "quality_time",
+    "option_b_text": "Dormir collés l'un à l'autre",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 14,
+    "order_index": 14,
+    "option_a_text": "Que tu m'aides à ranger sans que je demande",
+    "option_a_language": "acts",
+    "option_b_text": "Un cadeau inattendu, même petit",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 15,
+    "order_index": 15,
+    "option_a_text": "Un bisou surprise avant de partir",
+    "option_a_language": "touch",
+    "option_b_text": "Cuisiner ensemble un dimanche",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 16,
+    "order_index": 16,
+    "option_a_text": "Recevoir un message qui me dit à quel point je compte pour toi",
+    "option_a_language": "words",
+    "option_b_text": "Que tu m'aides à finir quelque chose d'important pour moi",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 17,
+    "order_index": 17,
+    "option_a_text": "Un moment sans écran après le dîner",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu prennes le relais quand je suis épuisé·e",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 18,
+    "order_index": 18,
+    "option_a_text": "Un câlin surprise au milieu de la journée",
+    "option_a_language": "touch",
+    "option_b_text": "Un cadeau inattendu, même petit",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 19,
+    "order_index": 19,
+    "option_a_text": "Que tu te souviennes d'un détail que j'avais mentionné une fois",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu m'écrives pourquoi tu m'aimes",
+    "option_b_language": "words"
+  },
+  {
+    "id": 20,
+    "order_index": 20,
+    "option_a_text": "Que tu règles une paperasse à ma place",
+    "option_a_language": "acts",
+    "option_b_text": "Un « je t'aime » dit sans raison particulière",
+    "option_b_language": "words"
+  },
+  {
+    "id": 21,
+    "order_index": 21,
+    "option_a_text": "Un week-end où on coupe tout le reste",
+    "option_a_language": "quality_time",
+    "option_b_text": "Recevoir un message qui me dit à quel point je compte pour toi",
+    "option_b_language": "words"
+  },
+  {
+    "id": 22,
+    "order_index": 22,
+    "option_a_text": "Une accolade chaleureuse à mon retour",
+    "option_a_language": "touch",
+    "option_b_text": "M'entendre dire que tu es fier/fière de moi",
+    "option_b_language": "words"
+  },
+  {
+    "id": 23,
+    "order_index": 23,
+    "option_a_text": "Un jeu de société un soir de semaine",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un petit mot laissé quelque part pour me faire sourire",
+    "option_b_language": "words"
+  },
+  {
+    "id": 24,
+    "order_index": 24,
+    "option_a_text": "Que tu t'occupes de tout un soir pour que je me repose",
+    "option_a_language": "acts",
+    "option_b_text": "Que tu me dises ce que tu admires chez moi",
+    "option_b_language": "words"
+  },
+  {
+    "id": 25,
+    "order_index": 25,
+    "option_a_text": "Un cadeau qui montre que tu m'écoutes vraiment",
+    "option_a_language": "gifts",
+    "option_b_text": "Des mots doux avant de dormir",
+    "option_b_language": "words"
+  },
+  {
+    "id": 26,
+    "order_index": 26,
+    "option_a_text": "Que tu prépares le petit-déjeuner un matin sans raison",
+    "option_a_language": "acts",
+    "option_b_text": "Un jeu de société un soir de semaine",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 27,
+    "order_index": 27,
+    "option_a_text": "Que tu me dises ce que tu ressens, sans filtre",
+    "option_a_language": "words",
+    "option_b_text": "S'endormir en se tenant la main",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 28,
+    "order_index": 28,
+    "option_a_text": "Recevoir un message qui me dit à quel point je compte pour toi",
+    "option_a_language": "words",
+    "option_b_text": "Que tu me ramènes quelque chose d'un voyage",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 29,
+    "order_index": 29,
+    "option_a_text": "Rester proche physiquement même en faisant autre chose",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu m'encourages avant un moment stressant",
+    "option_b_language": "words"
+  },
+  {
+    "id": 30,
+    "order_index": 30,
+    "option_a_text": "Un cadeau pour une occasion qu'on invente",
+    "option_a_language": "gifts",
+    "option_b_text": "Un message du matin qui commence bien ma journée",
+    "option_b_language": "words"
+  },
+  {
+    "id": 31,
+    "order_index": 31,
+    "option_a_text": "Que tu me dises que tu es fier de nous",
+    "option_a_language": "words",
+    "option_b_text": "Que tu m'offres quelque chose que je voulais depuis longtemps",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 32,
+    "order_index": 32,
+    "option_a_text": "Un compliment sincère devant d'autres personnes",
+    "option_a_language": "words",
+    "option_b_text": "Une main sur l'épaule quand je stresse",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 33,
+    "order_index": 33,
+    "option_a_text": "Un « je t'aime » dit sans raison particulière",
+    "option_a_language": "words",
+    "option_b_text": "Un petit quelque chose glissé dans mon sac sans prévenir",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 34,
+    "order_index": 34,
+    "option_a_text": "Qu'on parte à l'improviste juste tous les deux",
+    "option_a_language": "quality_time",
+    "option_b_text": "Des mots doux avant de dormir",
+    "option_b_language": "words"
+  },
+  {
+    "id": 35,
+    "order_index": 35,
+    "option_a_text": "Un petit quelque chose glissé dans mon sac sans prévenir",
+    "option_a_language": "gifts",
+    "option_b_text": "Dormir collés l'un à l'autre",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 36,
+    "order_index": 36,
+    "option_a_text": "Que tu m'aides avec une tâche que je ne maîtrise pas",
+    "option_a_language": "acts",
+    "option_b_text": "Un pique-nique sans autre plan que d'être ensemble",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 37,
+    "order_index": 37,
+    "option_a_text": "Recevoir un petit cadeau qui te fait penser à moi",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu t'occupes d'une tâche que je déteste faire",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 38,
+    "order_index": 38,
+    "option_a_text": "Que tu prennes le relais quand je suis épuisé·e",
+    "option_a_language": "acts",
+    "option_b_text": "M'entendre dire que tu es fier/fière de moi",
+    "option_b_language": "words"
+  },
+  {
+    "id": 39,
+    "order_index": 39,
+    "option_a_text": "Que tu me dises merci pour les petites choses",
+    "option_a_language": "words",
+    "option_b_text": "Marcher bras dessus bras dessous",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 40,
+    "order_index": 40,
+    "option_a_text": "Un bisou surprise avant de partir",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu prépares le petit-déjeuner un matin sans raison",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 41,
+    "order_index": 41,
+    "option_a_text": "Rester au lit à discuter le matin",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu prépares la maison avant que je rentre",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 42,
+    "order_index": 42,
+    "option_a_text": "Un baiser sur le front avant de partir",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu prennes un rendez-vous à ma place quand je suis débordé·e",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 43,
+    "order_index": 43,
+    "option_a_text": "Que tu me rassures avec des mots quand je doute",
+    "option_a_language": "words",
+    "option_b_text": "Un cadeau qui me rappelle un de nos souvenirs",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 44,
+    "order_index": 44,
+    "option_a_text": "Des mots doux avant de dormir",
+    "option_a_language": "words",
+    "option_b_text": "Que tu prennes en charge une corvée sans que je te le demande",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 45,
+    "order_index": 45,
+    "option_a_text": "Une main sur l'épaule quand je stresse",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'on garde du temps rien que pour nous chaque semaine",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 46,
+    "order_index": 46,
+    "option_a_text": "Qu'on garde du temps rien que pour nous chaque semaine",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un « je t'aime » dit sans raison particulière",
+    "option_b_language": "words"
+  },
+  {
+    "id": 47,
+    "order_index": 47,
+    "option_a_text": "Que tu m'aides à faire quelque chose que je repoussais depuis des jours",
+    "option_a_language": "acts",
+    "option_b_text": "Rester proche physiquement même en faisant autre chose",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 48,
+    "order_index": 48,
+    "option_a_text": "Que tu anticipes un besoin avant que je le dise",
+    "option_a_language": "acts",
+    "option_b_text": "Un câlin qui dure jusqu'à ce que le stress redescende",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 49,
+    "order_index": 49,
+    "option_a_text": "Une sortie qu'on planifie ensemble à l'avance",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu prépares un repas complet pour me surprendre",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 50,
+    "order_index": 50,
+    "option_a_text": "Regarder un film blottis l'un contre l'autre",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un compliment inattendu sur un détail",
+    "option_b_language": "words"
+  },
+  {
+    "id": 51,
+    "order_index": 51,
+    "option_a_text": "Recevoir un petit cadeau qui te fait penser à moi",
+    "option_a_language": "gifts",
+    "option_b_text": "M'entendre dire que tu es fier/fière de moi",
+    "option_b_language": "words"
+  },
+  {
+    "id": 52,
+    "order_index": 52,
+    "option_a_text": "Que tu me dises que tu es fier de nous",
+    "option_a_language": "words",
+    "option_b_text": "Un contact physique doux, sans arrière-pensée",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 53,
+    "order_index": 53,
+    "option_a_text": "Cuisiner ensemble un dimanche",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu me ramènes quelque chose d'un voyage",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 54,
+    "order_index": 54,
+    "option_a_text": "Que tu m'aides à organiser un événement important",
+    "option_a_language": "acts",
+    "option_b_text": "Que tu me dises ce que tu ressens, sans filtre",
+    "option_b_language": "words"
+  },
+  {
+    "id": 55,
+    "order_index": 55,
+    "option_a_text": "Un objet qui symbolise une étape de notre relation",
+    "option_a_language": "gifts",
+    "option_b_text": "Un jeu de société un soir de semaine",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 56,
+    "order_index": 56,
+    "option_a_text": "Une accolade chaleureuse à mon retour",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu m'aides à finir quelque chose d'important pour moi",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 57,
+    "order_index": 57,
+    "option_a_text": "Que tu m'aides à organiser un événement important",
+    "option_a_language": "acts",
+    "option_b_text": "Que tu m'offres quelque chose que je voulais depuis longtemps",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 58,
+    "order_index": 58,
+    "option_a_text": "Un cadeau fait à la main plutôt qu'acheté",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu prépares mes affaires pour un déplacement",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 59,
+    "order_index": 59,
+    "option_a_text": "Que tu me ramènes quelque chose d'un voyage",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu anticipes un besoin avant que je le dise",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 60,
+    "order_index": 60,
+    "option_a_text": "Un message qui me dit que je t'ai manqué",
+    "option_a_language": "words",
+    "option_b_text": "Que tu prépares la maison avant que je rentre",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 61,
+    "order_index": 61,
+    "option_a_text": "Une lettre écrite à la main",
+    "option_a_language": "words",
+    "option_b_text": "Un pique-nique sans autre plan que d'être ensemble",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 62,
+    "order_index": 62,
+    "option_a_text": "Que tu m'offres quelque chose que je voulais depuis longtemps",
+    "option_a_language": "gifts",
+    "option_b_text": "Un baiser sur le front avant de partir",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 63,
+    "order_index": 63,
+    "option_a_text": "Un compliment sincère devant d'autres personnes",
+    "option_a_language": "words",
+    "option_b_text": "Se coucher tôt juste pour parler avant de dormir",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 64,
+    "order_index": 64,
+    "option_a_text": "Que tu te souviennes d'un détail que j'avais mentionné une fois",
+    "option_a_language": "gifts",
+    "option_b_text": "Marcher bras dessus bras dessous",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 65,
+    "order_index": 65,
+    "option_a_text": "Que tu t'occupes des courses sans qu'on en parle",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'on garde du temps rien que pour nous chaque semaine",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 66,
+    "order_index": 66,
+    "option_a_text": "Un câlin surprise au milieu de la journée",
+    "option_a_language": "touch",
+    "option_b_text": "Une balade sans but précis, juste pour parler",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 67,
+    "order_index": 67,
+    "option_a_text": "Une activité qu'on découvre ensemble pour la première fois",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu m'aides à faire quelque chose que je repoussais depuis des jours",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 68,
+    "order_index": 68,
+    "option_a_text": "Rester proche physiquement même en faisant autre chose",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu gardes un souvenir d'une sortie ensemble",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 69,
+    "order_index": 69,
+    "option_a_text": "Se blottir l'un contre l'autre sans raison",
+    "option_a_language": "touch",
+    "option_b_text": "Un pique-nique sans autre plan que d'être ensemble",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 70,
+    "order_index": 70,
+    "option_a_text": "Un objet qui nous rappelle un souvenir précis",
+    "option_a_language": "gifts",
+    "option_b_text": "Un contact physique sans qu'il y ait de mot à dire",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 71,
+    "order_index": 71,
+    "option_a_text": "Un dîner en tête-à-tête sans écran",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un petit mot accompagné d'un objet",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 72,
+    "order_index": 72,
+    "option_a_text": "Qu'on parte à l'improviste juste tous les deux",
+    "option_a_language": "quality_time",
+    "option_b_text": "Tenir ta main quand on marche",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 73,
+    "order_index": 73,
+    "option_a_text": "Se blottir l'un contre l'autre sans raison",
+    "option_a_language": "touch",
+    "option_b_text": "Un cadeau fait à la main plutôt qu'acheté",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 74,
+    "order_index": 74,
+    "option_a_text": "Un cadeau simple mais qui montre que tu as pensé à moi",
+    "option_a_language": "gifts",
+    "option_b_text": "Un câlin qui dure jusqu'à ce que le stress redescende",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 75,
+    "order_index": 75,
+    "option_a_text": "Que tu m'aides à ranger sans que je demande",
+    "option_a_language": "acts",
+    "option_b_text": "Se blottir l'un contre l'autre sans raison",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 76,
+    "order_index": 76,
+    "option_a_text": "Que tu prennes le relais quand je suis épuisé·e",
+    "option_a_language": "acts",
+    "option_b_text": "Se tenir la main pendant une conversation difficile",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 77,
+    "order_index": 77,
+    "option_a_text": "Un cadeau pour une occasion qu'on invente",
+    "option_a_language": "gifts",
+    "option_b_text": "Être proches physiquement en regardant un film",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 78,
+    "order_index": 78,
+    "option_a_text": "Que tu prépares un repas complet pour me surprendre",
+    "option_a_language": "acts",
+    "option_b_text": "Tenir ta main quand on marche",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 79,
+    "order_index": 79,
+    "option_a_text": "Se serrer fort après une bonne ou une mauvaise nouvelle",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu règles une paperasse à ma place",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 80,
+    "order_index": 80,
+    "option_a_text": "Cuisiner ensemble un dimanche",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu me dises merci pour les petites choses",
+    "option_b_language": "words"
+  },
+  {
+    "id": 81,
+    "order_index": 81,
+    "option_a_text": "Se tenir la main pendant une conversation difficile",
+    "option_a_language": "touch",
+    "option_b_text": "Un « je t'aime » dit sans raison particulière",
+    "option_b_language": "words"
+  },
+  {
+    "id": 82,
+    "order_index": 82,
+    "option_a_text": "Rester proche physiquement même en faisant autre chose",
+    "option_a_language": "touch",
+    "option_b_text": "Un jeu de société un soir de semaine",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 83,
+    "order_index": 83,
+    "option_a_text": "Un cadeau pour une occasion qu'on invente",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu règles un truc embêtant à ma place",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 84,
+    "order_index": 84,
+    "option_a_text": "Une sortie qu'on planifie ensemble à l'avance",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu m'offres mon plat préféré sans raison",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 85,
+    "order_index": 85,
+    "option_a_text": "Passer une soirée entière rien que tous les deux, sans téléphone",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un câlin qui dure un peu plus longtemps que d'habitude",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 86,
+    "order_index": 86,
+    "option_a_text": "Que tu m'apportes quelque chose après une longue journée",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu complimentes mes efforts, pas juste mes résultats",
+    "option_b_language": "words"
+  },
+  {
+    "id": 87,
+    "order_index": 87,
+    "option_a_text": "S'endormir en se tenant la main",
+    "option_a_language": "touch",
+    "option_b_text": "Une activité qu'on découvre ensemble pour la première fois",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 88,
+    "order_index": 88,
+    "option_a_text": "Que tu m'offres quelque chose que je voulais depuis longtemps",
+    "option_a_language": "gifts",
+    "option_b_text": "Qu'on garde du temps rien que pour nous chaque semaine",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 89,
+    "order_index": 89,
+    "option_a_text": "Une caresse dans les cheveux",
+    "option_a_language": "touch",
+    "option_b_text": "Un compliment inattendu sur un détail",
+    "option_b_language": "words"
+  },
+  {
+    "id": 90,
+    "order_index": 90,
+    "option_a_text": "Un pique-nique sans autre plan que d'être ensemble",
+    "option_a_language": "quality_time",
+    "option_b_text": "Que tu gardes un souvenir d'une sortie ensemble",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 91,
+    "order_index": 91,
+    "option_a_text": "Que tu règles un truc embêtant à ma place",
+    "option_a_language": "acts",
+    "option_b_text": "Marcher main dans la main sans se presser",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 92,
+    "order_index": 92,
+    "option_a_text": "Un message du matin qui commence bien ma journée",
+    "option_a_language": "words",
+    "option_b_text": "Un road trip improvisé à deux",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 93,
+    "order_index": 93,
+    "option_a_text": "Un cadeau inattendu, même petit",
+    "option_a_language": "gifts",
+    "option_b_text": "Marcher main dans la main sans se presser",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 94,
+    "order_index": 94,
+    "option_a_text": "Un massage improvisé après une longue journée",
+    "option_a_language": "touch",
+    "option_b_text": "Un cadeau surprise un jour ordinaire",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 95,
+    "order_index": 95,
+    "option_a_text": "Que tu m'aides à finir quelque chose d'important pour moi",
+    "option_a_language": "acts",
+    "option_b_text": "Passer une soirée entière rien que tous les deux, sans téléphone",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 96,
+    "order_index": 96,
+    "option_a_text": "Un petit mot laissé quelque part pour me faire sourire",
+    "option_a_language": "words",
+    "option_b_text": "Que tu prépares quelque chose pour moi sans que je le demande",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 97,
+    "order_index": 97,
+    "option_a_text": "Un câlin qui dure un peu plus longtemps que d'habitude",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu m'aides à organiser un événement important",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 98,
+    "order_index": 98,
+    "option_a_text": "Que tu t'occupes des courses sans qu'on en parle",
+    "option_a_language": "acts",
+    "option_b_text": "Un objet qui symbolise une étape de notre relation",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 99,
+    "order_index": 99,
+    "option_a_text": "Tenir ta main quand on marche",
+    "option_a_language": "touch",
+    "option_b_text": "Que tu m'écrives pourquoi tu m'aimes",
+    "option_b_language": "words"
+  },
+  {
+    "id": 100,
+    "order_index": 100,
+    "option_a_text": "Un cadeau inattendu, même petit",
+    "option_a_language": "gifts",
+    "option_b_text": "Que tu me dises merci pour les petites choses",
+    "option_b_language": "words"
+  },
+  {
+    "id": 101,
+    "order_index": 101,
+    "option_a_text": "Une nuit rien que tous les deux, téléphone éteint, sans limite de temps",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un message au réveil qui résume tout ce que tu aimes dans notre intimité",
+    "option_b_language": "words"
+  },
+  {
+    "id": 102,
+    "order_index": 102,
+    "option_a_text": "Un massage sensuel complet qui dure une heure",
+    "option_a_language": "touch",
+    "option_b_text": "Une soirée dans un hôtel chic payée par ton/ta partenaire",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 103,
+    "order_index": 103,
+    "option_a_text": "Qu'il/elle t'embrasse le cou sans prévenir en public",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle t'écrive en pleine journée tout ce qu'il/elle veut te faire ce soir",
+    "option_b_language": "words"
+  },
+  {
+    "id": 104,
+    "order_index": 104,
+    "option_a_text": "Un petit-déjeuner au lit préparé avec amour",
+    "option_a_language": "acts",
+    "option_b_text": "Un câlin prolongé au réveil qui ne finit pas en hâte",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 105,
+    "order_index": 105,
+    "option_a_text": "Qu'il/elle prépare la chambre comme un cocon (bougies, musique, draps propres)",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'il/elle t'offre la lingerie ou le parfum qu'il/elle rêve de voir sur toi",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 106,
+    "order_index": 106,
+    "option_a_text": "Une soirée jeu coquin à deux où tout est permis de dire",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un mot doux glissé dans ta poche avant de partir au travail",
+    "option_b_language": "words"
+  },
+  {
+    "id": 107,
+    "order_index": 107,
+    "option_a_text": "Qu'il/elle te surprenne en te prenant par la taille dans la cuisine",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle organise une escapade surprise pour votre anniversaire",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 108,
+    "order_index": 108,
+    "option_a_text": "Une douche à deux improvisée un dimanche matin",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un massage des pieds après ta longue journée",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 109,
+    "order_index": 109,
+    "option_a_text": "Qu'il/elle te dise à l'oreille exactement ce qui l'excite chez toi",
+    "option_a_language": "words",
+    "option_b_text": "Qu'il/elle te tienne serré(e) toute la nuit sans lâcher",
+    "option_b_language": "touch"
+  },
+  {
+    "id": 110,
+    "order_index": 110,
+    "option_a_text": "Une playlist intime composée uniquement pour vous deux",
+    "option_a_language": "gifts",
+    "option_b_text": "Une soirée sans écran où on se redécouvre en discutant jusqu'à 3h du matin",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 111,
+    "order_index": 111,
+    "option_a_text": "Qu'il/elle t'embrasse la main en public sans gêne",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle vante tes qualités (y compris coquines) devant ses amis",
+    "option_b_language": "words"
+  },
+  {
+    "id": 112,
+    "order_index": 112,
+    "option_a_text": "Un 'bon' à échanger : une nuit où l'autre décide de tout",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un objet intime choisi ensemble lors d'une virée shopping complice",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 113,
+    "order_index": 113,
+    "option_a_text": "Qu'il/elle prenne en charge TOUTE l'organisation de votre prochaine nuit spéciale",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'il/elle te laisse des mots coquins cachés dans la maison",
+    "option_b_language": "words"
+  },
+  {
+    "id": 114,
+    "order_index": 114,
+    "option_a_text": "S'endormir nu(s) l'un contre l'autre chaque nuit",
+    "option_a_language": "touch",
+    "option_b_text": "Recevoir un souvenir de votre première nuit encadré",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 115,
+    "order_index": 115,
+    "option_a_text": "Qu'il/elle t'attende au lit avec un look qui te fait craquer",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'il/elle te décrive ton effet sur lui/elle en plein dîner aux chandelles",
+    "option_b_language": "words"
+  },
+  {
+    "id": 116,
+    "order_index": 116,
+    "option_a_text": "Un pique-nique secret préparé par ses soins à l'aube",
+    "option_a_language": "acts",
+    "option_b_text": "Un après-midi entier à explorer l'autre sans téléphone ni horaire",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 117,
+    "order_index": 117,
+    "option_a_text": "Qu'il/elle t'enlace par derrière quand tu ne t'y attends pas",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle t'offre un bijou discret que tu portes tous les jours",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 118,
+    "order_index": 118,
+    "option_a_text": "Une nuit sans parler, uniquement par les gestes",
+    "option_a_language": "touch",
+    "option_b_text": "Une nuit où on se confie nos fantasmes les plus cachés",
+    "option_b_language": "words"
+  },
+  {
+    "id": 119,
+    "order_index": 119,
+    "option_a_text": "Qu'il/elle te surprenne au travail avec ton plat préféré",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'il/elle réserve une chambre d'hôtel inconnue pour un soir improvisé",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 120,
+    "order_index": 120,
+    "option_a_text": "Un bain moussant à deux avec champagne et musique douce",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un cadeau 'juste parce que' trouvé en pensant à toi",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 121,
+    "order_index": 121,
+    "option_a_text": "Qu'il/elle te réveille avec des baisers dans le cou",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle te laisse un message vocal le matin : ce qu'il/elle rêve de te faire le soir",
+    "option_b_language": "words"
+  },
+  {
+    "id": 122,
+    "order_index": 122,
+    "option_a_text": "Qu'il/elle mémorise tes zones sensibles et les utilise au bon moment",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'il/elle t'offre un carnet où il/elle décrit tout ce qu'il/elle veut tenter avec toi",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 123,
+    "order_index": 123,
+    "option_a_text": "Danser collé(e) à lui/elle jusqu'à très tard",
+    "option_a_language": "quality_time",
+    "option_b_text": "Recevoir un message vocal de sa voix rauque en rentrant",
+    "option_b_language": "words"
+  },
+  {
+    "id": 124,
+    "order_index": 124,
+    "option_a_text": "Qu'il/elle te fasse perdre la tête juste avec un regard",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle te dédie une chanson et l'explique en te regardant",
+    "option_b_language": "words"
+  },
+  {
+    "id": 125,
+    "order_index": 125,
+    "option_a_text": "Un week-end sans règles ni obligations, juste vous deux au lit",
+    "option_a_language": "quality_time",
+    "option_b_text": "Un dîner où l'autre a pensé à chaque détail qui te plaît",
+    "option_b_language": "acts"
+  },
+  {
+    "id": 126,
+    "order_index": 126,
+    "option_a_text": "Qu'il/elle te serre contre lui/elle quand tu es stressé(e), sans rien demander",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle t'écrive un message de 10 lignes sur pourquoi c'est toi",
+    "option_b_language": "words"
+  },
+  {
+    "id": 127,
+    "order_index": 127,
+    "option_a_text": "Une photo de vous deux la plus osée (à décider ensemble) encadrée dans la chambre",
+    "option_a_language": "gifts",
+    "option_b_text": "Une tradition à deux : un soir par semaine dédié uniquement à l'intime",
+    "option_b_language": "quality_time"
+  },
+  {
+    "id": 128,
+    "order_index": 128,
+    "option_a_text": "Qu'il/elle t'embrasse le ventre en souriant",
+    "option_a_language": "touch",
+    "option_b_text": "Qu'il/elle te dise à quel point tu comptes dans sa vie, à voix haute",
+    "option_b_language": "words"
+  },
+  {
+    "id": 129,
+    "order_index": 129,
+    "option_a_text": "Qu'il/elle gère les corvées pendant toute une semaine sans que tu demandes",
+    "option_a_language": "acts",
+    "option_b_text": "Qu'il/elle t'offre une expérience à deux (cours de danse sensuelle, spa...)",
+    "option_b_language": "gifts"
+  },
+  {
+    "id": 130,
+    "order_index": 130,
+    "option_a_text": "Une nuit où on ne fait que se parler et se découvrir",
+    "option_a_language": "quality_time",
+    "option_b_text": "Une nuit où on ne fait que se toucher et s'aimer",
+    "option_b_language": "touch"
+  }
+]

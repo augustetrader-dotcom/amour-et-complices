@@ -1,0 +1,199 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "preferences",
+      "question": "Quel est ton langage de l'amour principal ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "words", "label": "Les paroles valorisantes", "icon": "💬"},
+        {"value": "quality_time", "label": "Les moments de qualité", "icon": "⏰"},
+        {"value": "gifts", "label": "Les cadeaux", "icon": "🎁"},
+        {"value": "acts", "label": "Les services rendus", "icon": "🤝"},
+        {"value": "touch", "label": "Le toucher physique", "icon": "💕"}
+      ],
+      "affects": ["theme", "notifications", "content_recommendations"]
+    },
+    {
+      "id": 2,
+      "category": "preferences",
+      "question": "Quelle ambiance préfères-tu dans l'application ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "romantic", "label": "Romantique & Doux", "icon": "🌸"},
+        {"value": "passionate", "label": "Passionné & Intense", "icon": "🔥"},
+        {"value": "playful", "label": "Joueur & Fun", "icon": "🎮"},
+        {"value": "calm", "label": "Calme & Serein", "icon": "🧘"},
+        {"value": "adventurous", "label": "Aventureux & Dynamique", "icon": "🚀"}
+      ],
+      "affects": ["theme", "animations", "ui_style"]
+    },
+    {
+      "id": 3,
+      "category": "relationship",
+      "question": "Comment décrirais-tu ta relation actuelle ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "new_love", "label": "Nouvel amour", "icon": "💕"},
+        {"value": "long_term", "label": "Relation longue distance", "icon": "🌍"},
+        {"value": "married", "label": "Marié/Couple stable", "icon": "💍"},
+        {"value": "reunited", "label": "Retrouvailles", "icon": "🔄"},
+        {"value": "complicity", "label": "Amitié amoureuse", "icon": "🤝"}
+      ],
+      "affects": ["content_recommendations", "features"]
+    },
+    {
+      "id": 4,
+      "category": "communication",
+      "question": "Quel est ton moyen de communication préféré ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "messages", "label": "Messages écrits", "icon": "💬"},
+        {"value": "voice", "label": "Messages vocaux", "icon": "🎤"},
+        {"value": "photos", "label": "Photos", "icon": "📸"},
+        {"value": "video", "label": "Vidéos", "icon": "🎥"},
+        {"value": "mixed", "label": "Un peu de tout", "icon": "🎨"}
+      ],
+      "affects": ["ui_defaults", "feature_highlights"]
+    },
+    {
+      "id": 5,
+      "category": "activities",
+      "question": "Quelles activités aimes-tu partager en couple ?",
+      "type": "multiple_choice",
+      "options": [
+        {"value": "dinners", "label": "Sorties restaurants", "icon": "🍽️"},
+        {"value": "movies", "label": "Films & Séries", "icon": "🎬"},
+        {"value": "travel", "label": "Voyages", "icon": "✈️"},
+        {"value": "sports", "label": "Sport & Fitness", "icon": "🏃"},
+        {"value": "games", "label": "Jeux vidéo", "icon": "🎮"},
+        {"value": "cooking", "label": "Cuisine", "icon": "👨‍🍳"},
+        {"value": "music", "label": "Musique & Concerts", "icon": "🎵"},
+        {"value": "nature", "label": "Nature & Randonnées", "icon": "🌲"}
+      ],
+      "affects": ["content_recommendations", "game_suggestions"]
+    },
+    {
+      "id": 6,
+      "category": "communication_style",
+      "question": "Comment préfères-tu exprimer ton affection ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "direct", "label": "Directement et clairement", "icon": "💪"},
+        {"value": "subtle", "label": "Subtilement et délicatement", "icon": "🌸"},
+        {"value": "creative", "label": "Créativement et originalement", "icon": "🎨"},
+        {"value": "humorous", "label": "Avec humour", "icon": "😄"},
+        {"value": "actions", "label": "Par des actions plutôt que des mots", "icon": "🤝"}
+      ],
+      "affects": ["message_suggestions", "notification_style"]
+    },
+    {
+      "id": 7,
+      "category": "notifications",
+      "question": "Quel type de notifications souhaites-tu recevoir ?",
+      "type": "multiple_choice",
+      "options": [
+        {"value": "messages", "label": "Nouveaux messages", "icon": "💬"},
+        {"value": "reminders", "label": "Rappels d'anniversaires", "icon": "🎂"},
+        {"value": "daily_love", "label": "Messages d'amour quotidiens", "icon": "💕"},
+        {"value": "activities", "label": "Suggestions d'activités", "icon": "🎯"},
+        {"value": "stories", "label": "Nouvelles stories", "icon": "📱"}
+      ],
+      "affects": ["notification_settings", "push_content"]
+    },
+    {
+      "id": 8,
+      "category": "personality",
+      "question": "Quel est ton trait de personnalité dominant ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "romantic", "label": "Romantique", "icon": "💕"},
+        {"value": "adventurous", "label": "Aventureux", "icon": "🚀"},
+        {"value": "humorous", "label": "Humoristique", "icon": "😄"},
+        {"value": "thoughtful", "label": "Réfléchi", "icon": "🤔"},
+        {"value": "passionate", "label": "Passionné", "icon": "🔥"}
+      ],
+      "affects": ["content_tone", "game_difficulty"]
+    },
+    {
+      "id": 9,
+      "category": "relationship_goals",
+      "question": "Quel est ton objectif principal dans cette application ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "communiction", "label": "Améliorer la communication", "icon": "💬"},
+        {"value": "fun", "label": "S'amuser ensemble", "icon": "🎮"},
+        {"value": "memories", "label": "Créer des souvenirs", "icon": "📸"},
+        {"value": "growth", "label": "Grandir ensemble", "icon": "🌱"},
+        {"value": "intimacy", "label": "Renforcer l'intimité", "icon": "💕"}
+      ],
+      "affects": ["feature_priorities", "onboarding_focus"]
+    },
+    {
+      "id": 10,
+      "category": "daily_routine",
+      "question": "À quel moment préfères-tu recevoir des messages de ton partenaire ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "morning", "label": "Le matin", "icon": "☀️"},
+        {"value": "afternoon", "label": "L'après-midi", "icon": "🌤️"},
+        {"value": "evening", "label": "Le soir", "icon": "🌙"},
+        {"value": "night", "label": "Tard le soir", "icon": "🌃"},
+        {"value": "anytime", "label": "N'importe quand", "icon": "⏰"}
+      ],
+      "affects": ["notification_timing", "daily_content_schedule"]
+    },
+    {
+      "id": 11,
+      "category": "privacy",
+      "question": "Quel est ton niveau de confort avec le partage en ligne ?",
+      "type": "single_choice",
+      "options": [
+        {"value": "very_private", "label": "Très privé", "icon": "🔒"},
+        {"value": "private", "label": "Privé", "icon": "🔐"},
+        {"value": "moderate", "label": "Modéré", "icon": "⚖️"},
+        {"value": "open", "label": "Ouvert", "icon": "🌐"},
+        {"value": "very_open", "label": "Très ouvert", "icon": "🚀"}
+      ],
+      "affects": ["privacy_settings", "story_visibility"]
+    },
+    {
+      "id": 12,
+      "category": "preferences",
+      "question": "Quels types de contenus t'intéressent le plus ?",
+      "type": "multiple_choice",
+      "options": [
+        {"value": "romantic_messages", "label": "Messages romantiques", "icon": "💕"},
+        {"value": "couple_games", "label": "Jeux de couple", "icon": "🎮"},
+        {"value": "relationship_tips", "label": "Conseils relationnels", "icon": "💡"},
+        {"value": "date_ideas", "label": "Idées de rendez-vous", "icon": "📍"},
+        {"value": "intimacy_questions", "label": "Questions d'intimité", "icon": "💋"},
+        {"value": "memory_prompts", "label": "Prompts de souvenirs", "icon": "📸"}
+      ],
+      "affects": ["content_feed", "feature_highlights"]
+    }
+  ],
+  "personalization_mappings": {
+    "theme": {
+      "romantic": "default",
+      "passionate": "blush", 
+      "playful": "sunset",
+      "calm": "emerald",
+      "adventurous": "noir"
+    },
+    "notification_style": {
+      "direct": "immediate",
+      "subtle": "gentle",
+      "creative": "playful",
+      "humorous": "fun",
+      "actions": "minimal"
+    },
+    "content_tone": {
+      "romantic": "sweet",
+      "adventurous": "energetic",
+      "humorous": "funny",
+      "thoughtful": "deep",
+      "passionate": "intense"
+    }
+  }
+}

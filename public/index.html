@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Amour & Complices — App Couple & Amis</title>
+
+<!-- [PHASE 3] PWA : application installable sur iPhone et Android -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#181324">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Amour & Complices">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/config.js"></script>
+
+<!-- ==========================================
+   CSS SÉPARÉ - FICHIER EXTERNE AVEC OPTIMISATION
+   ========================================== -->
+<link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="css/style.css"></noscript>
+</head>
+<body>
+
+<!-- Écran de chargement -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-content">
+    <div class="loading-logo">💕</div>
+    <div class="loading-title">Amour & Complices</div>
+    <div class="loading-subtitle">Chargement de votre espace personnel...</div>
+    <div class="loading-spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+    </div>
+    <div class="loading-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" id="loadingProgress"></div>
+      </div>
+      <div class="progress-text" id="loadingText">Initialisation...</div>
+    </div>
+  </div>
+</div>
+
+<!-- Écran du questionnaire d'amour -->
+<div class="love-quiz-screen" id="loveQuizScreen" style="display:none;">
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <div class="quiz-progress">
+        <div class="progress-dots" id="quizProgressDots"></div>
+      </div>
+      <div class="quiz-title">Personnalisez votre expérience</div>
+      <div class="quiz-subtitle">Répondez à quelques questions pour adapter l'application à votre relation</div>
+    </div>
+    
+    <div class="quiz-content" id="quizContent">
+      <!-- Les questions seront injectées ici par JavaScript -->
+    </div>
+    
+    <div class="quiz-footer">
+      <button class="btn-secondary" id="quizBackBtn" style="display:none;">← Précédent</button>
+      <button class="btn-primary" id="quizNextBtn">Suivant →</button>
+      <button class="btn-primary" id="quizSubmitBtn" style="display:none;">Terminer 💕</button>
+    </div>
+  </div>
+</div>
+
+<div class="phone-frame" id="phoneFrame" style="display:none;">
+  <div class="notch"><div class="notch-speaker"></div></div>
+
+  <!-- En-tête de l'application -->
+  <header class="app-header" id="appHeader" style="display:none;">
+    <!-- En-tête Mode Couple -->
+    <div class="partner-meta" id="headerCoupleMeta" onclick="openPartnerDetails()">
+      <div class="avatar-wrap">
+        <div class="avatar-img" id="headerAvatar">❤️</div>
+        <div class="status-dot" id="headerStatusDot"></div>
+      </div>
+      <div class="partner-info">
+        <span class="partner-name" id="headerPartnerName">Ta moitié</span>
+        <span class="partner-status" id="headerPresence">🟢 En ligne</span>
+        <span class="typing-badge" id="headerTyping">✍️ écrit...</span>
+      </div>
+    </div>
+
+    <!-- En-tête Mode Amis (Ne contient PAS 'Mon Amour') -->
+    <div id="headerFriendsMeta" style="display:none; align-items:center; gap:10px;">
+      <div class="avatar-img" style="border-color:var(--accent-rose);">👥</div>
+      <div class="partner-info">
+        <span class="partner-name" id="headerFriendsTitle">Mes Amis & Groupes</span>
+        <span class="partner-status" id="headerFriendsSubtitle">Discussions & Albums partagés</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="icon-btn" title="Paramètres & Profil" onclick="openSettingsModal()">⚙️</button>
+    </div>
+  </header>
+
+  <!-- Corps d'écran -->
+  <main class="screen-body" id="screenBody">
+    <div class="screen-scrollable" id="screenContent">
+      <!-- Rendu dynamique -->
+    </div>
+  </main>
+
+  <!-- Barre de navigation inférieure (5 onglets) -->
+  <nav class="bottom-nav" id="bottomNav" style="display:none;">
+    <button class="nav-btn" data-tab="quiz" onclick="switchTab('quiz')">
+      <span class="nav-icon">◆</span><span>Quiz</span>
+    </button>
+    <button class="nav-btn" data-tab="game" onclick="switchTab('game')">
+      <span class="nav-icon">♥</span><span>Jeu</span>
+    </button>
+    <button class="nav-btn" data-tab="words" onclick="switchTab('words')">
+      <span class="nav-icon">✉</span><span>Mots doux</span>
+    </button>
+    <button class="nav-btn active" data-tab="chat" onclick="switchTab('chat')">
+      <span class="nav-icon">☽</span><span>Chat</span>
+    </button>
+    <button class="nav-btn" data-tab="friends" onclick="switchTab('friends')">
+      <span class="nav-icon">👥</span><span>Amis</span>
+    </button>
+  </nav>
+
+  <!-- Notification Toast intégrée -->
+  <div class="toast-notification" id="toastNotification" onclick="handleToastClick()">
+    <div class="toast-icon">💌</div>
+    <div class="toast-text">
+      <div class="toast-title" id="toastTitle">Nouveau message</div>
+      <div id="toastMessage">Reçu à l'instant</div>
+    </div>
+  </div>
+
+  <!-- Modal Paramètres & Profil (Upload Photo & Synchronisation Partenaire) -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal-header">
+      <div class="modal-title">Paramètres & Profil</div>
+      <button class="modal-close" onclick="closeSettingsModal()">✕</button>
+    </div>
+    <div style="flex:1;">
+      <!-- Upload photo de profil en direct -->
+      <label style="font-size:12px; color:var(--text-muted); display:block; margin-bottom:6px;">Ma Photo de Profil (Visible par ton/ta Partenaire)</label>
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:14px; background:var(--bg-input); padding:12px; border-radius:14px;">
+        <div class="avatar-img" id="settingsMyAvatarPreview" style="width:56px; height:56px; font-size:26px;">🌸</div>
+        <div style="flex:1;">
+          <button class="btn-secondary" style="padding:8px 12px; font-size:12px;" onclick="document.getElementById('avatarFileInput').click()">📷 Téléverser ma photo</button>
+          <input type="file" id="avatarFileInput" accept="image/*" style="display:none;" onchange="handleAvatarUpload(event)">
+          <div style="font-size:10px; color:var(--text-muted); margin-top:4px;">Se synchronise en direct sur l'écran de ton/ta partenaire</div>
+        </div>
+      </div>
+
+      <label style="font-size:12px; color:var(--text-muted);">Mon Surnom</label>
+      <input class="input-field" id="settingsMyNickname" placeholder="Ex: Mon Cœur">
+
+      <label style="font-size:12px; color:var(--text-muted);">Mon numéro de téléphone</label>
+      <input class="input-field" id="settingsMyPhone" type="tel" placeholder="Ex: +226 00 00 00 00">
+      <div style="font-size:10px; color:var(--text-muted); margin:-8px 0 12px;">Utilisé pour retrouver tes amis dans l'app et être reconnu par ton/ta partenaire.</div>
+
+      <div style="background:var(--bg-input); border-radius:14px; padding:12px 14px; margin-bottom:14px; display:flex; align-items:center; gap:10px;">
+        <div class="avatar-img" id="settingsPartnerAvatar" style="width:38px; height:38px; font-size:18px;">❤️</div>
+        <div style="flex:1;">
+          <div style="font-size:13px; font-weight:600;">Mon/ma partenaire : <span id="settingsPartnerName">Ta moitié</span></div>
+          <div style="font-size:11px; color:var(--text-muted);">Numéro : <span id="settingsPartnerPhone">—</span></div>
+        </div>
+      </div>
+
+      <label style="font-size:12px; color:var(--text-muted);">Ou choisir un avatar rapide :</label>
+      <div style="display:flex; gap:8px; margin-bottom:14px;">
+        <button class="icon-btn" onclick="selectAvatar('👑')">👑</button>
+        <button class="icon-btn" onclick="selectAvatar('🌸')">🌸</button>
+        <button class="icon-btn" onclick="selectAvatar('🦊')">🦊</button>
+        <button class="icon-btn" onclick="selectAvatar('🦁')">🦁</button>
+        <button class="icon-btn" onclick="selectAvatar('🌹')">🌹</button>
+        <button class="icon-btn" onclick="selectAvatar('✨')">✨</button>
+      </div>
+
+      <label style="font-size:12px; color:var(--text-muted);">Thèmes & Couleurs du Fond</label>
+      <div class="palette-picker">
+        <div class="palette-swatch" style="background:#181324;" onclick="applyTheme('default')" title="Nuit Étoilée"></div>
+        <div class="palette-swatch" style="background:#d65977;" onclick="applyTheme('blush')" title="Rose Passion"></div>
+        <div class="palette-swatch" style="background:#ea580c;" onclick="applyTheme('sunset')" title="Ambre Crépuscule"></div>
+        <div class="palette-swatch" style="background:#10b981;" onclick="applyTheme('emerald')" title="Émeraude Sérénité"></div>
+        <div class="palette-swatch" style="background:#0a0a0c;" onclick="applyTheme('noir')" title="Noir Minimaliste"></div>
+      </div>
+
+      <label style="font-size:12px; color:var(--text-muted); margin-top:8px; display:block;">Photo d'Arrière-Plan Personnalisée</label>
+      <input type="file" id="bgFileInput" accept="image/*" style="display:none" onchange="handleCustomBgUpload(event)">
+      <button class="btn-secondary" style="margin-bottom:14px;" onclick="document.getElementById('bgFileInput').click()">🖼️ Choisir une photo du couple</button>
+
+      <label style="font-size:12px; color:var(--text-muted);">Jumeler un autre appareil (QR Code)</label>
+      <div style="text-align:center; padding:12px; background:var(--bg-input); border-radius:14px; margin-bottom:16px;">
+        <img id="qrCodeImage" style="width:130px; height:130px; border-radius:10px; background:#fff; padding:6px;" alt="QR Code Jumelage">
+        <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">Scanne pour synchroniser un autre appareil</div>
+      </div>
+
+      <button class="btn-secondary" style="margin-bottom:14px;" onclick="enablePushNotifications()">🔔 Activer les notifications push (même app fermée)</button>
+
+      <button class="btn-primary" onclick="saveSettings()">Enregistrer les modifications</button>
+      <button class="btn-secondary" style="margin-top:8px; color:#ef4444; border-color:rgba(239,68,68,0.3);" onclick="logout()">Se déconnecter</button>
+    </div>
+  </div>
+
+  <!-- Modal Lightbox (Zoom normal & Vue Unique protégée) -->
+  <div class="modal-overlay" id="lightboxModal">
+    <div class="modal-header">
+      <div class="modal-title" id="lightboxTitle">Aperçu média</div>
+      <button class="modal-close" onclick="closeLightbox()">✕</button>
+    </div>
+    <div class="lightbox-container" id="lightboxContainer">
+      <div class="countdown-badge" id="lightboxCountdown" style="display:none;">8s</div>
+      <div class="anti-screenshot-shield" id="antiScreenshotShield" style="display:none;">
+        PROTECTION VUE UNIQUE • NE PAS DIFFUSER
+      </div>
+      <img class="lightbox-media" id="lightboxImg" style="display:none;" alt="Agrandissement">
+      <video class="lightbox-media" id="lightboxVideo" style="display:none;" controls autoplay playsinline></video>
+
+      <div class="lightbox-controls" id="lightboxControls">
+        <button class="icon-btn" title="Zoomer" onclick="zoomLightbox(1.2)">🔍+</button>
+        <button class="icon-btn" title="Dézoomer" onclick="zoomLightbox(0.8)">🔍-</button>
+        <button class="icon-btn" title="Pivoter" onclick="rotateLightbox()">⟳</button>
+        <button class="btn-primary" id="lightboxDownloadBtn" style="width:auto; padding:8px 14px; font-size:12px;" onclick="downloadCurrentMedia()">⬇ Télécharger</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="msg-menu-overlay" id="msgMenuOverlay" onclick="if(event.target===this)closeMsgMenu()">
+    <div class="msg-menu-sheet" id="msgMenuSheet" role="dialog" aria-label="Actions du message"></div>
+  </div>
+
+  <!-- [STORY PREVIEW] Overlay plein écran légende inline (style WhatsApp) -->
+  <div class="story-preview-overlay" id="storyPreviewOverlay">
+    <button class="story-preview-cancel-btn" onclick="cancelStoryPreview()" aria-label="Annuler">✕</button>
+    <div class="story-preview-media-wrap" id="storyPreviewMedia"></div>
+    <div class="story-preview-bar">
+      <textarea id="storyPreviewCaption" placeholder="Ajoute une légende..." rows="1"
+        oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,80)+'px'"></textarea>
+      <button class="story-preview-send-btn" onclick="publishStoryFromPreview()" aria-label="Publier">➤</button>
+    </div>
+  </div>
+
+  <!-- [REPLY] Barre de prévisualisation de réponse -->
+  <div class="reply-preview-bar" id="replyPreviewBar">
+    <div class="reply-preview-text">
+      <strong id="replyPreviewAuthor"></strong>
+      <span id="replyPreviewText"></span>
+    </div>
+    <button class="reply-preview-close" onclick="clearReplyTo()" aria-label="Annuler réponse">✕</button>
+  </div>
+</div>
+
+<!-- ==========================================
+   JAVASCRIPT SÉPARÉ - FICHIER EXTERNE AVEC OPTIMISATION
+   ========================================== -->
+<script src="js/app.js" defer></script>
+</body>
+</html>

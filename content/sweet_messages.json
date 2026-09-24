@@ -1,0 +1,5002 @@
+[
+  {
+    "id": 1,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, mon bonheur."
+  },
+  {
+    "id": 2,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, mon/ma chéri·e."
+  },
+  {
+    "id": 3,
+    "category": "fierte",
+    "text": "Ta persévérance ces derniers jours m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 4,
+    "category": "romantique",
+    "text": "Je t'aime encore plus ces derniers jours qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 5,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, ma complice."
+  },
+  {
+    "id": 6,
+    "category": "manque",
+    "text": "Je pensais à toi ce soir, comme souvent d'ailleurs."
+  },
+  {
+    "id": 7,
+    "category": "fierte",
+    "text": "J'admire ta force depuis que tu es parti·e, ma complice."
+  },
+  {
+    "id": 8,
+    "category": "fierte",
+    "text": "J'admire ta force en ce moment, mon cœur."
+  },
+  {
+    "id": 9,
+    "category": "bonjour",
+    "text": "Ma moitié, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 10,
+    "category": "bonjour",
+    "text": "Mon inspiration, je t'envoie toute mon énergie pour cet après-midi."
+  },
+  {
+    "id": 11,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien ma douceur, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 12,
+    "category": "fierte",
+    "text": "Ta persévérance à l'instant précis m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 13,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, ma vie."
+  },
+  {
+    "id": 14,
+    "category": "bonne_nuit",
+    "text": "Mon pilier, que ces derniers jours se termine en douceur pour toi."
+  },
+  {
+    "id": 15,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, mon complice."
+  },
+  {
+    "id": 16,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, ma personne préférée."
+  },
+  {
+    "id": 17,
+    "category": "manque",
+    "text": "Mon trésor, ton absence se sent à cet instant, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 18,
+    "category": "fierte",
+    "text": "J'admire ta force depuis notre dernier appel, mon repère."
+  },
+  {
+    "id": 19,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, mon repère."
+  },
+  {
+    "id": 20,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes ce soir."
+  },
+  {
+    "id": 21,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même à cette heure-ci où tu ronfles peut-être."
+  },
+  {
+    "id": 22,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon rayon de soleil."
+  },
+  {
+    "id": 23,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, ma plus belle rencontre, tout va bien se passer."
+  },
+  {
+    "id": 24,
+    "category": "fierte",
+    "text": "Mon complice, ce que tu as fait toute cette semaine m'a vraiment marqué·e."
+  },
+  {
+    "id": 25,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon complice, où que je sois."
+  },
+  {
+    "id": 26,
+    "category": "encouragement",
+    "text": "Je crois en toi aujourd'hui, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 27,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, ma vie."
+  },
+  {
+    "id": 28,
+    "category": "gratitude",
+    "text": "Je mesure à cette heure-ci à quel point tu comptes pour moi, mon amour."
+  },
+  {
+    "id": 29,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées à l'instant précis."
+  },
+  {
+    "id": 30,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, ma personne préférée, c'est impressionnant."
+  },
+  {
+    "id": 31,
+    "category": "humour_tendre",
+    "text": "Ma personne préférée, sondage express : tu penses à moi toute la soirée aussi ?"
+  },
+  {
+    "id": 32,
+    "category": "encouragement",
+    "text": "N'oublie pas en ce moment à quel point tu es capable, ma douceur."
+  },
+  {
+    "id": 33,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques toute la soirée, comme d'habitude."
+  },
+  {
+    "id": 34,
+    "category": "gratitude",
+    "text": "Merci de me supporter même depuis ce week-end."
+  },
+  {
+    "id": 35,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, mon cœur."
+  },
+  {
+    "id": 36,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de cette semaine."
+  },
+  {
+    "id": 37,
+    "category": "bonjour",
+    "text": "Que depuis que tu es parti·e commence avec le sourire, toi."
+  },
+  {
+    "id": 38,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, mon roc."
+  },
+  {
+    "id": 39,
+    "category": "manque",
+    "text": "Toi, ce soir me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 40,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon amour."
+  },
+  {
+    "id": 41,
+    "category": "gratitude",
+    "text": "Je réalise aujourd'hui à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 42,
+    "category": "gratitude",
+    "text": "Merci pour aujourd'hui, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 43,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, mon amour."
+  },
+  {
+    "id": 44,
+    "category": "gratitude",
+    "text": "Merci pour ta patience depuis notre dernier appel, mon pilier."
+  },
+  {
+    "id": 45,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon complice, et je voulais te le dire."
+  },
+  {
+    "id": 46,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là toute la journée, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 47,
+    "category": "manque",
+    "text": "J'ai repensé à toi depuis hier et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 48,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, ma personne préférée. Passe une belle journée."
+  },
+  {
+    "id": 49,
+    "category": "bonjour",
+    "text": "Un petit bonjour à cet instant, sans raison particulière, ma personne préférée."
+  },
+  {
+    "id": 50,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi depuis que je me suis réveillé·e, j'ai le sourire."
+  },
+  {
+    "id": 51,
+    "category": "romantique",
+    "text": "Tu rends cette semaine plus lumineux, mon étoile, sans même essayer."
+  },
+  {
+    "id": 52,
+    "category": "fierte",
+    "text": "Ta persévérance depuis notre dernier appel m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 53,
+    "category": "gratitude",
+    "text": "Merci de me supporter même toute cette semaine."
+  },
+  {
+    "id": 54,
+    "category": "bonne_nuit",
+    "text": "Mon étoile, que à cette heure-ci se termine en douceur pour toi."
+  },
+  {
+    "id": 55,
+    "category": "manque",
+    "text": "Toi, ton absence se sent en ce moment, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 56,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, mon cœur, c'est impressionnant."
+  },
+  {
+    "id": 57,
+    "category": "gratitude",
+    "text": "Merci pour ce soir, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 58,
+    "category": "fierte",
+    "text": "Ta persévérance toute cette semaine m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 59,
+    "category": "manque",
+    "text": "Tu me manques depuis ce week-end, et ce n'est pas près de changer."
+  },
+  {
+    "id": 60,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, mon bonheur."
+  },
+  {
+    "id": 61,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, mon bonheur."
+  },
+  {
+    "id": 62,
+    "category": "gratitude",
+    "text": "Merci de me supporter même aujourd'hui."
+  },
+  {
+    "id": 63,
+    "category": "humour_tendre",
+    "text": "Flash info toute la soirée : tu restes officiellement adorable, mon inspiration."
+  },
+  {
+    "id": 64,
+    "category": "romantique",
+    "text": "Ma vie, cette semaine me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 65,
+    "category": "encouragement",
+    "text": "Je sais que toute la soirée est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 66,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, mon cœur ? Bonne réponse : oui."
+  },
+  {
+    "id": 67,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, ma douceur."
+  },
+  {
+    "id": 68,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon complice."
+  },
+  {
+    "id": 69,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de depuis notre dernier appel, mon roc, et je voulais que ce soit clair."
+  },
+  {
+    "id": 70,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, ma douceur ? Bonne réponse : oui."
+  },
+  {
+    "id": 71,
+    "category": "encouragement",
+    "text": "Un petit rappel : tu es capable de bien plus que tu ne le penses."
+  },
+  {
+    "id": 72,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point je suis fier/fière de la personne que tu es."
+  },
+  {
+    "id": 73,
+    "category": "manque",
+    "text": "Ton absence pèse depuis notre dernier appel, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 74,
+    "category": "gratitude",
+    "text": "Merci pour à l'instant précis, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 75,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, mon cœur. Passe une belle journée."
+  },
+  {
+    "id": 76,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon inspiration."
+  },
+  {
+    "id": 77,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, mon amour."
+  },
+  {
+    "id": 78,
+    "category": "humour_tendre",
+    "text": "Ma vie, sondage express : tu penses à moi depuis ce matin aussi ?"
+  },
+  {
+    "id": 79,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour ce matin, ma plus belle rencontre."
+  },
+  {
+    "id": 80,
+    "category": "encouragement",
+    "text": "Tu vas y arriver ce matin, je crois en toi."
+  },
+  {
+    "id": 81,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, mon amour, l'attente est longue."
+  },
+  {
+    "id": 82,
+    "category": "manque",
+    "text": "Tu occupes mes pensées depuis ce week-end, et ce n'est pas près de changer."
+  },
+  {
+    "id": 83,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, ma vie."
+  },
+  {
+    "id": 84,
+    "category": "humour_tendre",
+    "text": "Flash info cet après-midi : tu restes officiellement adorable, ma vie."
+  },
+  {
+    "id": 85,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon étoile, sans raison particulière."
+  },
+  {
+    "id": 86,
+    "category": "encouragement",
+    "text": "N'oublie pas aujourd'hui à quel point tu es capable, mon roc."
+  },
+  {
+    "id": 87,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, ma plus belle rencontre."
+  },
+  {
+    "id": 88,
+    "category": "gratitude",
+    "text": "Mon/ma chéri·e, merci d'avoir été là aujourd'hui, et je le pense vraiment."
+  },
+  {
+    "id": 89,
+    "category": "encouragement",
+    "text": "Tu vas y arriver ces derniers jours, je crois en toi."
+  },
+  {
+    "id": 90,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon amour, tu vas gérer ça aussi."
+  },
+  {
+    "id": 91,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, mon pilier."
+  },
+  {
+    "id": 92,
+    "category": "manque",
+    "text": "Je pensais à toi depuis que tu es parti·e, comme souvent d'ailleurs."
+  },
+  {
+    "id": 93,
+    "category": "encouragement",
+    "text": "Je crois en toi depuis notre dernier appel, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 94,
+    "category": "encouragement",
+    "text": "Je crois en toi ces derniers jours, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 95,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos à cette heure-ci, tu me manques."
+  },
+  {
+    "id": 96,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, mon trésor, tu l'as mérité."
+  },
+  {
+    "id": 97,
+    "category": "encouragement",
+    "text": "Je sais que ce soir est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 98,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, mon amour."
+  },
+  {
+    "id": 99,
+    "category": "encouragement",
+    "text": "Courage ma plus belle rencontre, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 100,
+    "category": "bonjour",
+    "text": "Mon pilier, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 101,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, ma moitié, où que je sois."
+  },
+  {
+    "id": 102,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, mon cœur."
+  },
+  {
+    "id": 103,
+    "category": "fierte",
+    "text": "Ce que tu accomplis ce soir force mon respect, ma vie."
+  },
+  {
+    "id": 104,
+    "category": "encouragement",
+    "text": "Tiens bon toi, je suis là si tu as besoin."
+  },
+  {
+    "id": 105,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, ma vie, tu l'as mérité."
+  },
+  {
+    "id": 106,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes à cette heure-ci."
+  },
+  {
+    "id": 107,
+    "category": "bonjour",
+    "text": "Bonjour ma complice, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 108,
+    "category": "bonne_nuit",
+    "text": "Ma plus belle rencontre, que depuis que je me suis réveillé·e se termine en douceur pour toi."
+  },
+  {
+    "id": 109,
+    "category": "manque",
+    "text": "Je pensais à toi à l'instant précis, comme souvent d'ailleurs."
+  },
+  {
+    "id": 110,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de ces derniers jours, ma douceur, et je ne peux pas le garder pour moi."
+  },
+  {
+    "id": 111,
+    "category": "fierte",
+    "text": "Ta persévérance depuis ce week-end m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 112,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, ma douceur."
+  },
+  {
+    "id": 113,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, ma plus belle rencontre."
+  },
+  {
+    "id": 114,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, ma plus belle rencontre."
+  },
+  {
+    "id": 115,
+    "category": "manque",
+    "text": "J'ai repensé à toi toute la soirée et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 116,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, toi, l'attente est longue."
+  },
+  {
+    "id": 117,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, ma plus belle rencontre."
+  },
+  {
+    "id": 118,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là à l'instant précis, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 119,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même en ce moment où tu ronfles peut-être."
+  },
+  {
+    "id": 120,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, l'amour de ma vie."
+  },
+  {
+    "id": 121,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi toute la soirée, j'ai le sourire."
+  },
+  {
+    "id": 122,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, ma plus belle rencontre."
+  },
+  {
+    "id": 123,
+    "category": "romantique",
+    "text": "Je t'aime encore plus toute la journée qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 124,
+    "category": "manque",
+    "text": "Mon étoile, ce matin me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 125,
+    "category": "encouragement",
+    "text": "Courage mon étoile, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 126,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien l'amour de ma vie, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 127,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques toute la journée, comme d'habitude."
+  },
+  {
+    "id": 128,
+    "category": "fierte",
+    "text": "Ta persévérance cet après-midi m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 129,
+    "category": "encouragement",
+    "text": "Tu vas y arriver depuis ce week-end, je crois en toi."
+  },
+  {
+    "id": 130,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit ma plus belle rencontre, à demain pour te le redire encore."
+  },
+  {
+    "id": 131,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, ma complice."
+  },
+  {
+    "id": 132,
+    "category": "gratitude",
+    "text": "Merci pour depuis notre dernier appel, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 133,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, mon bonheur."
+  },
+  {
+    "id": 134,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive depuis hier, je suis avec toi."
+  },
+  {
+    "id": 135,
+    "category": "manque",
+    "text": "Mon cœur, depuis que je me suis réveillé·e me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 136,
+    "category": "gratitude",
+    "text": "Je mesure en ce moment même à quel point tu comptes pour moi, ma douceur."
+  },
+  {
+    "id": 137,
+    "category": "romantique",
+    "text": "Mon/ma chéri·e, à l'instant précis me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 138,
+    "category": "gratitude",
+    "text": "Merci pour à cet instant, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 139,
+    "category": "fierte",
+    "text": "Mon complice, ce que tu as fait cet après-midi m'a vraiment marqué·e."
+  },
+  {
+    "id": 140,
+    "category": "gratitude",
+    "text": "Merci pour toute la journée, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 141,
+    "category": "gratitude",
+    "text": "Je réalise depuis notre dernier appel à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 142,
+    "category": "manque",
+    "text": "Ton absence pèse cet après-midi, et rien ne pourra changer ça."
+  },
+  {
+    "id": 143,
+    "category": "gratitude",
+    "text": "Merci pour ta patience en ce moment même, mon bonheur."
+  },
+  {
+    "id": 144,
+    "category": "bonjour",
+    "text": "Réveille-toi, ma plus belle rencontre, je pensais déjà à toi depuis notre dernier appel."
+  },
+  {
+    "id": 145,
+    "category": "gratitude",
+    "text": "Mon amour, merci d'avoir été là depuis que tu es parti·e, et ça me fait du bien de te l'écrire."
+  },
+  {
+    "id": 146,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos depuis hier, tu me manques."
+  },
+  {
+    "id": 147,
+    "category": "manque",
+    "text": "Ma complice, ton absence se sent ces derniers jours, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 148,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, mon inspiration."
+  },
+  {
+    "id": 149,
+    "category": "encouragement",
+    "text": "Mon rayon de soleil, je pense fort à toi pour ces derniers jours, tu vas assurer."
+  },
+  {
+    "id": 150,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là depuis notre dernier appel, tout simplement."
+  },
+  {
+    "id": 151,
+    "category": "encouragement",
+    "text": "Tiens bon mon inspiration, je suis là si tu as besoin."
+  },
+  {
+    "id": 152,
+    "category": "humour_tendre",
+    "text": "Je te préviens ma complice, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 153,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là toute cette semaine, tout simplement."
+  },
+  {
+    "id": 154,
+    "category": "encouragement",
+    "text": "Tu vas y arriver à cet instant, je crois en toi."
+  },
+  {
+    "id": 155,
+    "category": "gratitude",
+    "text": "Ma plus belle rencontre, merci d'avoir été là depuis ce week-end, juste parce que."
+  },
+  {
+    "id": 156,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de à l'instant précis, toi, et je voulais que ce soit clair."
+  },
+  {
+    "id": 157,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive toute cette semaine, bravo."
+  },
+  {
+    "id": 158,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là ce matin, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 159,
+    "category": "manque",
+    "text": "Je pensais à toi depuis ce week-end, comme souvent d'ailleurs."
+  },
+  {
+    "id": 160,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi cette semaine, et ça m'a fait sourire."
+  },
+  {
+    "id": 161,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, ma vie."
+  },
+  {
+    "id": 162,
+    "category": "gratitude",
+    "text": "Toi, merci d'avoir été là à cet instant, et ça méritait d'être dit."
+  },
+  {
+    "id": 163,
+    "category": "gratitude",
+    "text": "Je mesure toute cette semaine à quel point tu comptes pour moi, mon trésor."
+  },
+  {
+    "id": 164,
+    "category": "gratitude",
+    "text": "Je réalise depuis ce week-end à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 165,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, ma vie."
+  },
+  {
+    "id": 166,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, mon inspiration."
+  },
+  {
+    "id": 167,
+    "category": "manque",
+    "text": "Tu me manques en ce moment, juste parce que."
+  },
+  {
+    "id": 168,
+    "category": "manque",
+    "text": "Ma vie, depuis hier me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 169,
+    "category": "encouragement",
+    "text": "Courage mon rayon de soleil, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 170,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, mon rayon de soleil."
+  },
+  {
+    "id": 171,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur depuis ce matin, mon roc."
+  },
+  {
+    "id": 172,
+    "category": "romantique",
+    "text": "Je t'aime encore plus cette semaine qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 173,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon inspiration, et ça méritait d'être dit."
+  },
+  {
+    "id": 174,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour toute la journée, mon/ma chéri·e."
+  },
+  {
+    "id": 175,
+    "category": "fierte",
+    "text": "Mon complice, ce que tu as fait ce soir m'a vraiment marqué·e."
+  },
+  {
+    "id": 176,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, ma moitié, je suis là même à distance."
+  },
+  {
+    "id": 177,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, ma douceur."
+  },
+  {
+    "id": 178,
+    "category": "gratitude",
+    "text": "Merci de me supporter même en ce moment."
+  },
+  {
+    "id": 179,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon complice."
+  },
+  {
+    "id": 180,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi cet après-midi, j'ai le sourire."
+  },
+  {
+    "id": 181,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos en ce moment même, tu me manques."
+  },
+  {
+    "id": 182,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, mon trésor."
+  },
+  {
+    "id": 183,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, ma complice."
+  },
+  {
+    "id": 184,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, mon inspiration."
+  },
+  {
+    "id": 185,
+    "category": "manque",
+    "text": "J'ai repensé à toi depuis que je me suis réveillé·e et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 186,
+    "category": "bonjour",
+    "text": "Mon rayon de soleil, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 187,
+    "category": "humour_tendre",
+    "text": "Flash info depuis que tu es parti·e : tu restes officiellement adorable, ma complice."
+  },
+  {
+    "id": 188,
+    "category": "bonjour",
+    "text": "Que depuis notre dernier appel commence avec le sourire, mon pilier."
+  },
+  {
+    "id": 189,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive toute la soirée, bravo."
+  },
+  {
+    "id": 190,
+    "category": "manque",
+    "text": "Tu occupes mes pensées depuis hier, sans raison particulière."
+  },
+  {
+    "id": 191,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes toute cette semaine."
+  },
+  {
+    "id": 192,
+    "category": "manque",
+    "text": "Ton absence a un poids ce soir, j'ai hâte que ça change."
+  },
+  {
+    "id": 193,
+    "category": "fierte",
+    "text": "Ma vie, ce que tu as fait cet après-midi m'a vraiment marqué·e."
+  },
+  {
+    "id": 194,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, mon/ma chéri·e."
+  },
+  {
+    "id": 195,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, mon/ma chéri·e."
+  },
+  {
+    "id": 196,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, mon inspiration."
+  },
+  {
+    "id": 197,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos cet après-midi, tu me manques."
+  },
+  {
+    "id": 198,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur toute la soirée, ma plus belle rencontre."
+  },
+  {
+    "id": 199,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, ma douceur."
+  },
+  {
+    "id": 200,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même depuis que je me suis réveillé·e où tu ronfles peut-être."
+  },
+  {
+    "id": 201,
+    "category": "bonjour",
+    "text": "Mon repère, je t'envoie toute mon énergie pour depuis notre dernier appel."
+  },
+  {
+    "id": 202,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, mon cœur."
+  },
+  {
+    "id": 203,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes depuis ce matin."
+  },
+  {
+    "id": 204,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques cet après-midi, comme d'habitude."
+  },
+  {
+    "id": 205,
+    "category": "romantique",
+    "text": "Je t'aime encore plus aujourd'hui qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 206,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive depuis que je me suis réveillé·e, bravo."
+  },
+  {
+    "id": 207,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, toi, c'est impressionnant."
+  },
+  {
+    "id": 208,
+    "category": "bonjour",
+    "text": "Un petit bonjour ce matin, sans raison particulière, mon complice."
+  },
+  {
+    "id": 209,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, ma douceur."
+  },
+  {
+    "id": 210,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de cet après-midi."
+  },
+  {
+    "id": 211,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, mon/ma chéri·e, tu l'as mérité."
+  },
+  {
+    "id": 212,
+    "category": "manque",
+    "text": "Je pensais à toi aujourd'hui, comme souvent d'ailleurs."
+  },
+  {
+    "id": 213,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos depuis ce matin, tu me manques."
+  },
+  {
+    "id": 214,
+    "category": "fierte",
+    "text": "Tu mérites d'entendre à quel point tu m'impressionnes."
+  },
+  {
+    "id": 215,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, ma douceur, l'attente est longue."
+  },
+  {
+    "id": 216,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive en ce moment, je suis avec toi."
+  },
+  {
+    "id": 217,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là en ce moment même, tout simplement."
+  },
+  {
+    "id": 218,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon cœur."
+  },
+  {
+    "id": 219,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi cette semaine."
+  },
+  {
+    "id": 220,
+    "category": "gratitude",
+    "text": "Je réalise à cet instant à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 221,
+    "category": "romantique",
+    "text": "Mon complice, toute la soirée me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 222,
+    "category": "encouragement",
+    "text": "Je crois en toi depuis que tu es parti·e, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 223,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de ce matin."
+  },
+  {
+    "id": 224,
+    "category": "manque",
+    "text": "Tu occupes mes pensées ces derniers jours, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 225,
+    "category": "fierte",
+    "text": "Ta persévérance depuis que tu es parti·e m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 226,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, mon inspiration."
+  },
+  {
+    "id": 227,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, mon complice, tu l'as mérité."
+  },
+  {
+    "id": 228,
+    "category": "fierte",
+    "text": "Mon cœur, ce que tu as fait ce soir m'a vraiment marqué·e."
+  },
+  {
+    "id": 229,
+    "category": "encouragement",
+    "text": "Je sais que à l'instant précis est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 230,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi à l'instant précis, j'ai le sourire."
+  },
+  {
+    "id": 231,
+    "category": "humour_tendre",
+    "text": "Je te préviens mon amour, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 232,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là à cet instant, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 233,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon pilier, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 234,
+    "category": "manque",
+    "text": "Tu me manques à cet instant, juste parce que."
+  },
+  {
+    "id": 235,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, ma personne préférée."
+  },
+  {
+    "id": 236,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur depuis que je me suis réveillé·e, ma vie."
+  },
+  {
+    "id": 237,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon trésor."
+  },
+  {
+    "id": 238,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, ma vie."
+  },
+  {
+    "id": 239,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, mon pilier."
+  },
+  {
+    "id": 240,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit l'amour de ma vie, à demain pour te le redire encore."
+  },
+  {
+    "id": 241,
+    "category": "encouragement",
+    "text": "Mon repère, je pense fort à toi pour ces derniers jours, tu vas assurer."
+  },
+  {
+    "id": 242,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon/ma chéri·e, tu vas gérer ça aussi."
+  },
+  {
+    "id": 243,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon trésor, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 244,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, ma vie."
+  },
+  {
+    "id": 245,
+    "category": "gratitude",
+    "text": "Ma vie, merci d'avoir été là ce soir, et ça m'a fait sourire."
+  },
+  {
+    "id": 246,
+    "category": "manque",
+    "text": "Ma complice, toute la journée me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 247,
+    "category": "manque",
+    "text": "Ton absence pèse ce soir, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 248,
+    "category": "encouragement",
+    "text": "Courage ma vie, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 249,
+    "category": "bonjour",
+    "text": "Mon bonheur, je t'envoie toute mon énergie pour à l'instant précis."
+  },
+  {
+    "id": 250,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, l'amour de ma vie."
+  },
+  {
+    "id": 251,
+    "category": "manque",
+    "text": "Ton absence pèse à l'instant précis, et je le pense vraiment."
+  },
+  {
+    "id": 252,
+    "category": "bonjour",
+    "text": "Réveille-toi, mon pilier, je pensais déjà à toi toute la soirée."
+  },
+  {
+    "id": 253,
+    "category": "bonjour",
+    "text": "Que depuis notre dernier appel commence avec le sourire, mon amour."
+  },
+  {
+    "id": 254,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi ce soir, sans raison particulière."
+  },
+  {
+    "id": 255,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de à cet instant."
+  },
+  {
+    "id": 256,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, ma vie."
+  },
+  {
+    "id": 257,
+    "category": "fierte",
+    "text": "Ce que tu accomplis à l'instant précis force mon respect, mon/ma chéri·e."
+  },
+  {
+    "id": 258,
+    "category": "encouragement",
+    "text": "Je sais que en ce moment même est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 259,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon/ma chéri·e, continue comme ça."
+  },
+  {
+    "id": 260,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, mon amour."
+  },
+  {
+    "id": 261,
+    "category": "manque",
+    "text": "J'ai repensé à toi toute la journée et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 262,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur depuis notre dernier appel, mon pilier."
+  },
+  {
+    "id": 263,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, toi, tu l'as mérité."
+  },
+  {
+    "id": 264,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, mon amour."
+  },
+  {
+    "id": 265,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là en ce moment, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 266,
+    "category": "gratitude",
+    "text": "Je mesure cet après-midi à quel point tu comptes pour moi, mon complice."
+  },
+  {
+    "id": 267,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées cette semaine."
+  },
+  {
+    "id": 268,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, ma moitié, continue comme ça."
+  },
+  {
+    "id": 269,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, ma personne préférée, tu l'as mérité."
+  },
+  {
+    "id": 270,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, mon bonheur, tout va bien se passer."
+  },
+  {
+    "id": 271,
+    "category": "encouragement",
+    "text": "Tiens bon ma personne préférée, je suis là si tu as besoin."
+  },
+  {
+    "id": 272,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon rayon de soleil, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 273,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour depuis que je me suis réveillé·e, ma complice."
+  },
+  {
+    "id": 274,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, mon pilier, l'attente est longue."
+  },
+  {
+    "id": 275,
+    "category": "encouragement",
+    "text": "Mon complice, je pense fort à toi pour depuis ce week-end, tu vas assurer."
+  },
+  {
+    "id": 276,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, ma vie, je suis là même à distance."
+  },
+  {
+    "id": 277,
+    "category": "bonne_nuit",
+    "text": "Dors bien, l'amour de ma vie, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 278,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, mon/ma chéri·e, c'est impressionnant."
+  },
+  {
+    "id": 279,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, l'amour de ma vie, l'attente est longue."
+  },
+  {
+    "id": 280,
+    "category": "encouragement",
+    "text": "Courage l'amour de ma vie, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 281,
+    "category": "encouragement",
+    "text": "Courage mon repère, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 282,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là en ce moment, tout simplement."
+  },
+  {
+    "id": 283,
+    "category": "fierte",
+    "text": "Ce que tu accomplis depuis hier force mon respect, mon cœur."
+  },
+  {
+    "id": 284,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, mon bonheur."
+  },
+  {
+    "id": 285,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, ma complice, tu vas gérer ça aussi."
+  },
+  {
+    "id": 286,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi à cette heure-ci, et ce n'est pas près de changer."
+  },
+  {
+    "id": 287,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon étoile."
+  },
+  {
+    "id": 288,
+    "category": "manque",
+    "text": "Ton absence a un poids en ce moment même, j'ai hâte que ça change."
+  },
+  {
+    "id": 289,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive ce soir, bravo."
+  },
+  {
+    "id": 290,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là ces derniers jours, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 291,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, mon inspiration."
+  },
+  {
+    "id": 292,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de toute la soirée, mon roc, et ça me fait du bien de te l'écrire."
+  },
+  {
+    "id": 293,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon complice."
+  },
+  {
+    "id": 294,
+    "category": "encouragement",
+    "text": "L'amour de ma vie, je pense fort à toi pour toute la journée, tu vas assurer."
+  },
+  {
+    "id": 295,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes depuis que je me suis réveillé·e."
+  },
+  {
+    "id": 296,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon/ma chéri·e, où que je sois."
+  },
+  {
+    "id": 297,
+    "category": "humour_tendre",
+    "text": "Je te préviens mon inspiration, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 298,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, ma personne préférée, tout va bien se passer."
+  },
+  {
+    "id": 299,
+    "category": "encouragement",
+    "text": "N'oublie pas depuis ce matin à quel point tu es capable, mon rayon de soleil."
+  },
+  {
+    "id": 300,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit ma douceur, à demain pour te le redire encore."
+  },
+  {
+    "id": 301,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, ma douceur."
+  },
+  {
+    "id": 302,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, ma plus belle rencontre, l'attente est longue."
+  },
+  {
+    "id": 303,
+    "category": "bonjour",
+    "text": "Un petit bonjour depuis ce week-end, et ce n'est pas près de changer, mon amour."
+  },
+  {
+    "id": 304,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, ma moitié."
+  },
+  {
+    "id": 305,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, ma douceur."
+  },
+  {
+    "id": 306,
+    "category": "manque",
+    "text": "Ton absence pèse depuis que je me suis réveillé·e, et je le pense vraiment."
+  },
+  {
+    "id": 307,
+    "category": "manque",
+    "text": "Ma douceur, depuis ce week-end me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 308,
+    "category": "fierte",
+    "text": "Ce que tu accomplis depuis ce matin force mon respect, mon étoile."
+  },
+  {
+    "id": 309,
+    "category": "bonjour",
+    "text": "Un petit bonjour ces derniers jours, et je le pense vraiment, ma douceur."
+  },
+  {
+    "id": 310,
+    "category": "gratitude",
+    "text": "Merci pour depuis hier, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 311,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de cette semaine, mon inspiration, juste parce que."
+  },
+  {
+    "id": 312,
+    "category": "bonjour",
+    "text": "Ma vie, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 313,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon/ma chéri·e."
+  },
+  {
+    "id": 314,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive toute la journée, je suis avec toi."
+  },
+  {
+    "id": 315,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, l'amour de ma vie."
+  },
+  {
+    "id": 316,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées depuis que tu es parti·e."
+  },
+  {
+    "id": 317,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, mon bonheur."
+  },
+  {
+    "id": 318,
+    "category": "bonjour",
+    "text": "Ma complice, je t'envoie toute mon énergie pour toute cette semaine."
+  },
+  {
+    "id": 319,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon rayon de soleil."
+  },
+  {
+    "id": 320,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, ma plus belle rencontre, c'est impressionnant."
+  },
+  {
+    "id": 321,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, ma complice, l'attente est longue."
+  },
+  {
+    "id": 322,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, mon complice ? Bonne réponse : oui."
+  },
+  {
+    "id": 323,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon étoile, où que je sois."
+  },
+  {
+    "id": 324,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, l'amour de ma vie."
+  },
+  {
+    "id": 325,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là toute cette semaine, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 326,
+    "category": "encouragement",
+    "text": "Je crois en toi cet après-midi, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 327,
+    "category": "bonne_nuit",
+    "text": "Dors bien, mon bonheur, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 328,
+    "category": "humour_tendre",
+    "text": "Je te préviens mon roc, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 329,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur depuis que je me suis réveillé·e, mon complice."
+  },
+  {
+    "id": 330,
+    "category": "encouragement",
+    "text": "Tu vas y arriver toute cette semaine, je crois en toi."
+  },
+  {
+    "id": 331,
+    "category": "encouragement",
+    "text": "N'oublie pas ce matin à quel point tu es capable, toi."
+  },
+  {
+    "id": 332,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour ce matin, mon inspiration."
+  },
+  {
+    "id": 333,
+    "category": "encouragement",
+    "text": "Tiens bon mon cœur, je suis là si tu as besoin."
+  },
+  {
+    "id": 334,
+    "category": "romantique",
+    "text": "Tu rends à l'instant précis plus lumineux, ma complice, sans même essayer."
+  },
+  {
+    "id": 335,
+    "category": "fierte",
+    "text": "J'admire ta force toute la soirée, ma douceur."
+  },
+  {
+    "id": 336,
+    "category": "gratitude",
+    "text": "Merci pour toute cette semaine, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 337,
+    "category": "humour_tendre",
+    "text": "Flash info depuis que je me suis réveillé·e : tu restes officiellement adorable, mon/ma chéri·e."
+  },
+  {
+    "id": 338,
+    "category": "bonne_nuit",
+    "text": "Ma vie, que depuis ce matin se termine en douceur pour toi."
+  },
+  {
+    "id": 339,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, toi."
+  },
+  {
+    "id": 340,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, mon pilier."
+  },
+  {
+    "id": 341,
+    "category": "encouragement",
+    "text": "Respire, ma personne préférée, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 342,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, ma plus belle rencontre, tu l'as mérité."
+  },
+  {
+    "id": 343,
+    "category": "bonjour",
+    "text": "J'espère que tu dors encore un peu, mais sache que je pense déjà à toi."
+  },
+  {
+    "id": 344,
+    "category": "encouragement",
+    "text": "N'oublie pas à cet instant à quel point tu es capable, l'amour de ma vie."
+  },
+  {
+    "id": 345,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même aujourd'hui où tu ronfles peut-être."
+  },
+  {
+    "id": 346,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon rayon de soleil, continue comme ça."
+  },
+  {
+    "id": 347,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, ma vie, continue comme ça."
+  },
+  {
+    "id": 348,
+    "category": "manque",
+    "text": "Tu occupes mes pensées en ce moment, et ça méritait d'être dit."
+  },
+  {
+    "id": 349,
+    "category": "encouragement",
+    "text": "Respire, mon bonheur, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 350,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon roc, continue comme ça."
+  },
+  {
+    "id": 351,
+    "category": "humour_tendre",
+    "text": "Flash info toute cette semaine : tu restes officiellement adorable, mon repère."
+  },
+  {
+    "id": 352,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là cette semaine, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 353,
+    "category": "bonjour",
+    "text": "Bonjour mon étoile, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 354,
+    "category": "bonne_nuit",
+    "text": "Dernier message avant de dormir : tu comptes énormément pour moi."
+  },
+  {
+    "id": 355,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive à cette heure-ci, je suis avec toi."
+  },
+  {
+    "id": 356,
+    "category": "bonjour",
+    "text": "Bonjour mon bonheur, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 357,
+    "category": "bonjour",
+    "text": "Que à l'instant précis commence avec le sourire, mon roc."
+  },
+  {
+    "id": 358,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi depuis notre dernier appel."
+  },
+  {
+    "id": 359,
+    "category": "manque",
+    "text": "J'ai repensé à toi cette semaine et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 360,
+    "category": "gratitude",
+    "text": "Merci de me supporter même depuis notre dernier appel."
+  },
+  {
+    "id": 361,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, mon repère."
+  },
+  {
+    "id": 362,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, ma personne préférée, et je voulais que ce soit clair."
+  },
+  {
+    "id": 363,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, ma plus belle rencontre."
+  },
+  {
+    "id": 364,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi ce matin, j'ai le sourire."
+  },
+  {
+    "id": 365,
+    "category": "encouragement",
+    "text": "Tu vas y arriver depuis que je me suis réveillé·e, je crois en toi."
+  },
+  {
+    "id": 366,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon roc, tu vas gérer ça aussi."
+  },
+  {
+    "id": 367,
+    "category": "romantique",
+    "text": "Tu rends à cet instant plus lumineux, ma douceur, sans même essayer."
+  },
+  {
+    "id": 368,
+    "category": "manque",
+    "text": "Tu me manques ce soir, juste parce que."
+  },
+  {
+    "id": 369,
+    "category": "gratitude",
+    "text": "Je mesure toute la soirée à quel point tu comptes pour moi, ma complice."
+  },
+  {
+    "id": 370,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, ma complice."
+  },
+  {
+    "id": 371,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là aujourd'hui, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 372,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, mon repère, tu l'as mérité."
+  },
+  {
+    "id": 373,
+    "category": "bonjour",
+    "text": "Bonjour mon rayon de soleil, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 374,
+    "category": "bonjour",
+    "text": "Un petit bonjour ce matin, et je ne peux pas le garder pour moi, mon/ma chéri·e."
+  },
+  {
+    "id": 375,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, l'amour de ma vie."
+  },
+  {
+    "id": 376,
+    "category": "manque",
+    "text": "Ton absence a un poids toute la soirée, j'ai hâte que ça change."
+  },
+  {
+    "id": 377,
+    "category": "encouragement",
+    "text": "Ma personne préférée, je pense fort à toi pour en ce moment même, tu vas assurer."
+  },
+  {
+    "id": 378,
+    "category": "humour_tendre",
+    "text": "Ma personne préférée, sondage express : tu penses à moi aujourd'hui aussi ?"
+  },
+  {
+    "id": 379,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, mon amour."
+  },
+  {
+    "id": 380,
+    "category": "bonjour",
+    "text": "Réveille-toi, l'amour de ma vie, je pensais déjà à toi toute la soirée."
+  },
+  {
+    "id": 381,
+    "category": "manque",
+    "text": "Ton absence pèse depuis ce matin, et je ne peux pas le garder pour moi."
+  },
+  {
+    "id": 382,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos ce soir, tu me manques."
+  },
+  {
+    "id": 383,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive toute la soirée, je suis avec toi."
+  },
+  {
+    "id": 384,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, mon roc."
+  },
+  {
+    "id": 385,
+    "category": "bonjour",
+    "text": "Bonjour ma douceur, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 386,
+    "category": "bonjour",
+    "text": "Que depuis ce week-end commence avec le sourire, ma douceur."
+  },
+  {
+    "id": 387,
+    "category": "romantique",
+    "text": "Je t'aime encore plus depuis hier qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 388,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur ces derniers jours, mon bonheur."
+  },
+  {
+    "id": 389,
+    "category": "romantique",
+    "text": "Je t'aime encore plus à cet instant qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 390,
+    "category": "bonjour",
+    "text": "Ma complice, je t'envoie toute mon énergie pour à cette heure-ci."
+  },
+  {
+    "id": 391,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, ma douceur, tu l'as mérité."
+  },
+  {
+    "id": 392,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes toute la soirée."
+  },
+  {
+    "id": 393,
+    "category": "fierte",
+    "text": "J'admire ta force toute la soirée, mon pilier."
+  },
+  {
+    "id": 394,
+    "category": "encouragement",
+    "text": "Je crois en toi à cette heure-ci, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 395,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, mon repère ? Bonne réponse : oui."
+  },
+  {
+    "id": 396,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, ma plus belle rencontre."
+  },
+  {
+    "id": 397,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon étoile."
+  },
+  {
+    "id": 398,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit ma vie, à demain pour te le redire encore."
+  },
+  {
+    "id": 399,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur depuis que je me suis réveillé·e, mon repère."
+  },
+  {
+    "id": 400,
+    "category": "bonjour",
+    "text": "Ma plus belle rencontre, je t'envoie toute mon énergie pour à cette heure-ci."
+  },
+  {
+    "id": 401,
+    "category": "manque",
+    "text": "Ton absence a un poids à cette heure-ci, j'ai hâte que ça change."
+  },
+  {
+    "id": 402,
+    "category": "encouragement",
+    "text": "Courage mon bonheur, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 403,
+    "category": "manque",
+    "text": "Ma complice, ton absence se sent depuis ce matin, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 404,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi depuis que tu es parti·e, et je ne peux pas le garder pour moi."
+  },
+  {
+    "id": 405,
+    "category": "manque",
+    "text": "Ton absence pèse depuis ce matin, et ce n'est pas près de changer."
+  },
+  {
+    "id": 406,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, mon pilier."
+  },
+  {
+    "id": 407,
+    "category": "gratitude",
+    "text": "Toi, merci d'avoir été là à cette heure-ci, et ça m'a fait sourire."
+  },
+  {
+    "id": 408,
+    "category": "manque",
+    "text": "Tu occupes mes pensées toute cette semaine, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 409,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon bonheur."
+  },
+  {
+    "id": 410,
+    "category": "manque",
+    "text": "Ma plus belle rencontre, ton absence se sent à cet instant, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 411,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, l'amour de ma vie. Passe une belle journée."
+  },
+  {
+    "id": 412,
+    "category": "manque",
+    "text": "J'ai repensé à toi ces derniers jours et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 413,
+    "category": "encouragement",
+    "text": "Respire, mon amour, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 414,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi depuis notre dernier appel, j'ai le sourire."
+  },
+  {
+    "id": 415,
+    "category": "bonjour",
+    "text": "Réveille-toi, mon amour, je pensais déjà à toi à l'instant précis."
+  },
+  {
+    "id": 416,
+    "category": "gratitude",
+    "text": "Merci pour ce que tu es, tout simplement."
+  },
+  {
+    "id": 417,
+    "category": "manque",
+    "text": "Rien qu'en écrivant ce message, j'ai encore plus envie de te voir."
+  },
+  {
+    "id": 418,
+    "category": "encouragement",
+    "text": "Tiens bon mon rayon de soleil, je suis là si tu as besoin."
+  },
+  {
+    "id": 419,
+    "category": "bonjour",
+    "text": "Mon roc, je t'envoie toute mon énergie pour depuis notre dernier appel."
+  },
+  {
+    "id": 420,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, mon/ma chéri·e."
+  },
+  {
+    "id": 421,
+    "category": "manque",
+    "text": "Mon inspiration, ce soir me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 422,
+    "category": "bonjour",
+    "text": "Que depuis ce matin commence avec le sourire, mon inspiration."
+  },
+  {
+    "id": 423,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, mon étoile."
+  },
+  {
+    "id": 424,
+    "category": "encouragement",
+    "text": "Tiens bon ma vie, je suis là si tu as besoin."
+  },
+  {
+    "id": 425,
+    "category": "gratitude",
+    "text": "Merci de me supporter même depuis hier."
+  },
+  {
+    "id": 426,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, mon cœur."
+  },
+  {
+    "id": 427,
+    "category": "romantique",
+    "text": "Tu rends toute cette semaine plus lumineux, mon pilier, sans même essayer."
+  },
+  {
+    "id": 428,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, mon roc."
+  },
+  {
+    "id": 429,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon pilier."
+  },
+  {
+    "id": 430,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon/ma chéri·e, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 431,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, mon amour."
+  },
+  {
+    "id": 432,
+    "category": "bonjour",
+    "text": "Mon repère, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 433,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi toute la soirée."
+  },
+  {
+    "id": 434,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées aujourd'hui."
+  },
+  {
+    "id": 435,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, ma moitié, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 436,
+    "category": "encouragement",
+    "text": "Mon cœur, je pense fort à toi pour ce soir, tu vas assurer."
+  },
+  {
+    "id": 437,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive depuis notre dernier appel, je suis avec toi."
+  },
+  {
+    "id": 438,
+    "category": "manque",
+    "text": "Tu me manques en ce moment, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 439,
+    "category": "humour_tendre",
+    "text": "Je te préviens mon bonheur, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 440,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon bonheur, où que je sois."
+  },
+  {
+    "id": 441,
+    "category": "bonne_nuit",
+    "text": "Avant de dormir, je voulais juste te dire que je t'aime."
+  },
+  {
+    "id": 442,
+    "category": "fierte",
+    "text": "L'amour de ma vie, ce que tu as fait depuis ce week-end m'a vraiment marqué·e."
+  },
+  {
+    "id": 443,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon repère."
+  },
+  {
+    "id": 444,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos depuis que je me suis réveillé·e, tu me manques."
+  },
+  {
+    "id": 445,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même toute la soirée où tu ronfles peut-être."
+  },
+  {
+    "id": 446,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive à l'instant précis, je suis avec toi."
+  },
+  {
+    "id": 447,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, mon amour."
+  },
+  {
+    "id": 448,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées toute la journée."
+  },
+  {
+    "id": 449,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, mon inspiration."
+  },
+  {
+    "id": 450,
+    "category": "humour_tendre",
+    "text": "Flash info depuis hier : tu restes officiellement adorable, mon complice."
+  },
+  {
+    "id": 451,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, mon cœur."
+  },
+  {
+    "id": 452,
+    "category": "gratitude",
+    "text": "Merci pour ta patience à cet instant, mon étoile."
+  },
+  {
+    "id": 453,
+    "category": "romantique",
+    "text": "Mon rayon de soleil, toute la journée me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 454,
+    "category": "bonjour",
+    "text": "Un petit bonjour toute cette semaine, et ça m'a fait sourire, mon amour."
+  },
+  {
+    "id": 455,
+    "category": "manque",
+    "text": "Je pensais à toi à cette heure-ci, comme souvent d'ailleurs."
+  },
+  {
+    "id": 456,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon inspiration, tu vas gérer ça aussi."
+  },
+  {
+    "id": 457,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, ma douceur."
+  },
+  {
+    "id": 458,
+    "category": "bonjour",
+    "text": "Bonjour mon amour, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 459,
+    "category": "manque",
+    "text": "Tu me manques en ce moment, et ce n'est pas près de changer."
+  },
+  {
+    "id": 460,
+    "category": "gratitude",
+    "text": "Merci de me supporter même toute la soirée."
+  },
+  {
+    "id": 461,
+    "category": "bonjour",
+    "text": "Réveille-toi, l'amour de ma vie, je pensais déjà à toi cette semaine."
+  },
+  {
+    "id": 462,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, toi, où que je sois."
+  },
+  {
+    "id": 463,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, mon complice, tout va bien se passer."
+  },
+  {
+    "id": 464,
+    "category": "humour_tendre",
+    "text": "Mon cœur, sondage express : tu penses à moi à l'instant précis aussi ?"
+  },
+  {
+    "id": 465,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, toi."
+  },
+  {
+    "id": 466,
+    "category": "romantique",
+    "text": "Mon complice, cet après-midi me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 467,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées ce matin."
+  },
+  {
+    "id": 468,
+    "category": "fierte",
+    "text": "Ma complice, ce que tu as fait en ce moment m'a vraiment marqué·e."
+  },
+  {
+    "id": 469,
+    "category": "manque",
+    "text": "Ton absence pèse en ce moment, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 470,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon rayon de soleil."
+  },
+  {
+    "id": 471,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques ce soir, comme d'habitude."
+  },
+  {
+    "id": 472,
+    "category": "encouragement",
+    "text": "Je sais que à cette heure-ci est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 473,
+    "category": "manque",
+    "text": "Tu occupes mes pensées ce matin, sans raison particulière."
+  },
+  {
+    "id": 474,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon amour."
+  },
+  {
+    "id": 475,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, ma complice."
+  },
+  {
+    "id": 476,
+    "category": "bonjour",
+    "text": "Un petit bonjour depuis hier, et ça m'a fait sourire, mon cœur."
+  },
+  {
+    "id": 477,
+    "category": "encouragement",
+    "text": "Tiens bon mon/ma chéri·e, je suis là si tu as besoin."
+  },
+  {
+    "id": 478,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, ma complice."
+  },
+  {
+    "id": 479,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées depuis notre dernier appel."
+  },
+  {
+    "id": 480,
+    "category": "encouragement",
+    "text": "Respire, toi, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 481,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, l'amour de ma vie."
+  },
+  {
+    "id": 482,
+    "category": "encouragement",
+    "text": "N'oublie pas depuis que tu es parti·e à quel point tu es capable, mon/ma chéri·e."
+  },
+  {
+    "id": 483,
+    "category": "romantique",
+    "text": "Je t'aime encore plus cet après-midi qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 484,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées en ce moment."
+  },
+  {
+    "id": 485,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, mon/ma chéri·e."
+  },
+  {
+    "id": 486,
+    "category": "encouragement",
+    "text": "Ma personne préférée, je pense fort à toi pour cet après-midi, tu vas assurer."
+  },
+  {
+    "id": 487,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, mon pilier."
+  },
+  {
+    "id": 488,
+    "category": "encouragement",
+    "text": "N'oublie pas à l'instant précis à quel point tu es capable, mon repère."
+  },
+  {
+    "id": 489,
+    "category": "bonjour",
+    "text": "Que en ce moment même commence avec le sourire, ma douceur."
+  },
+  {
+    "id": 490,
+    "category": "romantique",
+    "text": "Tu rends à cet instant plus lumineux, ma plus belle rencontre, sans même essayer."
+  },
+  {
+    "id": 491,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, ma plus belle rencontre."
+  },
+  {
+    "id": 492,
+    "category": "fierte",
+    "text": "Ta persévérance cette semaine m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 493,
+    "category": "encouragement",
+    "text": "Je crois en toi toute cette semaine, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 494,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon bonheur, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 495,
+    "category": "encouragement",
+    "text": "Ma douceur, je pense fort à toi pour ces derniers jours, tu vas assurer."
+  },
+  {
+    "id": 496,
+    "category": "manque",
+    "text": "Tu me manques depuis que je me suis réveillé·e, et je voulais te le dire."
+  },
+  {
+    "id": 497,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour à cette heure-ci, mon bonheur."
+  },
+  {
+    "id": 498,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même toute la journée où tu ronfles peut-être."
+  },
+  {
+    "id": 499,
+    "category": "manque",
+    "text": "Toi, depuis que je me suis réveillé·e me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 500,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, toi."
+  },
+  {
+    "id": 501,
+    "category": "bonne_nuit",
+    "text": "Ma vie, que ce soir se termine en douceur pour toi."
+  },
+  {
+    "id": 502,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon amour, continue comme ça."
+  },
+  {
+    "id": 503,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon/ma chéri·e."
+  },
+  {
+    "id": 504,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur en ce moment même, ma complice."
+  },
+  {
+    "id": 505,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, mon pilier, tout va bien se passer."
+  },
+  {
+    "id": 506,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, ma moitié."
+  },
+  {
+    "id": 507,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques ce matin, comme d'habitude."
+  },
+  {
+    "id": 508,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de depuis notre dernier appel."
+  },
+  {
+    "id": 509,
+    "category": "fierte",
+    "text": "Ta persévérance ce soir m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 510,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, mon roc."
+  },
+  {
+    "id": 511,
+    "category": "manque",
+    "text": "J'ai repensé à toi depuis notre dernier appel et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 512,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, ma plus belle rencontre."
+  },
+  {
+    "id": 513,
+    "category": "gratitude",
+    "text": "Merci pour ta patience cet après-midi, mon amour."
+  },
+  {
+    "id": 514,
+    "category": "encouragement",
+    "text": "Respire, mon étoile, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 515,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon repère, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 516,
+    "category": "gratitude",
+    "text": "Je réalise toute cette semaine à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 517,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, ma personne préférée."
+  },
+  {
+    "id": 518,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi depuis ce week-end, sans raison particulière."
+  },
+  {
+    "id": 519,
+    "category": "humour_tendre",
+    "text": "Bulletin météo de mon cœur : ensoleillé, grâce à toi."
+  },
+  {
+    "id": 520,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, l'amour de ma vie, continue comme ça."
+  },
+  {
+    "id": 521,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là depuis hier, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 522,
+    "category": "bonjour",
+    "text": "Ma moitié, je t'envoie toute mon énergie pour ce matin."
+  },
+  {
+    "id": 523,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, ma plus belle rencontre."
+  },
+  {
+    "id": 524,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive à cette heure-ci, bravo."
+  },
+  {
+    "id": 525,
+    "category": "gratitude",
+    "text": "Je réalise ce soir à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 526,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon roc."
+  },
+  {
+    "id": 527,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, ma complice."
+  },
+  {
+    "id": 528,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit mon étoile, à demain pour te le redire encore."
+  },
+  {
+    "id": 529,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon trésor, continue comme ça."
+  },
+  {
+    "id": 530,
+    "category": "encouragement",
+    "text": "Tu vas y arriver aujourd'hui, je crois en toi."
+  },
+  {
+    "id": 531,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon étoile, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 532,
+    "category": "fierte",
+    "text": "J'admire ta force toute la soirée, ma vie."
+  },
+  {
+    "id": 533,
+    "category": "romantique",
+    "text": "Tu rends aujourd'hui plus lumineux, mon étoile, sans même essayer."
+  },
+  {
+    "id": 534,
+    "category": "romantique",
+    "text": "Je t'aime encore plus ce matin qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 535,
+    "category": "encouragement",
+    "text": "Je sais que depuis que tu es parti·e est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 536,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, ma vie, c'est impressionnant."
+  },
+  {
+    "id": 537,
+    "category": "manque",
+    "text": "Je pensais à toi à cet instant, comme souvent d'ailleurs."
+  },
+  {
+    "id": 538,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, mon rayon de soleil."
+  },
+  {
+    "id": 539,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes depuis hier."
+  },
+  {
+    "id": 540,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive à l'instant précis, bravo."
+  },
+  {
+    "id": 541,
+    "category": "gratitude",
+    "text": "Merci pour ta patience cet après-midi, mon pilier."
+  },
+  {
+    "id": 542,
+    "category": "manque",
+    "text": "Ton absence a un poids depuis ce week-end, j'ai hâte que ça change."
+  },
+  {
+    "id": 543,
+    "category": "manque",
+    "text": "Ton absence a un poids depuis ce matin, j'ai hâte que ça change."
+  },
+  {
+    "id": 544,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, mon bonheur."
+  },
+  {
+    "id": 545,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon amour."
+  },
+  {
+    "id": 546,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, ma plus belle rencontre."
+  },
+  {
+    "id": 547,
+    "category": "bonjour",
+    "text": "Que ce matin commence avec le sourire, mon/ma chéri·e."
+  },
+  {
+    "id": 548,
+    "category": "romantique",
+    "text": "Avec toi, même les jours ordinaires deviennent précieux."
+  },
+  {
+    "id": 549,
+    "category": "bonne_nuit",
+    "text": "Dors bien, mon inspiration, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 550,
+    "category": "manque",
+    "text": "Je pensais à toi depuis hier, comme souvent d'ailleurs."
+  },
+  {
+    "id": 551,
+    "category": "manque",
+    "text": "Ton absence pèse cette semaine, et je le pense vraiment."
+  },
+  {
+    "id": 552,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, mon rayon de soleil. Passe une belle journée."
+  },
+  {
+    "id": 553,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, l'amour de ma vie."
+  },
+  {
+    "id": 554,
+    "category": "bonne_nuit",
+    "text": "Dors bien, ma complice, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 555,
+    "category": "gratitude",
+    "text": "Merci pour ta patience toute cette semaine, ma plus belle rencontre."
+  },
+  {
+    "id": 556,
+    "category": "manque",
+    "text": "Tu occupes mes pensées cette semaine, sans raison particulière."
+  },
+  {
+    "id": 557,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit mon pilier, à demain pour te le redire encore."
+  },
+  {
+    "id": 558,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi à l'instant précis."
+  },
+  {
+    "id": 559,
+    "category": "encouragement",
+    "text": "Tiens bon mon bonheur, je suis là si tu as besoin."
+  },
+  {
+    "id": 560,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, mon bonheur."
+  },
+  {
+    "id": 561,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi toute la journée."
+  },
+  {
+    "id": 562,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon complice."
+  },
+  {
+    "id": 563,
+    "category": "manque",
+    "text": "J'ai repensé à toi à l'instant précis et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 564,
+    "category": "bonjour",
+    "text": "Que cette semaine commence avec le sourire, mon pilier."
+  },
+  {
+    "id": 565,
+    "category": "manque",
+    "text": "Mon pilier, ton absence se sent toute cette semaine, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 566,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de en ce moment même."
+  },
+  {
+    "id": 567,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là toute la journée, tout simplement."
+  },
+  {
+    "id": 568,
+    "category": "bonne_nuit",
+    "text": "Dors bien, mon complice, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 569,
+    "category": "gratitude",
+    "text": "Je réalise à cette heure-ci à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 570,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, l'amour de ma vie."
+  },
+  {
+    "id": 571,
+    "category": "fierte",
+    "text": "Ce que tu accomplis depuis que je me suis réveillé·e force mon respect, ma plus belle rencontre."
+  },
+  {
+    "id": 572,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, mon complice."
+  },
+  {
+    "id": 573,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi toute la soirée, et ce n'est pas près de changer."
+  },
+  {
+    "id": 574,
+    "category": "encouragement",
+    "text": "Je sais que cette semaine est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 575,
+    "category": "bonjour",
+    "text": "Bonjour mon roc, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 576,
+    "category": "humour_tendre",
+    "text": "Je te préviens ma plus belle rencontre, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 577,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, mon rayon de soleil."
+  },
+  {
+    "id": 578,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de depuis ce week-end."
+  },
+  {
+    "id": 579,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi depuis ce matin, j'ai le sourire."
+  },
+  {
+    "id": 580,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi toute cette semaine, j'ai le sourire."
+  },
+  {
+    "id": 581,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi depuis que je me suis réveillé·e, et j'avais besoin que tu le saches."
+  },
+  {
+    "id": 582,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques à cet instant, comme d'habitude."
+  },
+  {
+    "id": 583,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, mon étoile, je suis là même à distance."
+  },
+  {
+    "id": 584,
+    "category": "bonne_nuit",
+    "text": "Dors bien, mon/ma chéri·e, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 585,
+    "category": "gratitude",
+    "text": "Je réalise depuis que tu es parti·e à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 586,
+    "category": "romantique",
+    "text": "Ma vie, toute la journée me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 587,
+    "category": "bonjour",
+    "text": "Ma plus belle rencontre, je t'envoie toute mon énergie pour à l'instant précis."
+  },
+  {
+    "id": 588,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de cette semaine, mon inspiration, et je le pense vraiment."
+  },
+  {
+    "id": 589,
+    "category": "bonjour",
+    "text": "Ma moitié, je t'envoie toute mon énergie pour depuis que tu es parti·e."
+  },
+  {
+    "id": 590,
+    "category": "humour_tendre",
+    "text": "Flash info depuis notre dernier appel : tu restes officiellement adorable, mon pilier."
+  },
+  {
+    "id": 591,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon roc, où que je sois."
+  },
+  {
+    "id": 592,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là à cet instant, tout simplement."
+  },
+  {
+    "id": 593,
+    "category": "manque",
+    "text": "Ton absence pèse cette semaine, et ça méritait d'être dit."
+  },
+  {
+    "id": 594,
+    "category": "manque",
+    "text": "Mon inspiration, ton absence se sent depuis que tu es parti·e, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 595,
+    "category": "gratitude",
+    "text": "Merci pour ta patience cette semaine, ma vie."
+  },
+  {
+    "id": 596,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, ma moitié."
+  },
+  {
+    "id": 597,
+    "category": "bonne_nuit",
+    "text": "Mon étoile, que cet après-midi se termine en douceur pour toi."
+  },
+  {
+    "id": 598,
+    "category": "gratitude",
+    "text": "Mon cœur, merci d'avoir été là ce matin, et je le pense vraiment."
+  },
+  {
+    "id": 599,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon rayon de soleil, tu vas gérer ça aussi."
+  },
+  {
+    "id": 600,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon pilier, où que je sois."
+  },
+  {
+    "id": 601,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive cet après-midi, bravo."
+  },
+  {
+    "id": 602,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon étoile, tu vas gérer ça aussi."
+  },
+  {
+    "id": 603,
+    "category": "manque",
+    "text": "Ton absence a un poids ce matin, j'ai hâte que ça change."
+  },
+  {
+    "id": 604,
+    "category": "gratitude",
+    "text": "Je mesure depuis ce matin à quel point tu comptes pour moi, mon complice."
+  },
+  {
+    "id": 605,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de ces derniers jours."
+  },
+  {
+    "id": 606,
+    "category": "bonjour",
+    "text": "Mon roc, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 607,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit mon inspiration, à demain pour te le redire encore."
+  },
+  {
+    "id": 608,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, ma douceur, c'est impressionnant."
+  },
+  {
+    "id": 609,
+    "category": "gratitude",
+    "text": "Je réalise cet après-midi à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 610,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, mon rayon de soleil."
+  },
+  {
+    "id": 611,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive à cet instant, je suis avec toi."
+  },
+  {
+    "id": 612,
+    "category": "manque",
+    "text": "Je pensais à toi cette semaine, comme souvent d'ailleurs."
+  },
+  {
+    "id": 613,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive en ce moment, bravo."
+  },
+  {
+    "id": 614,
+    "category": "fierte",
+    "text": "Mon complice, ce que tu as fait toute la soirée m'a vraiment marqué·e."
+  },
+  {
+    "id": 615,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de à cette heure-ci, mon cœur, sans raison particulière."
+  },
+  {
+    "id": 616,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, ma moitié."
+  },
+  {
+    "id": 617,
+    "category": "romantique",
+    "text": "Tu rends ce soir plus lumineux, ma personne préférée, sans même essayer."
+  },
+  {
+    "id": 618,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, mon trésor."
+  },
+  {
+    "id": 619,
+    "category": "encouragement",
+    "text": "Je crois en toi à cet instant, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 620,
+    "category": "gratitude",
+    "text": "Je mesure toute la journée à quel point tu comptes pour moi, ma douceur."
+  },
+  {
+    "id": 621,
+    "category": "manque",
+    "text": "Mon/ma chéri·e, ton absence se sent ce matin, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 622,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, ma moitié, c'est impressionnant."
+  },
+  {
+    "id": 623,
+    "category": "gratitude",
+    "text": "Merci de me supporter même cette semaine."
+  },
+  {
+    "id": 624,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, toi. Passe une belle journée."
+  },
+  {
+    "id": 625,
+    "category": "bonjour",
+    "text": "Mon cœur, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 626,
+    "category": "fierte",
+    "text": "Mon roc, ce que tu as fait à cette heure-ci m'a vraiment marqué·e."
+  },
+  {
+    "id": 627,
+    "category": "bonjour",
+    "text": "Réveille-toi, mon/ma chéri·e, je pensais déjà à toi ce matin."
+  },
+  {
+    "id": 628,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, ma vie."
+  },
+  {
+    "id": 629,
+    "category": "encouragement",
+    "text": "Respire, ma moitié, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 630,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi à cet instant, et rien ne pourra changer ça."
+  },
+  {
+    "id": 631,
+    "category": "bonne_nuit",
+    "text": "Dors bien, mon repère, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 632,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, ma complice."
+  },
+  {
+    "id": 633,
+    "category": "bonjour",
+    "text": "Que à cette heure-ci commence avec le sourire, mon/ma chéri·e."
+  },
+  {
+    "id": 634,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos toute la soirée, tu me manques."
+  },
+  {
+    "id": 635,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, mon étoile, tout va bien se passer."
+  },
+  {
+    "id": 636,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, mon trésor. Passe une belle journée."
+  },
+  {
+    "id": 637,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, mon complice, c'est impressionnant."
+  },
+  {
+    "id": 638,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là depuis que tu es parti·e, tout simplement."
+  },
+  {
+    "id": 639,
+    "category": "manque",
+    "text": "Tu occupes mes pensées en ce moment, et ça m'a fait sourire."
+  },
+  {
+    "id": 640,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, ma personne préférée."
+  },
+  {
+    "id": 641,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, mon/ma chéri·e."
+  },
+  {
+    "id": 642,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive depuis ce matin, je suis avec toi."
+  },
+  {
+    "id": 643,
+    "category": "romantique",
+    "text": "Tu rends à l'instant précis plus lumineux, ma vie, sans même essayer."
+  },
+  {
+    "id": 644,
+    "category": "romantique",
+    "text": "Je t'aime encore plus depuis ce week-end qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 645,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur ces derniers jours, mon/ma chéri·e."
+  },
+  {
+    "id": 646,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon roc."
+  },
+  {
+    "id": 647,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive ce matin, bravo."
+  },
+  {
+    "id": 648,
+    "category": "bonne_nuit",
+    "text": "Dors bien, mon étoile, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 649,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, mon/ma chéri·e ? Bonne réponse : oui."
+  },
+  {
+    "id": 650,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, mon trésor, l'attente est longue."
+  },
+  {
+    "id": 651,
+    "category": "encouragement",
+    "text": "Courage mon inspiration, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 652,
+    "category": "humour_tendre",
+    "text": "Ma complice, sondage express : tu penses à moi ce soir aussi ?"
+  },
+  {
+    "id": 653,
+    "category": "fierte",
+    "text": "J'admire ta force depuis ce matin, ma complice."
+  },
+  {
+    "id": 654,
+    "category": "bonjour",
+    "text": "Mon complice, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 655,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là à cette heure-ci, tout simplement."
+  },
+  {
+    "id": 656,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, toi."
+  },
+  {
+    "id": 657,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, mon inspiration, l'attente est longue."
+  },
+  {
+    "id": 658,
+    "category": "romantique",
+    "text": "Mon cœur, cette semaine me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 659,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi depuis ce matin."
+  },
+  {
+    "id": 660,
+    "category": "bonjour",
+    "text": "Que en ce moment même commence avec le sourire, mon/ma chéri·e."
+  },
+  {
+    "id": 661,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi en ce moment même, j'ai le sourire."
+  },
+  {
+    "id": 662,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi depuis hier, j'ai le sourire."
+  },
+  {
+    "id": 663,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, mon repère."
+  },
+  {
+    "id": 664,
+    "category": "manque",
+    "text": "Mon repère, ton absence se sent depuis ce matin, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 665,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques depuis ce week-end, comme d'habitude."
+  },
+  {
+    "id": 666,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même à cet instant où tu ronfles peut-être."
+  },
+  {
+    "id": 667,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon pilier."
+  },
+  {
+    "id": 668,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, mon inspiration."
+  },
+  {
+    "id": 669,
+    "category": "encouragement",
+    "text": "Courage mon amour, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 670,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit à la personne qui occupe mes pensées avant de m'endormir."
+  },
+  {
+    "id": 671,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, mon pilier. Passe une belle journée."
+  },
+  {
+    "id": 672,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de depuis ce week-end, ma vie, sans raison particulière."
+  },
+  {
+    "id": 673,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, mon étoile."
+  },
+  {
+    "id": 674,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, mon roc."
+  },
+  {
+    "id": 675,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi cet après-midi, et ça méritait d'être dit."
+  },
+  {
+    "id": 676,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques depuis notre dernier appel, comme d'habitude."
+  },
+  {
+    "id": 677,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes ces derniers jours."
+  },
+  {
+    "id": 678,
+    "category": "bonjour",
+    "text": "Réveille-toi, mon complice, je pensais déjà à toi en ce moment."
+  },
+  {
+    "id": 679,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, ma complice."
+  },
+  {
+    "id": 680,
+    "category": "gratitude",
+    "text": "Merci de me supporter même depuis que tu es parti·e."
+  },
+  {
+    "id": 681,
+    "category": "humour_tendre",
+    "text": "Flash info ce soir : tu restes officiellement adorable, mon complice."
+  },
+  {
+    "id": 682,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien ma plus belle rencontre, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 683,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, mon pilier."
+  },
+  {
+    "id": 684,
+    "category": "encouragement",
+    "text": "Je crois en toi en ce moment même, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 685,
+    "category": "bonjour",
+    "text": "Mon bonheur, je t'envoie toute mon énergie pour toute la soirée."
+  },
+  {
+    "id": 686,
+    "category": "gratitude",
+    "text": "Je réalise ce matin à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 687,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, mon inspiration, c'est impressionnant."
+  },
+  {
+    "id": 688,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, ma complice."
+  },
+  {
+    "id": 689,
+    "category": "manque",
+    "text": "Chaque heure sans toi me rappelle à quel point je tiens à toi."
+  },
+  {
+    "id": 690,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, mon amour."
+  },
+  {
+    "id": 691,
+    "category": "encouragement",
+    "text": "Tu vas y arriver depuis notre dernier appel, je crois en toi."
+  },
+  {
+    "id": 692,
+    "category": "gratitude",
+    "text": "Merci pour ta patience à cette heure-ci, mon repère."
+  },
+  {
+    "id": 693,
+    "category": "gratitude",
+    "text": "Mon inspiration, merci d'avoir été là toute cette semaine, et je voulais que ce soit clair."
+  },
+  {
+    "id": 694,
+    "category": "fierte",
+    "text": "Ce que tu accomplis ces derniers jours force mon respect, mon roc."
+  },
+  {
+    "id": 695,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi depuis que tu es parti·e."
+  },
+  {
+    "id": 696,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, ma vie, l'attente est longue."
+  },
+  {
+    "id": 697,
+    "category": "encouragement",
+    "text": "L'amour de ma vie, je pense fort à toi pour ces derniers jours, tu vas assurer."
+  },
+  {
+    "id": 698,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi à cet instant."
+  },
+  {
+    "id": 699,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive toute la journée, bravo."
+  },
+  {
+    "id": 700,
+    "category": "humour_tendre",
+    "text": "Ma plus belle rencontre, sondage express : tu penses à moi cette semaine aussi ?"
+  },
+  {
+    "id": 701,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon pilier."
+  },
+  {
+    "id": 702,
+    "category": "encouragement",
+    "text": "Je sais que toute la journée est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 703,
+    "category": "encouragement",
+    "text": "Je sais que ces derniers jours est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 704,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, ma vie. Passe une belle journée."
+  },
+  {
+    "id": 705,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques en ce moment, comme d'habitude."
+  },
+  {
+    "id": 706,
+    "category": "gratitude",
+    "text": "Merci pour depuis ce week-end, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 707,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour à cet instant, mon roc."
+  },
+  {
+    "id": 708,
+    "category": "bonjour",
+    "text": "Réveille-toi, mon trésor, je pensais déjà à toi en ce moment."
+  },
+  {
+    "id": 709,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, mon bonheur."
+  },
+  {
+    "id": 710,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, ma plus belle rencontre."
+  },
+  {
+    "id": 711,
+    "category": "bonjour",
+    "text": "Réveille-toi, toi, je pensais déjà à toi en ce moment."
+  },
+  {
+    "id": 712,
+    "category": "fierte",
+    "text": "Je suis vraiment fier/fière d'être à tes côtés."
+  },
+  {
+    "id": 713,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes depuis que tu es parti·e."
+  },
+  {
+    "id": 714,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, toi."
+  },
+  {
+    "id": 715,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, ma personne préférée."
+  },
+  {
+    "id": 716,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit mon complice, à demain pour te le redire encore."
+  },
+  {
+    "id": 717,
+    "category": "manque",
+    "text": "Mon inspiration, toute cette semaine me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 718,
+    "category": "bonne_nuit",
+    "text": "Dors bien, mon cœur, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 719,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur depuis notre dernier appel, toi."
+  },
+  {
+    "id": 720,
+    "category": "humour_tendre",
+    "text": "Flash info aujourd'hui : tu restes officiellement adorable, mon repère."
+  },
+  {
+    "id": 721,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, ma vie ? Bonne réponse : oui."
+  },
+  {
+    "id": 722,
+    "category": "encouragement",
+    "text": "Tiens bon mon roc, je suis là si tu as besoin."
+  },
+  {
+    "id": 723,
+    "category": "encouragement",
+    "text": "Courage mon complice, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 724,
+    "category": "encouragement",
+    "text": "Quoi qu'il arrive toute cette semaine, je suis avec toi."
+  },
+  {
+    "id": 725,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, ma douceur."
+  },
+  {
+    "id": 726,
+    "category": "humour_tendre",
+    "text": "Je te préviens ma vie, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 727,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon inspiration, continue comme ça."
+  },
+  {
+    "id": 728,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon repère, tu vas gérer ça aussi."
+  },
+  {
+    "id": 729,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même depuis notre dernier appel où tu ronfles peut-être."
+  },
+  {
+    "id": 730,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive en ce moment même, bravo."
+  },
+  {
+    "id": 731,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, mon roc."
+  },
+  {
+    "id": 732,
+    "category": "bonjour",
+    "text": "L'amour de ma vie, je t'envoie toute mon énergie pour aujourd'hui."
+  },
+  {
+    "id": 733,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon pilier, continue comme ça."
+  },
+  {
+    "id": 734,
+    "category": "romantique",
+    "text": "Je t'aime encore plus depuis que tu es parti·e qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 735,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, ma complice, tu l'as mérité."
+  },
+  {
+    "id": 736,
+    "category": "humour_tendre",
+    "text": "Mon pilier, sondage express : tu penses à moi à cette heure-ci aussi ?"
+  },
+  {
+    "id": 737,
+    "category": "manque",
+    "text": "Ton absence pèse ces derniers jours, juste parce que."
+  },
+  {
+    "id": 738,
+    "category": "manque",
+    "text": "Je pensais à toi depuis ce matin, comme souvent d'ailleurs."
+  },
+  {
+    "id": 739,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon inspiration, et ça me fait du bien de te l'écrire."
+  },
+  {
+    "id": 740,
+    "category": "humour_tendre",
+    "text": "Mon inspiration, sondage express : tu penses à moi toute la journée aussi ?"
+  },
+  {
+    "id": 741,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de à cette heure-ci."
+  },
+  {
+    "id": 742,
+    "category": "gratitude",
+    "text": "Merci pour depuis ce matin, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 743,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, ma douceur. Passe une belle journée."
+  },
+  {
+    "id": 744,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de depuis ce week-end, mon rayon de soleil, et je le pense vraiment."
+  },
+  {
+    "id": 745,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes cet après-midi."
+  },
+  {
+    "id": 746,
+    "category": "manque",
+    "text": "Ton absence a un poids depuis que tu es parti·e, j'ai hâte que ça change."
+  },
+  {
+    "id": 747,
+    "category": "manque",
+    "text": "J'ai repensé à toi toute cette semaine et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 748,
+    "category": "romantique",
+    "text": "Tu rends depuis hier plus lumineux, mon complice, sans même essayer."
+  },
+  {
+    "id": 749,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, mon trésor."
+  },
+  {
+    "id": 750,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, mon inspiration."
+  },
+  {
+    "id": 751,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour en ce moment même, mon roc."
+  },
+  {
+    "id": 752,
+    "category": "manque",
+    "text": "Mon étoile, depuis hier me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 753,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, ma douceur, tout va bien se passer."
+  },
+  {
+    "id": 754,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, ma complice, je suis là même à distance."
+  },
+  {
+    "id": 755,
+    "category": "bonjour",
+    "text": "Un petit bonjour en ce moment même, sans raison particulière, mon rayon de soleil."
+  },
+  {
+    "id": 756,
+    "category": "gratitude",
+    "text": "Je réalise depuis ce matin à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 757,
+    "category": "fierte",
+    "text": "Ce que tu accomplis aujourd'hui force mon respect, mon inspiration."
+  },
+  {
+    "id": 758,
+    "category": "manque",
+    "text": "J'ai repensé à toi cet après-midi et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 759,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, ma moitié."
+  },
+  {
+    "id": 760,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là en ce moment même, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 761,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, mon trésor, je suis là même à distance."
+  },
+  {
+    "id": 762,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, mon/ma chéri·e, tout va bien se passer."
+  },
+  {
+    "id": 763,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, ma douceur."
+  },
+  {
+    "id": 764,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, mon pilier ? Bonne réponse : oui."
+  },
+  {
+    "id": 765,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, toi."
+  },
+  {
+    "id": 766,
+    "category": "manque",
+    "text": "Je pensais à toi toute la soirée, comme souvent d'ailleurs."
+  },
+  {
+    "id": 767,
+    "category": "encouragement",
+    "text": "Respire, mon inspiration, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 768,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi depuis notre dernier appel, et je le pense vraiment."
+  },
+  {
+    "id": 769,
+    "category": "bonjour",
+    "text": "Bonjour ma plus belle rencontre, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 770,
+    "category": "humour_tendre",
+    "text": "Flash info aujourd'hui : tu restes officiellement adorable, ma moitié."
+  },
+  {
+    "id": 771,
+    "category": "manque",
+    "text": "Je donnerais beaucoup pour être à côté de toi là, maintenant."
+  },
+  {
+    "id": 772,
+    "category": "manque",
+    "text": "J'ai repensé à toi ce matin et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 773,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là aujourd'hui, tout simplement."
+  },
+  {
+    "id": 774,
+    "category": "fierte",
+    "text": "Ce que tu accomplis cette semaine force mon respect, ma moitié."
+  },
+  {
+    "id": 775,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, ma complice."
+  },
+  {
+    "id": 776,
+    "category": "humour_tendre",
+    "text": "Je te préviens mon pilier, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 777,
+    "category": "humour_tendre",
+    "text": "Flash info à cet instant : tu restes officiellement adorable, mon trésor."
+  },
+  {
+    "id": 778,
+    "category": "humour_tendre",
+    "text": "Mon inspiration, sondage express : tu penses à moi depuis ce week-end aussi ?"
+  },
+  {
+    "id": 779,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi depuis hier."
+  },
+  {
+    "id": 780,
+    "category": "encouragement",
+    "text": "N'oublie pas toute la journée à quel point tu es capable, mon étoile."
+  },
+  {
+    "id": 781,
+    "category": "encouragement",
+    "text": "Tu vas y arriver depuis que tu es parti·e, je crois en toi."
+  },
+  {
+    "id": 782,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon repère, et je voulais te le dire."
+  },
+  {
+    "id": 783,
+    "category": "encouragement",
+    "text": "Courage toi, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 784,
+    "category": "romantique",
+    "text": "Je t'aime encore plus à l'instant précis qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 785,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, ma personne préférée."
+  },
+  {
+    "id": 786,
+    "category": "manque",
+    "text": "Ton absence pèse depuis notre dernier appel, et ce n'est pas près de changer."
+  },
+  {
+    "id": 787,
+    "category": "fierte",
+    "text": "Je veux que tu saches à quel point tu m'impressionnes toute la journée."
+  },
+  {
+    "id": 788,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, mon inspiration."
+  },
+  {
+    "id": 789,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, toi."
+  },
+  {
+    "id": 790,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, mon cœur."
+  },
+  {
+    "id": 791,
+    "category": "romantique",
+    "text": "Toi, ces derniers jours me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 792,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour cette semaine, mon repère."
+  },
+  {
+    "id": 793,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, mon/ma chéri·e."
+  },
+  {
+    "id": 794,
+    "category": "encouragement",
+    "text": "Je crois en toi ce soir, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 795,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, ma moitié, tu vas gérer ça aussi."
+  },
+  {
+    "id": 796,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même ces derniers jours où tu ronfles peut-être."
+  },
+  {
+    "id": 797,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos toute la journée, tu me manques."
+  },
+  {
+    "id": 798,
+    "category": "fierte",
+    "text": "J'admire ta force cet après-midi, toi."
+  },
+  {
+    "id": 799,
+    "category": "bonjour",
+    "text": "Bonjour mon trésor, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 800,
+    "category": "romantique",
+    "text": "Ma vie, depuis hier me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 801,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même depuis que tu es parti·e où tu ronfles peut-être."
+  },
+  {
+    "id": 802,
+    "category": "romantique",
+    "text": "Tu rends à l'instant précis plus lumineux, l'amour de ma vie, sans même essayer."
+  },
+  {
+    "id": 803,
+    "category": "encouragement",
+    "text": "Tu vas y arriver toute la journée, je crois en toi."
+  },
+  {
+    "id": 804,
+    "category": "manque",
+    "text": "Vivement qu'on se retrouve, mon/ma chéri·e, l'attente est longue."
+  },
+  {
+    "id": 805,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit ma complice, à demain pour te le redire encore."
+  },
+  {
+    "id": 806,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, mon repère."
+  },
+  {
+    "id": 807,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur toute la soirée, mon rayon de soleil."
+  },
+  {
+    "id": 808,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, ma complice."
+  },
+  {
+    "id": 809,
+    "category": "gratitude",
+    "text": "Merci de me supporter même à l'instant précis."
+  },
+  {
+    "id": 810,
+    "category": "bonne_nuit",
+    "text": "Mon inspiration, que aujourd'hui se termine en douceur pour toi."
+  },
+  {
+    "id": 811,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, mon étoile."
+  },
+  {
+    "id": 812,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi toute cette semaine."
+  },
+  {
+    "id": 813,
+    "category": "encouragement",
+    "text": "Tiens bon ma complice, je suis là si tu as besoin."
+  },
+  {
+    "id": 814,
+    "category": "gratitude",
+    "text": "Merci pour ta patience toute la soirée, ma moitié."
+  },
+  {
+    "id": 815,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, mon cœur, je suis là même à distance."
+  },
+  {
+    "id": 816,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, mon complice, je suis là même à distance."
+  },
+  {
+    "id": 817,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi en ce moment même."
+  },
+  {
+    "id": 818,
+    "category": "humour_tendre",
+    "text": "Je te préviens ma personne préférée, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 819,
+    "category": "gratitude",
+    "text": "Mon pilier, merci d'avoir été là depuis que tu es parti·e, et ce n'est pas près de changer."
+  },
+  {
+    "id": 820,
+    "category": "bonjour",
+    "text": "Un petit bonjour à cette heure-ci, et ce n'est pas près de changer, mon bonheur."
+  },
+  {
+    "id": 821,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées à cet instant."
+  },
+  {
+    "id": 822,
+    "category": "encouragement",
+    "text": "N'oublie pas toute cette semaine à quel point tu es capable, ma vie."
+  },
+  {
+    "id": 823,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, ma douceur."
+  },
+  {
+    "id": 824,
+    "category": "manque",
+    "text": "Tu me manques ce soir, et je voulais te le dire."
+  },
+  {
+    "id": 825,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon bonheur, tu vas gérer ça aussi."
+  },
+  {
+    "id": 826,
+    "category": "manque",
+    "text": "Je pensais à toi en ce moment même, comme souvent d'ailleurs."
+  },
+  {
+    "id": 827,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de ce soir, ma personne préférée, et rien ne pourra changer ça."
+  },
+  {
+    "id": 828,
+    "category": "manque",
+    "text": "Mon cœur, ton absence se sent à cet instant, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 829,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon pilier, et je le pense vraiment."
+  },
+  {
+    "id": 830,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, mon inspiration. Passe une belle journée."
+  },
+  {
+    "id": 831,
+    "category": "manque",
+    "text": "Ton absence a un poids depuis notre dernier appel, j'ai hâte que ça change."
+  },
+  {
+    "id": 832,
+    "category": "manque",
+    "text": "Tu me manques en ce moment, et je ne peux pas le garder pour moi."
+  },
+  {
+    "id": 833,
+    "category": "romantique",
+    "text": "Chaque jour avec toi confirme que j'ai fait le bon choix, mon trésor."
+  },
+  {
+    "id": 834,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos ce matin, tu me manques."
+  },
+  {
+    "id": 835,
+    "category": "fierte",
+    "text": "Regarde le chemin que tu as parcouru, mon roc, c'est impressionnant."
+  },
+  {
+    "id": 836,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, mon repère, je suis là même à distance."
+  },
+  {
+    "id": 837,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, ma moitié."
+  },
+  {
+    "id": 838,
+    "category": "manque",
+    "text": "Tu occupes mes pensées ce matin, et ça méritait d'être dit."
+  },
+  {
+    "id": 839,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de ce soir."
+  },
+  {
+    "id": 840,
+    "category": "gratitude",
+    "text": "L'amour de ma vie, merci d'avoir été là ce matin, et je voulais que ce soit clair."
+  },
+  {
+    "id": 841,
+    "category": "bonne_nuit",
+    "text": "Toi, que ce matin se termine en douceur pour toi."
+  },
+  {
+    "id": 842,
+    "category": "manque",
+    "text": "Tu occupes mes pensées toute cette semaine, et je voulais que ce soit clair."
+  },
+  {
+    "id": 843,
+    "category": "bonne_nuit",
+    "text": "Dors bien, ma personne préférée, je pense à toi jusqu'à ce que le sommeil me rattrape aussi."
+  },
+  {
+    "id": 844,
+    "category": "bonjour",
+    "text": "J'espère que ton réveil a été aussi doux que toi, mon cœur."
+  },
+  {
+    "id": 845,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, l'amour de ma vie."
+  },
+  {
+    "id": 846,
+    "category": "gratitude",
+    "text": "Je mesure ce soir à quel point tu comptes pour moi, ma vie."
+  },
+  {
+    "id": 847,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées en ce moment même."
+  },
+  {
+    "id": 848,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, l'amour de ma vie, je suis là même à distance."
+  },
+  {
+    "id": 849,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, mon cœur."
+  },
+  {
+    "id": 850,
+    "category": "encouragement",
+    "text": "Je sais que depuis ce matin est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 851,
+    "category": "humour_tendre",
+    "text": "Petit rappel officiel : tu es la meilleure chose qui me soit arrivée, mon trésor."
+  },
+  {
+    "id": 852,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, mon étoile."
+  },
+  {
+    "id": 853,
+    "category": "manque",
+    "text": "Mon rayon de soleil, depuis que tu es parti·e me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 854,
+    "category": "bonjour",
+    "text": "Un petit bonjour cette semaine, sans raison particulière, ma personne préférée."
+  },
+  {
+    "id": 855,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, mon roc, je suis là même à distance."
+  },
+  {
+    "id": 856,
+    "category": "encouragement",
+    "text": "Mon rayon de soleil, je pense fort à toi pour en ce moment, tu vas assurer."
+  },
+  {
+    "id": 857,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, mon cœur, continue comme ça."
+  },
+  {
+    "id": 858,
+    "category": "gratitude",
+    "text": "Je mesure ce soir à quel point tu comptes pour moi, mon trésor."
+  },
+  {
+    "id": 859,
+    "category": "bonne_nuit",
+    "text": "Que ton sommeil soit réparateur ces derniers jours, mon trésor."
+  },
+  {
+    "id": 860,
+    "category": "humour_tendre",
+    "text": "Ma douceur, sondage express : tu penses à moi depuis ce matin aussi ?"
+  },
+  {
+    "id": 861,
+    "category": "romantique",
+    "text": "Tu es la meilleure partie de depuis ce matin."
+  },
+  {
+    "id": 862,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon roc."
+  },
+  {
+    "id": 863,
+    "category": "gratitude",
+    "text": "Merci de rendre ma vie tellement meilleure, mon roc."
+  },
+  {
+    "id": 864,
+    "category": "bonjour",
+    "text": "Ma personne préférée, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 865,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, mon cœur, tout va bien se passer."
+  },
+  {
+    "id": 866,
+    "category": "bonjour",
+    "text": "Un bon petit message pour bien commencer ta journée, mon amour."
+  },
+  {
+    "id": 867,
+    "category": "encouragement",
+    "text": "Tiens bon mon pilier, je suis là si tu as besoin."
+  },
+  {
+    "id": 868,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, mon inspiration."
+  },
+  {
+    "id": 869,
+    "category": "bonjour",
+    "text": "Le soleil s'est levé et toi aussi j'espère, mon complice. Passe une belle journée."
+  },
+  {
+    "id": 870,
+    "category": "humour_tendre",
+    "text": "Message urgent : besoin d'un câlin de ta part dès que possible."
+  },
+  {
+    "id": 871,
+    "category": "fierte",
+    "text": "Ce que tu accomplis à l'instant précis force mon respect, ma vie."
+  },
+  {
+    "id": 872,
+    "category": "romantique",
+    "text": "Mon roc, à l'instant précis me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 873,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, mon rayon de soleil."
+  },
+  {
+    "id": 874,
+    "category": "manque",
+    "text": "Tu me manques cet après-midi, et je voulais te le dire."
+  },
+  {
+    "id": 875,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, ma plus belle rencontre, et ce n'est pas près de changer."
+  },
+  {
+    "id": 876,
+    "category": "gratitude",
+    "text": "Merci pour ta patience à cet instant, mon/ma chéri·e."
+  },
+  {
+    "id": 877,
+    "category": "bonjour",
+    "text": "Réveille-toi, l'amour de ma vie, je pensais déjà à toi depuis ce week-end."
+  },
+  {
+    "id": 878,
+    "category": "bonne_nuit",
+    "text": "L'amour de ma vie, que cet après-midi se termine en douceur pour toi."
+  },
+  {
+    "id": 879,
+    "category": "manque",
+    "text": "L'amour de ma vie, ton absence se sent ce matin, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 880,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon cœur, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 881,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, mon étoile, et je ne peux pas le garder pour moi."
+  },
+  {
+    "id": 882,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, ma moitié."
+  },
+  {
+    "id": 883,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, mon roc, tout va bien se passer."
+  },
+  {
+    "id": 884,
+    "category": "manque",
+    "text": "J'ai repensé à toi à cet instant et ça m'a fait sourire tout seul·e."
+  },
+  {
+    "id": 885,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, mon repère."
+  },
+  {
+    "id": 886,
+    "category": "encouragement",
+    "text": "Tu vas y arriver en ce moment même, je crois en toi."
+  },
+  {
+    "id": 887,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, ma plus belle rencontre, où que je sois."
+  },
+  {
+    "id": 888,
+    "category": "bonjour",
+    "text": "Un petit bonjour depuis hier, et je voulais te le dire, mon trésor."
+  },
+  {
+    "id": 889,
+    "category": "bonne_nuit",
+    "text": "Mon/ma chéri·e, que à cet instant se termine en douceur pour toi."
+  },
+  {
+    "id": 890,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, mon/ma chéri·e."
+  },
+  {
+    "id": 891,
+    "category": "bonjour",
+    "text": "Bonjour l'amour de ma vie, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 892,
+    "category": "humour_tendre",
+    "text": "Je te préviens mon/ma chéri·e, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 893,
+    "category": "encouragement",
+    "text": "N'oublie pas depuis que je me suis réveillé·e à quel point tu es capable, mon rayon de soleil."
+  },
+  {
+    "id": 894,
+    "category": "manque",
+    "text": "Ma plus belle rencontre, ton absence se sent depuis que je me suis réveillé·e, j'ai hâte de te retrouver."
+  },
+  {
+    "id": 895,
+    "category": "fierte",
+    "text": "Ta persévérance depuis hier m'inspire plus que tu ne le crois."
+  },
+  {
+    "id": 896,
+    "category": "encouragement",
+    "text": "Je sais que depuis notre dernier appel est difficile, mais tu es plus fort/forte que tu ne l'imagines."
+  },
+  {
+    "id": 897,
+    "category": "gratitude",
+    "text": "Je suis reconnaissant/reconnaissante de t'avoir dans ma vie."
+  },
+  {
+    "id": 898,
+    "category": "humour_tendre",
+    "text": "Mon inspiration, sondage express : tu penses à moi à cette heure-ci aussi ?"
+  },
+  {
+    "id": 899,
+    "category": "encouragement",
+    "text": "Tu vas y arriver à l'instant précis, je crois en toi."
+  },
+  {
+    "id": 900,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, toi."
+  },
+  {
+    "id": 901,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, mon étoile, tu l'as mérité."
+  },
+  {
+    "id": 902,
+    "category": "gratitude",
+    "text": "Merci de me supporter même à cet instant."
+  },
+  {
+    "id": 903,
+    "category": "bonne_nuit",
+    "text": "Repose-toi bien mon complice, demain sera un jour de plus à tes côtés."
+  },
+  {
+    "id": 904,
+    "category": "encouragement",
+    "text": "Prends une grande respiration, ma moitié, tout va bien se passer."
+  },
+  {
+    "id": 905,
+    "category": "encouragement",
+    "text": "Respire, l'amour de ma vie, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 906,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon cœur."
+  },
+  {
+    "id": 907,
+    "category": "encouragement",
+    "text": "Respire, mon cœur, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 908,
+    "category": "gratitude",
+    "text": "Merci pour ta patience depuis que je me suis réveillé·e, mon repère."
+  },
+  {
+    "id": 909,
+    "category": "gratitude",
+    "text": "Merci pour cet après-midi, ça m'a fait vraiment plaisir."
+  },
+  {
+    "id": 910,
+    "category": "encouragement",
+    "text": "Tiens bon mon trésor, je suis là si tu as besoin."
+  },
+  {
+    "id": 911,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, ma moitié."
+  },
+  {
+    "id": 912,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon inspiration, où que je sois."
+  },
+  {
+    "id": 913,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, mon étoile."
+  },
+  {
+    "id": 914,
+    "category": "encouragement",
+    "text": "Je crois en toi toute la journée, plus que tu ne le crois toi-même."
+  },
+  {
+    "id": 915,
+    "category": "humour_tendre",
+    "text": "Je te préviens ma moitié, je vais encore te dire que je t'aime."
+  },
+  {
+    "id": 916,
+    "category": "fierte",
+    "text": "Je suis fier/fière de toi à cet instant, et je le pense vraiment."
+  },
+  {
+    "id": 917,
+    "category": "romantique",
+    "text": "Tu rends depuis ce week-end plus lumineux, mon repère, sans même essayer."
+  },
+  {
+    "id": 918,
+    "category": "gratitude",
+    "text": "Merci pour ta patience à l'instant précis, mon roc."
+  },
+  {
+    "id": 919,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit mon rayon de soleil, à demain pour te le redire encore."
+  },
+  {
+    "id": 920,
+    "category": "encouragement",
+    "text": "Mon cœur, je pense fort à toi pour à cette heure-ci, tu vas assurer."
+  },
+  {
+    "id": 921,
+    "category": "bonjour",
+    "text": "Réveille-toi, ma plus belle rencontre, je pensais déjà à toi à cet instant."
+  },
+  {
+    "id": 922,
+    "category": "gratitude",
+    "text": "Je réalise depuis que je me suis réveillé·e à quel point j'ai de la chance de t'avoir."
+  },
+  {
+    "id": 923,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, ma personne préférée."
+  },
+  {
+    "id": 924,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon trésor."
+  },
+  {
+    "id": 925,
+    "category": "manque",
+    "text": "Tu me manques à l'instant précis, et je ne peux pas le garder pour moi."
+  },
+  {
+    "id": 926,
+    "category": "bonjour",
+    "text": "Un petit bonjour à l'instant précis, et ça m'a fait sourire, ma moitié."
+  },
+  {
+    "id": 927,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon inspiration."
+  },
+  {
+    "id": 928,
+    "category": "gratitude",
+    "text": "Je ne te remercie jamais assez pour tout ce que tu fais, mon pilier."
+  },
+  {
+    "id": 929,
+    "category": "fierte",
+    "text": "Mon bonheur, ce que tu as fait depuis ce matin m'a vraiment marqué·e."
+  },
+  {
+    "id": 930,
+    "category": "bonne_nuit",
+    "text": "Que cette nuit te fasse du bien, mon amour, tu l'as mérité."
+  },
+  {
+    "id": 931,
+    "category": "encouragement",
+    "text": "Respire, mon complice, tu gères mieux que tu ne le penses."
+  },
+  {
+    "id": 932,
+    "category": "bonjour",
+    "text": "Ma douceur, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 933,
+    "category": "fierte",
+    "text": "Ce que tu accomplis cette semaine force mon respect, mon cœur."
+  },
+  {
+    "id": 934,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, mon étoile ? Bonne réponse : oui."
+  },
+  {
+    "id": 935,
+    "category": "fierte",
+    "text": "Ce que tu accomplis depuis que je me suis réveillé·e force mon respect, mon roc."
+  },
+  {
+    "id": 936,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, mon repère."
+  },
+  {
+    "id": 937,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon complice, tu vas gérer ça aussi."
+  },
+  {
+    "id": 938,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour à l'instant précis, ma plus belle rencontre."
+  },
+  {
+    "id": 939,
+    "category": "gratitude",
+    "text": "Ma vie, merci d'avoir été là à cette heure-ci, sans raison particulière."
+  },
+  {
+    "id": 940,
+    "category": "bonne_nuit",
+    "text": "Ferme les yeux tranquille, mon inspiration, je suis là même à distance."
+  },
+  {
+    "id": 941,
+    "category": "bonjour",
+    "text": "Que cette journée t'apporte tout ce que tu mérites, mon inspiration."
+  },
+  {
+    "id": 942,
+    "category": "romantique",
+    "text": "Il n'y a pas assez de mots pour dire à quel point je t'aime, mon amour."
+  },
+  {
+    "id": 943,
+    "category": "humour_tendre",
+    "text": "Communiqué important : je t'aime, même cette semaine où tu ronfles peut-être."
+  },
+  {
+    "id": 944,
+    "category": "bonne_nuit",
+    "text": "Dors bien mon cœur, demain je penserai encore à toi au réveil."
+  },
+  {
+    "id": 945,
+    "category": "gratitude",
+    "text": "Je mesure toute la journée à quel point tu comptes pour moi, mon rayon de soleil."
+  },
+  {
+    "id": 946,
+    "category": "bonjour",
+    "text": "Un café virtuel pour toi ce matin, toi."
+  },
+  {
+    "id": 947,
+    "category": "romantique",
+    "text": "Mon rayon de soleil, depuis que tu es parti·e me rappelle à quel point je suis bien avec toi."
+  },
+  {
+    "id": 948,
+    "category": "encouragement",
+    "text": "Courage mon roc, la journée finira par se terminer, et je serai là."
+  },
+  {
+    "id": 949,
+    "category": "bonjour",
+    "text": "Que en ce moment commence avec le sourire, toi."
+  },
+  {
+    "id": 950,
+    "category": "bonne_nuit",
+    "text": "Ma complice, que en ce moment se termine en douceur pour toi."
+  },
+  {
+    "id": 951,
+    "category": "humour_tendre",
+    "text": "Je t'écris pour t'annoncer officiellement que tu es adorable, mon pilier."
+  },
+  {
+    "id": 952,
+    "category": "romantique",
+    "text": "Tu es la plus belle partie de toute cette semaine, l'amour de ma vie, et ça me fait du bien de te l'écrire."
+  },
+  {
+    "id": 953,
+    "category": "gratitude",
+    "text": "Merci d'être toujours là toute la soirée, ça compte plus que tu ne le crois."
+  },
+  {
+    "id": 954,
+    "category": "fierte",
+    "text": "Ce que tu fais ne passe pas inaperçu pour moi, l'amour de ma vie."
+  },
+  {
+    "id": 955,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, mon roc."
+  },
+  {
+    "id": 956,
+    "category": "humour_tendre",
+    "text": "Notification : ton/ta chéri·e pense à toi depuis que je me suis réveillé·e."
+  },
+  {
+    "id": 957,
+    "category": "fierte",
+    "text": "Tu gères tellement bien tout ce qui t'arrive depuis ce matin, bravo."
+  },
+  {
+    "id": 958,
+    "category": "manque",
+    "text": "Ton absence a un poids en ce moment, j'ai hâte que ça change."
+  },
+  {
+    "id": 959,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour depuis que tu es parti·e, mon/ma chéri·e."
+  },
+  {
+    "id": 960,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit toi, à demain pour te le redire encore."
+  },
+  {
+    "id": 961,
+    "category": "encouragement",
+    "text": "Tu as déjà surmonté pire, mon pilier, tu vas gérer ça aussi."
+  },
+  {
+    "id": 962,
+    "category": "fierte",
+    "text": "Mon amour, ce que tu as fait ces derniers jours m'a vraiment marqué·e."
+  },
+  {
+    "id": 963,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées à cette heure-ci."
+  },
+  {
+    "id": 964,
+    "category": "gratitude",
+    "text": "Merci de me supporter même ce matin."
+  },
+  {
+    "id": 965,
+    "category": "bonne_nuit",
+    "text": "Mon inspiration, que à l'instant précis se termine en douceur pour toi."
+  },
+  {
+    "id": 966,
+    "category": "bonjour",
+    "text": "Mon trésor, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 967,
+    "category": "bonne_nuit",
+    "text": "Un dernier mot avant de fermer les yeux : merci pour toute la soirée, mon pilier."
+  },
+  {
+    "id": 968,
+    "category": "humour_tendre",
+    "text": "Petit sondage : tu sais que je t'aime, ma plus belle rencontre ? Bonne réponse : oui."
+  },
+  {
+    "id": 969,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là ces derniers jours, tout simplement."
+  },
+  {
+    "id": 970,
+    "category": "manque",
+    "text": "Ton absence a un poids depuis hier, j'ai hâte que ça change."
+  },
+  {
+    "id": 971,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, mon pilier."
+  },
+  {
+    "id": 972,
+    "category": "bonne_nuit",
+    "text": "Que tes rêves soient aussi doux que toi ce soir, l'amour de ma vie."
+  },
+  {
+    "id": 973,
+    "category": "romantique",
+    "text": "Je choisirais encore et toujours de t'aimer, mon/ma chéri·e."
+  },
+  {
+    "id": 974,
+    "category": "bonjour",
+    "text": "Bonjour mon/ma chéri·e, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 975,
+    "category": "fierte",
+    "text": "Tu avances tellement bien, ma complice, continue comme ça."
+  },
+  {
+    "id": 976,
+    "category": "fierte",
+    "text": "Ce que tu accomplis à l'instant précis force mon respect, mon repère."
+  },
+  {
+    "id": 977,
+    "category": "romantique",
+    "text": "Tu rends toute la soirée plus lumineux, mon rayon de soleil, sans même essayer."
+  },
+  {
+    "id": 978,
+    "category": "fierte",
+    "text": "Mon inspiration, ce que tu as fait depuis ce week-end m'a vraiment marqué·e."
+  },
+  {
+    "id": 979,
+    "category": "manque",
+    "text": "Toi, depuis ce week-end me rappelle à quel point j'ai besoin de toi."
+  },
+  {
+    "id": 980,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques à cette heure-ci, comme d'habitude."
+  },
+  {
+    "id": 981,
+    "category": "gratitude",
+    "text": "Je mesure cette semaine à quel point tu comptes pour moi, mon complice."
+  },
+  {
+    "id": 982,
+    "category": "bonjour",
+    "text": "Premier réflexe du matin : t'écrire un petit mot, mon rayon de soleil."
+  },
+  {
+    "id": 983,
+    "category": "romantique",
+    "text": "Rien qu'en pensant à toi depuis que tu es parti·e, j'ai le sourire."
+  },
+  {
+    "id": 984,
+    "category": "humour_tendre",
+    "text": "Alerte info : tu me manques à l'instant précis, comme d'habitude."
+  },
+  {
+    "id": 985,
+    "category": "manque",
+    "text": "Ton absence a un poids à cet instant, j'ai hâte que ça change."
+  },
+  {
+    "id": 986,
+    "category": "manque",
+    "text": "J'ai hâte de te serrer dans mes bras, ma complice, et ça m'a fait sourire."
+  },
+  {
+    "id": 987,
+    "category": "fierte",
+    "text": "J'admire ta force à cet instant, l'amour de ma vie."
+  },
+  {
+    "id": 988,
+    "category": "bonne_nuit",
+    "text": "Bonne nuit mon repère, à demain pour te le redire encore."
+  },
+  {
+    "id": 989,
+    "category": "humour_tendre",
+    "text": "Rapport du jour : tu occupes 97% de mes pensées toute cette semaine."
+  },
+  {
+    "id": 990,
+    "category": "bonjour",
+    "text": "Bonjour mon inspiration, j'espère que ta journée commence aussi bien que mon envie de te voir."
+  },
+  {
+    "id": 991,
+    "category": "romantique",
+    "text": "Tu es mon endroit préféré, mon repère, où que je sois."
+  },
+  {
+    "id": 992,
+    "category": "bonjour",
+    "text": "Mon étoile, que ta journée soit aussi douce que ton regard le matin."
+  },
+  {
+    "id": 993,
+    "category": "manque",
+    "text": "J'ai regardé une de nos photos à l'instant précis, tu me manques."
+  },
+  {
+    "id": 994,
+    "category": "romantique",
+    "text": "Je t'aime encore plus à cette heure-ci qu'hier, et c'est déjà beaucoup dire."
+  },
+  {
+    "id": 995,
+    "category": "gratitude",
+    "text": "Merci d'être toi, tout simplement, mon cœur."
+  },
+  {
+    "id": 996,
+    "category": "bonjour",
+    "text": "Premier message du jour, comme toujours : je t'aime, mon étoile."
+  },
+  {
+    "id": 997,
+    "category": "romantique",
+    "text": "Je retomberais amoureux/amoureuse de toi encore et encore, mon étoile."
+  },
+  {
+    "id": 998,
+    "category": "romantique",
+    "text": "Ta présence dans ma vie est le plus beau des cadeaux."
+  },
+  {
+    "id": 999,
+    "category": "bonne_nuit",
+    "text": "J'espère que la nuit sera douce pour toi, mon bonheur."
+  },
+  {
+    "id": 1000,
+    "category": "manque",
+    "text": "J'aimerais que tu sois là depuis hier, tout simplement."
+  }
+]

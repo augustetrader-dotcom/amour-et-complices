@@ -1,0 +1,25 @@
+{
+  "$schema": "https://opencode.ai",
+  "model": "openrouter/~deepseek/deepseek-v4-flash-latest",
+  "favorites": [
+    "openrouter/~deepseek/deepseek-v4-flash-latest",
+    "openrouter/liquid/lfm-2.5-2.6b:free",
+    "openrouter/google/gemma-4-31b-it:free",
+    "openrouter/google/gemma-4-26b-a4b-it:free"
+  ],
+  "agents": {
+    "architecte": {
+      "model": "openrouter/~deepseek/deepseek-v4-flash-latest",
+      "systemPrompt": "Tu es l'architecte. Tu planifies la structure des fichiers et découpes les tâches."
+    },
+    "dev": {
+      "model": "openrouter/liquid/lfm-2.5-2.6b:free",
+      "systemPrompt": "Tu es le développeur principal. Tu écris le code et génères les fichiers demandés."
+    },
+    "reviewer": {
+      "model": "openrouter/google/gemma-4-31b-it:free",
+      "systemPrompt": "Tu es le relecteur de code. Tu cherches les bugs et optimises les scripts créés."
+    }
+  }
+}
+    

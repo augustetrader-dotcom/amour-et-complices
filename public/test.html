@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Amour & Complices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #181324;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .status {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .success { background: #10b981; }
+        .error { background: #ef4444; }
+        .info { background: #3b82f6; }
+    </style>
+</head>
+<body>
+    <h1>Test de Chargement - Amour & Complices</h1>
+    
+    <div id="status" class="status info">Chargement...</div>
+    
+    <div id="tests"></div>
+    
+    <script>
+        const tests = [];
+        
+        function addTest(name, success, message) {
+            tests.push({ name, success, message });
+            const div = document.createElement('div');
+            div.className = `status ${success ? 'success' : 'error'}`;
+            div.textContent = `${success ? '✅' : '❌'} ${name}: ${message}`;
+            document.getElementById('tests').appendChild(div);
+        }
+        
+        // Test 1: Config
+        try {
+            const script = document.createElement('script');
+            script.src = 'js/config.js';
+            script.onload = () => {
+                if (window.APP_CONFIG) {
+                    addTest('Config', true, 'Chargé avec succès');
+                } else {
+                    addTest('Config', false, 'APP_CONFIG non défini');
+                }
+            };
+            script.onerror = () => addTest('Config', false, 'Erreur de chargement');
+            document.head.appendChild(script);
+        } catch (e) {
+            addTest('Config', false, e.message);
+        }
+        
+        // Test 2: Supabase
+        setTimeout(() => {
+            try {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+                script.onload = () => {
+                    if (window.supabase) {
+                        addTest('Supabase', true, 'Bibliothèque chargée');
+                        
+                        // Test connexion
+                        const sb = supabase.createClient(window.APP_CONFIG.SUPABASE_URL, window.APP_CONFIG.SUPABASE_ANON_KEY);
+                        sb.from('profiles').select('*').limit(1).then(() => {
+                            addTest('Supabase Connexion', true, 'Connexion réussie');
+                        }).catch(err => {
+                            addTest('Supabase Connexion', false, err.message);
+                        });
+                    } else {
+                        addTest('Supabase', false, 'Bibliothèque non chargée');
+                    }
+                };
+                script.onerror = () => addTest('Supabase', false, 'Erreur de chargement');
+                document.head.appendChild(script);
+            } catch (e) {
+                addTest('Supabase', false, e.message);
+            }
+        }, 1000);
+        
+        // Test 3: App.js
+        setTimeout(() => {
+            try {
+                const script = document.createElement('script');
+                script.src = 'js/app.js';
+                script.onload = () => {
+                    addTest('App.js', true, 'Chargé avec succès');
+                    document.getElementById('status').textContent = 'Tests terminés';
+                    document.getElementById('status').className = 'status success';
+                };
+                script.onerror = () => addTest('App.js', false, 'Erreur de chargement');
+                document.head.appendChild(script);
+            } catch (e) {
+                addTest('App.js', false, e.message);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

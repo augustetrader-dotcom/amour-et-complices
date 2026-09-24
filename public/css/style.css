@@ -1,0 +1,912 @@
+/* ==========================================
+   STYLE PRINCIPAL - AMOUR & COMPICES
+   Application couple & amis
+   ========================================== */
+
+/* ==========================================
+   VARIABLES CSS & THÈMES
+   ========================================== */
+:root {
+  --bg-primary: #181324;
+  --bg-card: #231b36;
+  --bg-input: #2f2549;
+  --text-primary: #f5effe;
+  --text-muted: #a395c2;
+  --accent-gold: #e2b76b;
+  --accent-rose: #e66782;
+  --accent-rose-soft: rgba(230, 103, 130, 0.18);
+  --border-color: #382c54;
+  --bubble-me: linear-gradient(135deg, #d89b43, #c9852f);
+  --bubble-me-text: #ffffff;
+  --bubble-them: #2d2347;
+  --bubble-them-text: #f0eafb;
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.35);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* Thèmes personnalisés */
+body.theme-blush {
+  --bg-primary: #faf2f4; --bg-card: #ffffff; --bg-input: #f4e8eb;
+  --text-primary: #321d26; --text-muted: #8d717d; --accent-gold: #c78841;
+  --accent-rose: #d65977; --accent-rose-soft: rgba(214, 89, 119, 0.12);
+  --border-color: #ebd3da; --bubble-me: linear-gradient(135deg, #d65977, #bd4563);
+  --bubble-me-text: #ffffff; --bubble-them: #ffffff; --bubble-them-text: #321d26;
+}
+body.theme-sunset {
+  --bg-primary: #1f1412; --bg-card: #2e1d1b; --bg-input: #3e2724;
+  --text-primary: #fcf1ed; --text-muted: #bda29a; --accent-gold: #f59e0b;
+  --accent-rose: #f97316; --border-color: #4b302c;
+  --bubble-me: linear-gradient(135deg, #ea580c, #c2410c); --bubble-them: #33211f;
+}
+body.theme-emerald {
+  --bg-primary: #0f1c18; --bg-card: #172a24; --bg-input: #203a32;
+  --text-primary: #e6f6f1; --text-muted: #8fb9ab; --accent-gold: #34d399;
+  --accent-rose: #059669; --border-color: #274b3f;
+  --bubble-me: linear-gradient(135deg, #10b981, #047857); --bubble-them: #1a3029;
+}
+body.theme-noir {
+  --bg-primary: #0a0a0c; --bg-card: #15151a; --bg-input: #22222b;
+  --text-primary: #f3f4f6; --text-muted: #9ca3af; --accent-gold: #d1d5db;
+  --accent-rose: #ec4899; --border-color: #2e2e3a;
+  --bubble-me: linear-gradient(135deg, #374151, #1f2937); --bubble-them: #1c1c24;
+}
+
+/* ==========================================
+   RESET & STYLES DE BASE
+   ========================================== */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: #110d18; font-family: var(--font-sans); color: var(--text-primary);
+  padding: 20px 10px; transition: background 0.4s ease;
+}
+
+/* ==========================================
+   CONTENEUR SMARTPHONE (PHONE FRAME)
+   ========================================== */
+.phone-frame {
+  width: 395px; height: 830px; max-height: 96vh; background: var(--bg-primary);
+  border-radius: 46px; border: 11px solid #140f1a; box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  display: flex; flex-direction: column; position: relative; overflow: hidden;
+  background-size: cover; background-position: center; transition: all 0.3s ease;
+}
+.phone-frame.custom-bg::before {
+  content: ""; position: absolute; inset: 0; background: rgba(18, 13, 27, 0.78);
+  backdrop-filter: blur(8px); z-index: 1; pointer-events: none;
+}
+.notch {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 140px; height: 24px; background: #140f1a; border-radius: 0 0 16px 16px;
+  z-index: 100; display: flex; align-items: center; justify-content: center;
+}
+.notch-speaker { width: 44px; height: 4px; background: #292036; border-radius: 4px; }
+
+/* ==========================================
+   EN-TÊTE DE L'APPLICATION
+   ========================================== */
+.app-header {
+  position: relative; z-index: 20; padding: 34px 16px 10px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(35, 27, 54, 0.5); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-color); flex-shrink: 0;
+}
+.partner-meta { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.avatar-wrap { position: relative; }
+.avatar-img {
+  width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+  background: var(--bg-input); border: 2px solid var(--accent-gold);
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+  overflow: hidden;
+}
+.avatar-img img { width: 100%; height: 100%; object-fit: cover; }
+.status-dot {
+  position: absolute; bottom: 0; right: 0; width: 11px; height: 11px;
+  background: #10b981; border: 2px solid var(--bg-primary); border-radius: 50%;
+}
+.status-dot.offline { background: #6b7280; }
+.partner-info { display: flex; flex-direction: column; }
+.partner-name { font-size: 14px; font-weight: 600; color: var(--text-primary); line-height: 1.2; }
+.partner-status { font-size: 11px; color: var(--accent-gold); font-weight: 500; }
+.typing-badge { font-size: 11px; color: var(--accent-rose); font-style: italic; display: none; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  background: var(--bg-input); border: 1px solid var(--border-color);
+  color: var(--text-primary); width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  font-size: 15px; transition: transform 0.15s ease, background 0.2s; flex-shrink: 0;
+}
+.icon-btn:hover { transform: scale(1.05); background: var(--border-color); }
+
+/* ==========================================
+   ÉCRAN PRINCIPAL
+   ========================================== */
+.screen-body {
+  flex: 1; position: relative; z-index: 10; display: flex;
+  flex-direction: column; overflow: hidden;
+}
+.screen-scrollable {
+  flex: 1; overflow-y: auto; padding: 18px 16px 14px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================
+   BARRE DE NAVIGATION INFÉRIEURE (5 ONGLETS)
+   ========================================== */
+.bottom-nav {
+  position: relative; z-index: 20; display: flex; background: var(--bg-card);
+  border-top: 1px solid var(--border-color); padding: 8px 4px 12px; flex-shrink: 0;
+}
+.nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; background: none; border: none; color: var(--text-muted); cursor: pointer;
+  font-size: 11px; font-weight: 500; transition: color 0.2s, transform 0.15s; padding: 4px 0;
+}
+.nav-btn .nav-icon { font-size: 18px; line-height: 1; }
+.nav-btn.active { color: var(--accent-gold); font-weight: 700; transform: translateY(-1px); }
+.nav-btn.active .nav-icon { filter: drop-shadow(0 2px 6px rgba(226, 183, 107, 0.4)); }
+
+/* ==========================================
+   ÉCRAN DE CHAT
+   ========================================== */
+.chat-view {
+  display: flex; flex-direction: column; height: 100%; overflow: hidden; width: 100%;
+}
+.chat-messages {
+  flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 14px 16px;
+  display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth;
+}
+.chat-messages::-webkit-scrollbar { width: 5px; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+/* ==========================================
+   BULLES DE MESSAGE
+   ========================================== */
+.msg-row {
+  display: flex; flex-direction: column; max-width: 82%; position: relative;
+  /* Empêche la sélection de texte au long-press mobile */
+  user-select: none; -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.msg-row.me { align-self: flex-end; align-items: flex-end; }
+/* [LONG-PRESS] Pas de sélection native au toucher : menu contextuel style WhatsApp */
+.msg-row .msg-bubble { user-select: none; -webkit-user-select: none; }
+
+.msg-bubble {
+  padding: 10px 14px; border-radius: 18px; font-size: 13px; line-height: 1.45;
+  overflow-wrap: break-word; box-shadow: 0 2px 8px rgba(0,0,0,0.15); position: relative;
+}
+.msg-row.me .msg-bubble {
+  background: var(--bubble-me); color: var(--bubble-me-text);
+  border-bottom-right-radius: 4px;
+}
+.msg-row.them .msg-bubble {
+  background: var(--bubble-them); color: var(--bubble-them-text);
+  border-bottom-left-radius: 4px; border: 1px solid var(--border-color);
+}
+
+.msg-meta {
+  font-size: 10px; color: var(--text-muted); margin-top: 3px; display: flex;
+  align-items: center; gap: 4px; padding: 0 4px;
+}
+.msg-row.me .msg-meta { justify-content: flex-end; }
+/* [CONFIRMATIONS] Traits de confirmation style WhatsApp (SVG nets) */
+.ticks { display: inline-flex; align-items: center; color: #aab3c5; }
+.ticks svg { display: block; }
+.ticks.read { color: #53bdeb; }
+/* [UPLOAD DIRECT] Bulle d'attente pendant l'envoi d'un média */
+.msg-pending { opacity: 0.65; font-style: italic; }
+
+/* ==========================================
+   MÉDIAS DANS LE CHAT
+   ========================================== */
+.chat-media-preview {
+  max-width: 220px; max-height: 240px; border-radius: 12px; cursor: pointer;
+  display: block; object-fit: cover; transition: transform 0.2s;
+}
+.chat-media-preview:hover { transform: scale(1.02); }
+.chat-video-preview { max-width: 220px; border-radius: 12px; }
+.chat-audio-preview { width: 210px; height: 36px; }
+
+/* ==========================================
+   CARTES VUE UNIQUE
+   ========================================== */
+.once-card {
+  padding: 12px 14px; border-radius: 14px; display: flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 500; cursor: pointer; border: 1px dashed var(--accent-gold);
+  background: rgba(226, 183, 107, 0.12); color: var(--accent-gold); transition: all 0.2s ease;
+}
+.once-card.sender {
+  opacity: 0.85; cursor: not-allowed; border-style: solid;
+  background: rgba(255, 255, 255, 0.08); color: var(--text-muted);
+}
+.once-card.consumed {
+  opacity: 0.55; cursor: default; border-color: var(--border-color);
+  background: transparent; color: var(--text-muted);
+}
+.once-card .once-icon { font-size: 20px; }
+
+/* ==========================================
+   CARTE DE JEU / MOTS DOUX DANS LE CHAT
+   ========================================== */
+.card-embedded {
+  background: var(--bg-card); border: 1px solid var(--accent-gold);
+  border-radius: 14px; padding: 12px; max-width: 240px; font-family: var(--font-serif);
+}
+.card-embedded-badge { font-size: 10px; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 4px; }
+.card-embedded-prompt { font-size: 13px; font-weight: 500; line-height: 1.35; margin-bottom: 8px; }
+.card-embedded-btn {
+  background: var(--accent-gold); color: #1a1226; font-family: var(--font-sans);
+  font-size: 11px; font-weight: 600; padding: 6px 10px; border-radius: 8px; border: none; cursor: pointer;
+}
+
+/* ==========================================
+   BARRE DE SAISIE FIXÉE
+   ========================================== */
+.chat-input-bar {
+  background: var(--bg-card); border-top: 1px solid var(--border-color);
+  padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px;
+  flex-shrink: 0; width: 100%; box-sizing: border-box; overflow: hidden;
+}
+.chat-attach-preview-bar {
+  display: none; align-items: center; justify-content: space-between;
+  padding: 6px 10px; background: var(--bg-input); border-radius: 10px; font-size: 12px;
+}
+.chat-input-controls {
+  display: flex; align-items: center; gap: 6px; width: 100%; box-sizing: border-box;
+}
+.chat-text-input {
+  flex: 1 1 auto; min-width: 0 !important; background: var(--bg-input);
+  border: 1px solid var(--border-color); color: var(--text-primary);
+  border-radius: 20px; padding: 9px 14px; font-size: 13px; outline: none;
+  transition: border-color 0.2s; box-sizing: border-box;
+}
+.chat-text-input:focus { border-color: var(--accent-gold); }
+.chat-send-btn {
+  flex: 0 0 38px; width: 38px; height: 38px; border-radius: 50%;
+  background: var(--accent-gold); color: #1a1226; border: none;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  font-size: 15px; font-weight: 700; transition: transform 0.15s; flex-shrink: 0;
+  box-sizing: border-box; padding: 0;
+}
+.chat-send-btn:hover { transform: scale(1.06); }
+
+/* ==========================================
+   BOUTONS STANDARDS & FORMULAIRES
+   ========================================== */
+.btn-primary {
+  width: 100%; background: var(--accent-gold); color: #181124; border: none;
+  padding: 13px 20px; border-radius: 14px; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.btn-secondary {
+  width: 100%; background: transparent; color: var(--text-primary); border: 1px solid var(--border-color);
+  padding: 12px 18px; border-radius: 14px; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: background 0.2s;
+}
+.btn-secondary:hover { background: var(--bg-input); }
+.input-field {
+  width: 100%; background: var(--bg-input); border: 1px solid var(--border-color);
+  color: var(--text-primary); border-radius: 14px; padding: 12px 16px; font-size: 14px;
+  outline: none; margin-bottom: 12px; font-family: inherit; box-sizing: border-box;
+}
+.input-field:focus { border-color: var(--accent-gold); }
+
+/* ==========================================
+   JEU À DEUX ÉMOTIONNEL & SYNCHRONISÉ (MON CAMP)
+   ========================================== */
+.game-container { display: flex; flex-direction: column; gap: 14px; }
+.game-card-view {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: 20px; padding: 24px 20px; text-align: center; min-height: 180px;
+  display: flex; flex-direction: column; justify-content: center; position: relative;
+  box-shadow: var(--shadow-soft);
+}
+.game-badge {
+  align-self: center; font-size: 11px; font-weight: 600; text-transform: uppercase;
+  color: var(--accent-rose); letter-spacing: 1px; margin-bottom: 12px;
+}
+.game-prompt-text {
+  font-family: var(--font-serif); font-size: 18px; line-height: 1.45;
+  color: var(--text-primary); margin-bottom: 16px;
+}
+.secret-box {
+  background: var(--bg-input); border: 1px dashed var(--accent-gold);
+  border-radius: 14px; padding: 12px; margin-top: 8px;
+}
+.revealed-camps-box {
+  display: flex; flex-direction: column; gap: 10px; margin-top: 14px; text-align: left;
+}
+.revealed-camp-card {
+  background: var(--bg-input); border-radius: 12px; padding: 12px 14px;
+  border-left: 3px solid var(--accent-gold);
+}
+.revealed-camp-card.partner { border-left-color: var(--accent-rose); }
+
+/* [JEU SYNCHRONISÉ] Badges de statut (Moi / Partenaire) */
+.game-status {
+  background: var(--bg-input); border: 1px solid var(--border-color);
+  color: var(--text-muted); border-radius: 20px; padding: 5px 12px;
+  font-size: 11px; font-weight: 600;
+}
+.game-status.ok { border-color: var(--accent-gold); color: var(--accent-gold); }
+
+/* ==========================================
+   [STORIES] BARRE DE STORIES 24H + VISIONNEUSE PLEIN ÉCRAN
+   ========================================== */
+.stories-bar {
+  display: flex; gap: 14px; padding: 10px 14px; overflow-x: auto;
+  border-bottom: 1px solid var(--border-color); background: rgba(35, 27, 54, 0.3);
+  flex-shrink: 0;
+}
+.story-circle {
+  position: relative; width: 54px; height: 54px; border-radius: 50%;
+  padding: 3px; cursor: pointer; flex-shrink: 0; transition: transform 0.15s;
+  background: var(--border-color); /* anneau gris = pas de story */
+}
+.story-circle:active { transform: scale(0.94); }
+.story-circle.has-story {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+.story-circle.me.has-story { background: linear-gradient(45deg, #e2b76b, #c9852f); }
+.story-inner {
+  width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+  background: var(--bg-input); border: 2px solid var(--bg-primary);
+  display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.story-inner img { width: 100%; height: 100%; object-fit: cover; }
+.story-add-badge {
+  position: absolute; bottom: -2px; right: -2px; width: 20px; height: 20px;
+  background: var(--accent-rose); color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; border: 2px solid var(--bg-primary);
+}
+.story-label { font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 4px; max-width: 62px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* [STORIES] Cercle SANS story : pointillés + grisé -> impossible de
+   le confondre avec une vraie story (qui a un anneau coloré plein) */
+.story-circle.empty { background: transparent; border: 2px dashed var(--border-color); padding: 1px; }
+.story-circle.empty .story-inner { opacity: 0.35; }
+.story-none-badge {
+  position: absolute; bottom: -2px; right: -2px; width: 18px; height: 18px;
+  background: var(--bg-input); color: var(--text-muted); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; border: 2px solid var(--bg-primary);
+}
+.stories-hint {
+  align-self: center; font-size: 10px; color: var(--text-muted);
+  font-style: italic; margin-left: 8px; line-height: 1.5;
+}
+
+/* ==========================================
+   [CRUD] ÉTATS SUPPRIMÉ/MODIFIÉ + MENU LONG-PRESS (STYLE WHATSAPP)
+   ========================================== */
+.msg-deleted { font-style: italic; opacity: 0.6; }
+.edited-flag { font-style: italic; opacity: 0.65; font-size: 10px; margin-right: 4px; }
+.msg-row.msg-selected .msg-bubble,
+.msg-row.msg-selected .emoji-only-msg,
+.msg-row.msg-selected .once-card {
+  outline: 2px solid var(--accent-gold); outline-offset: 2px;
+}
+.msg-menu-overlay {
+  position: fixed; inset: 0; z-index: 80;
+  background: rgba(0,0,0,0.0);
+  display: none; align-items: flex-end; justify-content: center;
+  transition: background 0.25s ease;
+}
+.msg-menu-overlay.open {
+  display: flex;
+  background: rgba(0,0,0,0.45);
+  animation: overlayFadeIn 0.2s ease forwards;
+}
+@keyframes overlayFadeIn {
+  from { background: rgba(0,0,0,0); }
+  to { background: rgba(0,0,0,0.45); }
+}
+.msg-menu-sheet {
+  width: 100%; max-width: 420px;
+  background: var(--bg-card); color: var(--text-primary);
+  border-radius: 18px 18px 0 0;
+  padding: 10px 8px calc(14px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -8px 28px rgba(0,0,0,0.35);
+  animation: sheetSlideUp 0.28s cubic-bezier(0.34,1.2,0.64,1) forwards;
+}
+@keyframes sheetSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.msg-menu-handle {
+  width: 36px; height: 4px; border-radius: 4px;
+  background: var(--border-color); margin: 4px auto 10px;
+}
+.msg-menu-btn {
+  width: 100%; background: none; border: none; color: inherit;
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 16px; font-size: 15px; text-align: left; cursor: pointer;
+  border-radius: 12px; transition: background 0.15s;
+}
+.msg-menu-btn:hover, .msg-menu-btn:active { background: var(--bg-input); }
+.msg-menu-btn.danger { color: #ef4444; }
+.msg-info-row {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 10px 16px; font-size: 13px;
+  border-bottom: 1px solid var(--border-color);
+}
+.msg-info-row:last-of-type { border-bottom: none; }
+.msg-info-label { color: var(--text-muted); }
+.msg-info-value { font-weight: 600; text-align: right; }
+
+/* ==========================================
+   [STICKERS] MESSAGE COMPOSÉ UNIQUEMENT D'EMOJIS -> AFFICHÉ EN GRAND
+   ========================================== */
+.emoji-only-msg {
+  font-size: 46px; line-height: 1.1; padding: 2px 6px;
+  background: none; box-shadow: none;
+}
+
+/* ==========================================
+   [EMOJI / STICKERS / GIF] PANNEAU D'INSERTION
+   ========================================== */
+.emoji-panel {
+  background: var(--bg-card); border-top: 1px solid var(--border-color);
+  padding: 8px 10px 12px; max-height: 240px; overflow-y: auto; flex-shrink: 0;
+}
+.emoji-tabs { display: flex; gap: 4px; margin-bottom: 8px; align-items: center; }
+.emoji-body { max-height: 170px; overflow-y: auto; }
+.emoji-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; }
+.emoji-grid.stickers { grid-template-columns: repeat(6, 1fr); }
+.emoji-cell {
+  background: none; border: none; font-size: 20px; padding: 6px 0;
+  cursor: pointer; border-radius: 8px; transition: transform 0.12s, background 0.15s;
+}
+.emoji-cell:hover { background: var(--bg-input); transform: scale(1.2); }
+.emoji-cell.big { font-size: 32px; }
+.emoji-hint { font-size: 11px; color: var(--text-muted); padding: 8px 4px; line-height: 1.5; }
+.gif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.gif-cell { width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.15s; }
+.gif-cell:hover { transform: scale(1.03); }
+.story-viewer {
+  position: absolute; inset: 0; z-index: 300; background: #000;
+  display: flex; flex-direction: column;
+}
+.story-progress { display: flex; gap: 4px; padding: 10px 12px 0; }
+.story-progress-seg { flex: 1; height: 3px; background: rgba(255,255,255,0.3); border-radius: 2px; overflow: hidden; }
+.story-progress-seg.filled { background: #fff; }
+.story-progress-seg .fill { display: block; height: 100%; width: 0%; background: #fff; }
+.story-header { display: flex; align-items: center; gap: 10px; padding: 10px 14px; color: #fff; }
+.story-media-container { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.story-media-container img, .story-media-container video { max-width: 100%; max-height: 100%; object-fit: contain; }
+.story-caption { padding: 14px 16px 24px; color: #fff; font-size: 14px; text-align: center; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
+
+/* ==========================================
+   [STORY PREVIEW] OVERLAY PLEIN ÉCRAN AVANT PUBLICATION (STYLE WHATSAPP)
+   ========================================== */
+.story-preview-overlay {
+  position: absolute; inset: 0; z-index: 350; background: #000;
+  display: none; flex-direction: column;
+}
+.story-preview-overlay.active { display: flex; }
+.story-preview-media-wrap {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.story-preview-media-wrap img,
+.story-preview-media-wrap video {
+  max-width: 100%; max-height: 100%; object-fit: contain;
+}
+.story-preview-bar {
+  padding: 12px 14px 24px; background: rgba(0,0,0,0.72);
+  display: flex; align-items: center; gap: 10px;
+}
+.story-preview-bar textarea {
+  flex: 1; background: rgba(0,0,0,0.3); border: none; border-radius: 24px;
+  padding: 10px 16px; color: #fff; font-size: 14px; resize: none; outline: none;
+  line-height: 1.4; font-family: inherit; max-height: 80px; min-height: 40px;
+}
+.story-preview-bar textarea::placeholder { color: rgba(255,255,255,0.7); }
+.story-preview-send-btn {
+  width: 48px; height: 48px; border-radius: 50%; background: #25d366;
+  border: none; color: #fff; font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.4);
+}
+.story-preview-cancel-btn {
+  position: absolute; top: 14px; left: 14px; z-index: 1;
+  background: rgba(0,0,0,0.5); border: none; border-radius: 50%;
+  width: 36px; height: 36px; color: #fff; font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ==========================================
+   [REPLY] BARRE DE RÉPONSE + BULLE CITÉE
+   ========================================== */
+.reply-preview-bar {
+  display: none; align-items: center; gap: 8px;
+  padding: 8px 12px; background: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px 10px 0 0; margin: 0 4px;
+}
+.reply-preview-bar.active { display: flex !important; }
+.reply-preview-text {
+  flex: 1; font-size: 12px; color: var(--text-muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.reply-preview-text strong { display: block; color: var(--accent); font-size: 11px; margin-bottom: 2px; }
+.reply-preview-close {
+  background: none; border: none; color: var(--text-muted); font-size: 18px;
+  cursor: pointer; padding: 0 4px; line-height: 1;
+}
+.reply-quote {
+  background: rgba(255,255,255,0.08); border-left: 3px solid var(--accent);
+  border-radius: 6px; padding: 6px 10px; margin-bottom: 4px;
+  font-size: 11px; color: var(--text-muted); max-width: 100%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  cursor: pointer; transition: opacity 0.15s ease;
+}
+.reply-quote:active { opacity: 0.7; }
+.reply-quote strong { color: var(--accent); display: block; font-size: 10px; margin-bottom: 2px; }
+@keyframes msgHighlightFlash {
+  0% { background: rgba(255, 107, 129, 0.4); transform: scale(1.02); }
+  50% { background: rgba(255, 107, 129, 0.2); }
+  100% { background: transparent; transform: scale(1); }
+}
+.msg-row.highlight-flash {
+  animation: msgHighlightFlash 1.2s ease;
+  border-radius: 12px;
+  transition: transform 0.15s ease;
+}
+
+/* ==========================================
+   [VOICE RECORD] BARRE D'ENREGISTREMENT AUDIO STYLE WHATSAPP
+   ========================================== */
+.voice-record-bar {
+  display: none; align-items: center; justify-content: space-between;
+  width: 100%; padding: 6px 12px; background: rgba(255, 107, 129, 0.12);
+  border: 1px solid rgba(255, 107, 129, 0.35); border-radius: 24px;
+  box-sizing: border-box;
+}
+.voice-record-info {
+  display: flex; align-items: center; gap: 8px; font-weight: 600;
+}
+.voice-record-dot {
+  font-size: 12px; animation: pulseDot 1s infinite alternate ease-in-out;
+}
+@keyframes pulseDot {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0.25; transform: scale(1.2); }
+}
+.voice-record-timer {
+  font-family: var(--font-sans); font-size: 13px; color: var(--accent);
+  min-width: 38px;
+}
+.voice-record-waves {
+  display: flex; align-items: center; gap: 3px; height: 18px;
+}
+.voice-record-waves .wave-bar {
+  width: 3px; height: 5px; background: var(--accent); border-radius: 2px;
+  animation: waveBounce 1s infinite ease-in-out;
+}
+.voice-record-waves .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+.voice-record-waves .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+.voice-record-waves .wave-bar:nth-child(4) { animation-delay: 0.6s; }
+.voice-record-waves .wave-bar:nth-child(5) { animation-delay: 0.8s; }
+@keyframes waveBounce {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+.voice-record-actions {
+  display: flex; align-items: center; gap: 8px;
+}
+.voice-btn-cancel {
+  background: none; border: none; font-size: 17px; cursor: pointer;
+  padding: 4px 6px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.15s;
+}
+.voice-btn-cancel:hover { transform: scale(1.15); }
+.voice-btn-send {
+  background: #22c55e; border: none; color: #fff; width: 32px; height: 32px;
+  border-radius: 50%; font-size: 14px; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(34,197,94,0.4);
+  transition: transform 0.15s;
+}
+.voice-btn-send:hover { transform: scale(1.08); }
+
+/* ==========================================
+   MODALS (LIGHTBOX, VUE UNIQUE, PARAMÈTRES)
+   ========================================== */
+.modal-overlay {
+  position: absolute; inset: 0; z-index: 200; background: rgba(14, 10, 20, 0.92);
+  backdrop-filter: blur(16px); display: none; flex-direction: column;
+  padding: 24px 18px 20px; overflow-y: auto; animation: fadeIn 0.25s ease;
+}
+.modal-overlay.active { display: flex; }
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;
+}
+.modal-title { font-family: var(--font-serif); font-size: 20px; font-weight: 600; }
+.modal-close {
+  background: var(--bg-input); border: none; color: var(--text-primary);
+  width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer;
+}
+
+/* ==========================================
+   LIGHTBOX SÉCURISÉE / ZOOM
+   ========================================== */
+.lightbox-container {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;
+}
+.lightbox-media {
+  max-width: 96%; max-height: 60vh; border-radius: 16px; object-fit: contain;
+  transition: transform 0.2s ease; user-select: none; -webkit-user-drag: none;
+}
+.lightbox-controls {
+  display: flex; align-items: center; gap: 12px; margin-top: 16px;
+}
+.anti-screenshot-shield {
+  position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,0.015), rgba(255,255,255,0.015) 10px, transparent 10px, transparent 20px);
+  display: flex; align-items: center; justify-content: center; font-size: 11px;
+  color: rgba(255,255,255,0.18); font-weight: 700; transform: rotate(-15deg);
+}
+.countdown-badge {
+  position: absolute; top: 12px; right: 12px; background: rgba(230, 103, 130, 0.9);
+  color: #fff; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700;
+}
+
+/* ==========================================
+   TOAST NOTIFICATION
+   ========================================== */
+.toast-notification {
+  position: absolute; top: 40px; left: 16px; right: 16px; z-index: 150;
+  background: var(--bg-card); border: 1px solid var(--accent-gold);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 16px; padding: 12px 14px;
+  display: none; align-items: center; gap: 12px; animation: slideDown 0.3s ease;
+  cursor: pointer;
+}
+.toast-icon { font-size: 24px; }
+.toast-text { flex: 1; font-size: 12px; }
+.toast-title { font-weight: 600; color: var(--accent-gold); margin-bottom: 2px; }
+
+/* ==========================================
+   MOTS DOUX
+   ========================================== */
+.sweet-card {
+  background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px;
+  padding: 14px 16px; font-size: 13px; line-height: 1.45; cursor: pointer;
+  transition: all 0.2s ease; margin-bottom: 10px; position: relative;
+}
+.sweet-card:hover { border-color: var(--accent-rose); transform: translateY(-2px); }
+.sweet-card.selected { border-color: var(--accent-gold); background: var(--accent-rose-soft); }
+
+/* ==========================================
+   ONGLET AMIS (WHATSAPP STYLE)
+   ========================================== */
+.amis-tabs {
+  display: flex; border-bottom: 1px solid var(--border-color); margin-bottom: 14px;
+}
+.amis-tab-btn {
+  flex: 1; text-align: center; padding: 10px 4px; background: none; border: none;
+  color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.amis-tab-btn.active {
+  color: var(--accent-gold); border-bottom-color: var(--accent-gold);
+}
+.groups-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.group-item {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: 16px; cursor: pointer; transition: background 0.2s;
+}
+.group-item:hover { background: var(--bg-input); }
+.group-icon {
+  width: 44px; height: 44px; border-radius: 14px; background: var(--bg-input);
+  display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+}
+.memories-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.memory-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+}
+.memory-img { width: 100%; height: 110px; object-fit: cover; }
+.memory-info { padding: 8px 10px; }
+.memory-title { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+.memory-date { font-size: 10px; color: var(--text-muted); }
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* ==========================================
+   PALETTE SÉLECTEUR DANS PARAMÈTRES
+   ========================================== */
+.palette-picker { display: flex; gap: 10px; margin: 12px 0; overflow-x: auto; padding-bottom: 6px; }
+.palette-swatch {
+  width: 38px; height: 38px; border-radius: 50%; cursor: pointer; flex-shrink: 0;
+  border: 2px solid transparent; transition: transform 0.15s;
+}
+.palette-swatch.active { border-color: #fff; transform: scale(1.1); }
+
+/* ==========================================
+   [PHASE 3] MODE MOBILE PLEIN ÉCRAN (PWA INSTALLÉE)
+   Sur téléphone, on supprime le cadre "smartphone" décoratif :
+   l'app occupe tout l'écran, comme une vraie application native.
+   ========================================== */
+@media (max-width: 520px) {
+  body { padding: 0; align-items: stretch; justify-content: stretch; background: var(--bg-primary); }
+  .phone-frame {
+    width: 100%; height: 100dvh; max-height: none;
+    border: none; border-radius: 0; box-shadow: none;
+  }
+  .notch { display: none; }
+  .app-header { padding-top: max(34px, env(safe-area-inset-top)); }
+  .bottom-nav { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+}
+
+/* ==========================================
+   ÉCRAN DE CHARGEMENT
+   ========================================== */
+.loading-screen {
+  position: fixed; inset: 0; z-index: 1000;
+  background: linear-gradient(135deg, #181324 0%, #231b36 100%);
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn 0.5s ease;
+}
+.loading-content {
+  text-align: center; padding: 40px 20px;
+}
+.loading-logo {
+  font-size: 64px; margin-bottom: 16px;
+  animation: pulse 2s infinite ease-in-out;
+}
+.loading-title {
+  font-family: var(--font-serif); font-size: 28px; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 8px;
+}
+.loading-subtitle {
+  font-size: 14px; color: var(--text-muted); margin-bottom: 32px;
+}
+.loading-spinner {
+  display: flex; justify-content: center; gap: 8px; margin-bottom: 24px;
+}
+.spinner-ring {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent-rose);
+  animation: spinnerPulse 1.4s infinite ease-in-out;
+}
+.spinner-ring:nth-child(2) { animation-delay: 0.2s; }
+.spinner-ring:nth-child(3) { animation-delay: 0.4s; }
+@keyframes spinnerPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
+.loading-progress {
+  max-width: 280px; margin: 0 auto;
+}
+.progress-bar {
+  height: 4px; background: var(--bg-input); border-radius: 2px;
+  overflow: hidden; margin-bottom: 8px;
+}
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent-rose), var(--accent-gold));
+  width: 0%; transition: width 0.3s ease;
+  border-radius: 2px;
+}
+.progress-text {
+  font-size: 12px; color: var(--text-muted);
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ==========================================
+   ÉCRAN DU QUESTIONNAIRE D'AMOUR
+   ========================================== */
+.love-quiz-screen {
+  position: fixed; inset: 0; z-index: 900;
+  background: linear-gradient(135deg, #181324 0%, #231b36 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; overflow-y: auto;
+}
+.quiz-container {
+  max-width: 420px; width: 100%;
+  background: var(--bg-card); border-radius: 24px;
+  padding: 24px; box-shadow: var(--shadow-soft);
+  display: flex; flex-direction: column; min-height: 500px;
+}
+.quiz-header {
+  text-align: center; margin-bottom: 24px;
+}
+.quiz-progress {
+  margin-bottom: 16px;
+}
+.progress-dots {
+  display: flex; justify-content: center; gap: 8px;
+}
+.progress-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--bg-input); transition: all 0.3s ease;
+}
+.progress-dot.active {
+  background: var(--accent-rose); transform: scale(1.2);
+}
+.progress-dot.completed {
+  background: var(--accent-gold);
+}
+.quiz-title {
+  font-family: var(--font-serif); font-size: 22px; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 8px;
+}
+.quiz-subtitle {
+  font-size: 13px; color: var(--text-muted); line-height: 1.4;
+}
+.quiz-content {
+  flex: 1; overflow-y: auto; margin-bottom: 20px;
+}
+.quiz-question {
+  margin-bottom: 24px;
+}
+.quiz-question-text {
+  font-size: 16px; font-weight: 600; color: var(--text-primary);
+  margin-bottom: 16px; line-height: 1.4;
+}
+.quiz-options {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.quiz-option {
+  background: var(--bg-input); border: 2px solid var(--border-color);
+  border-radius: 14px; padding: 14px 16px; cursor: pointer;
+  transition: all 0.2s ease; display: flex; align-items: center; gap: 12px;
+}
+.quiz-option:hover {
+  border-color: var(--accent-rose); background: var(--accent-rose-soft);
+}
+.quiz-option.selected {
+  border-color: var(--accent-gold); background: var(--accent-rose-soft);
+}
+.quiz-option-icon {
+  font-size: 24px; flex-shrink: 0;
+}
+.quiz-option-label {
+  font-size: 14px; color: var(--text-primary); font-weight: 500;
+}
+.quiz-option-multiple {
+  display: flex; align-items: center; gap: 12px;
+}
+.quiz-checkbox {
+  width: 22px; height: 22px; border-radius: 6px;
+  border: 2px solid var(--border-color); background: var(--bg-input);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.quiz-checkbox.checked {
+  background: var(--accent-gold); border-color: var(--accent-gold);
+}
+.quiz-checkbox.checked::after {
+  content: '✓'; color: #fff; font-size: 14px; font-weight: bold;
+}
+.quiz-footer {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding-top: 16px; border-top: 1px solid var(--border-color);
+}
+.quiz-footer button {
+  flex: 1;
+}
+
+/* Mobile responsive pour le quiz */
+@media (max-width: 480px) {
+  .quiz-container {
+    border-radius: 0; height: 100%; max-width: none;
+  }
+  .love-quiz-screen {
+    padding: 0;
+  }
+}
