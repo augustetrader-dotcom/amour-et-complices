@@ -226,12 +226,17 @@ router.post("/view-once", requireAuth, async (req, res) => {
     if (/^https?:\/\//i.test(message.media_path || "")) {
       return res.json({ mediaUrl: message.media_path, dataUrl: message.media_path, mimeType: message.mime_type });
     }
+    
+    // Try signed URL first (more reliable for large files)
+    const { data: signed } = await supabase.storage.from(BUCKET).createSignedUrl(message.media_path, 600);
+    if (signed?.signedUrl) {
+      return res.json({ mediaUrl: signed.signedUrl, dataUrl: signed.signedUrl, mimeType: message.mime_type });
+    }
+    
+    // Fallback to direct download if signed URL fails
     const { data: blob, error: downloadError } = await supabase.storage.from(BUCKET).download(message.media_path);
     if (downloadError) {
-      // Secours : URL signée de 5 minutes si le téléchargement serveur échoue
-      const { data: signed } = await supabase.storage.from(BUCKET).createSignedUrl(message.media_path, 300);
-      if (!signed?.signedUrl) return res.status(500).json({ error: downloadError.message });
-      return res.json({ mediaUrl: signed.signedUrl, dataUrl: signed.signedUrl, mimeType: message.mime_type });
+      return res.status(500).json({ error: "Le média n'est plus disponible ou a été supprimé." });
     }
 
     const buffer = Buffer.from(await blob.arrayBuffer());
@@ -243,7 +248,7 @@ router.post("/view-once", requireAuth, async (req, res) => {
     res.json({ mediaUrl: dataUrl, dataUrl, mimeType: mime });
   } catch (err) {
     console.error("Erreur view-once:", err);
-    res.status(500).json({ error: "Impossible de charger le média éphémère: " + err.message });
+    res.status(500).json({ error: "Impossible de charger le média éphémère. Veuillez réessayer." });
   }
 });
 

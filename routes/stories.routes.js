@@ -1,7 +1,5 @@
 // ============================================================
-// [STORIES] Photos/vidéos éphémères 24h (comme WhatsApp Status).
-// Visibles uniquement par le couple, purge automatique des
-// stories expirées à chaque lecture.
+// [STORIES] Stories 24h visibles par le couple, les amis acceptés et les groupes partagés.
 // ============================================================
 const express = require("express");
 const supabase = require("../supabaseClient");
@@ -49,6 +47,7 @@ router.get("/", requireAuth, async (req, res) => {
       .from("stories")
       .select("*")
       .eq("couple_id", couple.id)
+      .eq("audience", "couple")
       .gt("expires_at", new Date().toISOString())
       .order("created_at", { ascending: false });
     if (error) return res.status(500).json({ error: translateError(error.message) });
@@ -77,6 +76,77 @@ router.get("/", requireAuth, async (req, res) => {
   }
 });
 
+// GET /api/stories/friends — stories des amis et des contacts de groupes partagés.
+router.get("/friends", requireAuth, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { data: relations, error: relationError } = await supabase
+      .from("friends")
+      .select("user_id, friend_id")
+      .or(`user_id.eq.${userId},friend_id.eq.${userId}`);
+    if (relationError) return res.status(500).json({ error: translateError(relationError.message) });
+
+    const friendIds = [...new Set((relations || []).map(row =>
+      row.user_id === userId ? row.friend_id : row.user_id
+    ))];
+    const { data: memberships, error: membershipError } = await supabase
+      .from("conversation_members")
+      .select("conversation_id")
+      .eq("user_id", userId);
+    if (membershipError) return res.status(500).json({ error: translateError(membershipError.message) });
+    const conversationIds = [...new Set((memberships || []).map(row => row.conversation_id))];
+    let groupIds = [];
+    if (conversationIds.length) {
+      const { data: groupConversations, error: groupError } = await supabase
+        .from("conversations")
+        .select("id")
+        .eq("type", "group")
+        .in("id", conversationIds);
+      if (groupError) return res.status(500).json({ error: translateError(groupError.message) });
+      groupIds = (groupConversations || []).map(row => row.id);
+    }
+
+    let groupMemberIds = [];
+    if (groupIds.length) {
+      const { data: groupMembers, error: membersError } = await supabase
+        .from("conversation_members")
+        .select("user_id")
+        .in("conversation_id", groupIds);
+      if (membersError) return res.status(500).json({ error: translateError(membersError.message) });
+      groupMemberIds = (groupMembers || []).map(row => row.user_id);
+    }
+
+    const visibleUserIds = [...new Set([userId, ...friendIds, ...groupMemberIds])];
+    const { data: stories, error } = await supabase
+      .from("stories")
+      .select("*")
+      .in("audience", ["friends", "couple"])
+      .in("user_id", visibleUserIds)
+      .gt("expires_at", new Date().toISOString())
+      .order("created_at", { ascending: false });
+    if (error) return res.status(500).json({ error: translateError(error.message) });
+
+    const enriched = await Promise.all((stories || []).map(async story => {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("display_name, avatar_url")
+        .eq("id", story.user_id)
+        .maybeSingle();
+      return {
+        ...story,
+        media_url: await signMediaPath(story.media_path),
+        media_path: undefined,
+        author_name: profile?.display_name || (story.user_id === userId ? "Moi" : "Ami"),
+        author_avatar: profile?.avatar_url || "🌸",
+        is_mine: story.user_id === userId,
+      };
+    }));
+    res.json({ stories: enriched });
+  } catch (err) {
+    res.status(500).json({ error: translateError(err.message) });
+  }
+});
+
 // ------------------------------------------------------------
 // POST /api/stories   body: { coupleId, mediaPath?, mediaDataUrl?, caption?, mimeType? }
 // Publie une story valable 24h (photo ou vidéo).
@@ -85,16 +155,19 @@ router.get("/", requireAuth, async (req, res) => {
 // ------------------------------------------------------------
 router.post("/", requireAuth, async (req, res) => {
   try {
-    const { coupleId, mediaPath, mediaDataUrl, caption, mimeType: clientMime } = req.body || {};
-    const couple = await getCoupleFor(coupleId, req.user.id);
-    if (!couple) return res.status(403).json({ error: "Accès refusé" });
+    const { coupleId, audience = "couple", mediaPath, mediaDataUrl, caption, mimeType: clientMime } = req.body || {};
+    if (!["couple", "friends"].includes(audience)) {
+      return res.status(400).json({ error: "Audience de story invalide" });
+    }
+    const couple = audience === "couple" ? await getCoupleFor(coupleId, req.user.id) : null;
+    if (audience === "couple" && !couple) return res.status(403).json({ error: "Accès refusé" });
     if (!mediaDataUrl && !mediaPath) return res.status(400).json({ error: "Média requis" });
 
+    const storyFolder = audience === "friends" ? `${req.user.id}/stories/` : `${couple.id}/stories/`;
     let finalPath = null;
     let mimeType = null;
     if (mediaPath) {
-      // Sécurité : dossier stories DE CE couple OU URL Cloudinary
-      if (!isValidMediaPath(mediaPath, `${coupleId}/stories/`)) {
+      if (!isValidMediaPath(mediaPath, storyFolder)) {
         return res.status(403).json({ error: "Chemin de média invalide" });
       }
       finalPath = mediaPath;
@@ -102,7 +175,7 @@ router.post("/", requireAuth, async (req, res) => {
     } else {
       const decoded = decodeDataUrl(mediaDataUrl);
       mimeType = decoded.mimeType;
-      finalPath = `${coupleId}/stories/${Date.now()}-${req.user.id}.${extFromMime(mimeType)}`;
+      finalPath = `${storyFolder}${Date.now()}-${req.user.id}.${extFromMime(mimeType)}`;
       try {
         const { error: uploadError } = await supabase.storage
           .from(BUCKET)
@@ -119,7 +192,8 @@ router.post("/", requireAuth, async (req, res) => {
 
     let storyPayload = {
       user_id: req.user.id,
-      couple_id: couple.id,
+      couple_id: couple?.id || null,
+      audience,
       media_path: finalPath,
       mime_type: mimeType,
       caption: caption || null,

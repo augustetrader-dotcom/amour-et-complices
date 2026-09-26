@@ -363,7 +363,7 @@ body {
   position: absolute; bottom: -2px; right: -2px; width: 20px; height: 20px;
   background: var(--accent-rose); color: #fff; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700; border: 2px solid var(--bg-primary);
+  padding: 0; font-size: 13px; font-weight: 700; border: 2px solid var(--bg-primary); cursor: pointer;
 }
 .story-label { font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 4px; max-width: 62px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 /* [STORIES] Cercle SANS story : pointillés + grisé -> impossible de
@@ -376,6 +376,21 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-size: 11px; border: 2px solid var(--bg-primary);
 }
+.friends-stories-bar {
+  display: flex; gap: 12px; padding: 10px 14px; overflow-x: auto;
+  border-bottom: 1px solid var(--border-color); background: rgba(35, 27, 54, 0.22);
+  min-height: 86px; flex-shrink: 0;
+}
+.friends-stories-warning { flex: 0 0 100%; color: #f87171; font-size: 11px; line-height: 1.4; }
+.friends-story-item { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 0 0 58px; }
+.friends-story-button { padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.story-media-container { touch-action: pan-y; }
+.story-tap-zone {
+  position: absolute; z-index: 2; top: 0; bottom: 54px; width: 30%;
+  padding: 0; border: 0; background: transparent; touch-action: manipulation;
+}
+.story-tap-zone.previous { left: 0; }
+.story-tap-zone.next { right: 0; }
 .stories-hint {
   align-self: center; font-size: 10px; color: var(--text-muted);
   font-style: italic; margin-left: 8px; line-height: 1.5;
@@ -465,6 +480,14 @@ body {
 .emoji-cell:hover { background: var(--bg-input); transform: scale(1.2); }
 .emoji-cell.big { font-size: 32px; }
 .emoji-hint { font-size: 11px; color: var(--text-muted); padding: 8px 4px; line-height: 1.5; }
+.sticker-library-actions { display: flex; justify-content: flex-end; margin: 2px 0 8px; }
+.sticker-library-actions .btn-secondary { width: auto; padding: 7px 10px; font-size: 11px; }
+.saved-sticker-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-bottom: 8px; }
+.saved-sticker-tile { position: relative; min-width: 0; aspect-ratio: 1; }
+.saved-sticker-send { width: 100%; height: 100%; padding: 3px; border: 0; border-radius: 8px; background: var(--bg-input); }
+.saved-sticker-send img { width: 100%; height: 100%; object-fit: contain; }
+.saved-sticker-remove { position: absolute; top: -4px; right: -4px; width: 20px; height: 20px; border: 0; border-radius: 50%; color: #fff; background: #a33; }
+.custom-sticker-bubble .chat-media-preview { width: auto; max-width: min(180px, 52vw); max-height: 180px; object-fit: contain; border-radius: 12px; }
 .gif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .gif-cell { width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.15s; }
 .gif-cell:hover { transform: scale(1.03); }
@@ -489,6 +512,10 @@ body {
   display: none; flex-direction: column;
 }
 .story-preview-overlay.active { display: flex; }
+.story-preview-count {
+  position: absolute; z-index: 2; top: 16px; left: 50%; transform: translateX(-50%);
+  color: #fff; font-size: 13px; font-weight: 600; text-shadow: 0 1px 4px #000;
+}
 .story-preview-media-wrap {
   flex: 1; display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;

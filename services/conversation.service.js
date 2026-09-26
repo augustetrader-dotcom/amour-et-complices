@@ -185,6 +185,7 @@ async function signMediaPath(mediaPath) {
 function isValidMediaPath(path, prefix) {
   if (!path) return false;
   if (/^https:\/\/res\.cloudinary\.com\//i.test(path)) return true; // CDN Cloudinary
+  if (/^https:\/\/media\.tenor\.com\//i.test(path)) return true; // GIF officiel Tenor
   if (/^data:/i.test(path)) return true; // Fallback data URL
   return path.startsWith(prefix);
 }

@@ -4,47 +4,14 @@ const sb = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
 const API = cfg.API_BASE;
 
 /* ================= ÉCRAN DE CHARGEMENT ================= */
-let loadingProgress = 0;
-let loadingSteps = [
-  { progress: 10, text: "Initialisation..." },
-  { progress: 30, text: "Chargement de l'interface..." },
-  { progress: 50, text: "Connexion au service..." },
-  { progress: 70, text: "Préparation de votre espace..." },
-  { progress: 90, text: "Presque prêt..." },
-  { progress: 100, text: "Bienvenue !" }
-];
-
 function showLoadingScreen() {
   document.getElementById('loadingScreen').style.display = 'flex';
   document.getElementById('phoneFrame').style.display = 'none';
-  simulateLoading();
 }
 
 function hideLoadingScreen() {
   document.getElementById('loadingScreen').style.display = 'none';
   document.getElementById('phoneFrame').style.display = 'flex';
-}
-
-function simulateLoading() {
-  let stepIndex = 0;
-  
-  const interval = setInterval(() => {
-    if (stepIndex >= loadingSteps.length) {
-      clearInterval(interval);
-      setTimeout(() => {
-        checkAuthAndQuizStatus();
-      }, 500);
-      return;
-    }
-    
-    const step = loadingSteps[stepIndex];
-    loadingProgress = step.progress;
-    
-    document.getElementById('loadingProgress').style.width = loadingProgress + '%';
-    document.getElementById('loadingText').textContent = step.text;
-    
-    stepIndex++;
-  }, 600);
 }
 
 /* ================= QUESTIONNAIRE D'AMOUR ================= */
@@ -253,14 +220,18 @@ function applyPersonalizationSettings(settings) {
   // Autres paramètres de personnalisation peuvent être appliqués ici
 }
 
+async function startApp() {
+  showLoadingScreen();
+  await checkAuthAndQuizStatus();
+}
+
 async function checkAuthAndQuizStatus() {
   try {
     const { data: { session } } = await sb.auth.getSession();
     
     if (!session) {
-      // Utilisateur non connecté, cacher l'écran de chargement et montrer l'app
       hideLoadingScreen();
-      init();
+      renderAuth();
       return;
     }
     
@@ -281,7 +252,7 @@ async function checkAuthAndQuizStatus() {
     }
   } catch (error) {
     hideLoadingScreen();
-    init();
+    renderAuth();
   }
 }
 
@@ -298,9 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ================= SERVICE WORKER (PWA) =================
 if ('serviceWorker' in navigator) {
-  // Lancer l'écran de chargement au démarrage
-  showLoadingScreen();
-  
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
       .then(registration => {
@@ -327,6 +295,7 @@ let currentLightboxUrl = null;
 let lightboxZoomLevel = 1;
 let lightboxRotation = 0;
 let onceCountdownInterval = null;
+let friendsStoriesRealtimeChannel = null;
 
 // Banque de libellés
 const LANGUAGE_LABELS = { words:"Paroles valorisantes", quality_time:"Moments de qualité", gifts:"Cadeaux", acts:"Services rendus", touch:"Toucher physique" };
@@ -374,7 +343,7 @@ function setCache(key, data) {
   }
 }
 
-function getCache(key, maxAge = 5 * 60 * 1000) { // 5 minutes par défaut
+function getCache(key, maxAge = 1 * 60 * 1000) { // 1 minute par défaut pour plus de réactivité
   // D'abord vérifier le cache en mémoire
   if (localCache[key] && localCache.timestamp && (Date.now() - localCache.timestamp) < maxAge) {
     return localCache[key];
@@ -405,6 +374,203 @@ function clearCache() {
       localStorage.removeItem(key);
     }
   });
+}
+
+/* ================= OFFLINE PERSISTENCE (WhatsApp-like) ================= */
+// IndexedDB pour stocker les messages hors ligne
+let offlineDB = null;
+const DB_NAME = 'AmourComplicesOffline';
+const DB_VERSION = 2;
+const STORE_MESSAGES = 'messages';
+const STORE_PENDING = 'pending_messages';
+const STORE_STICKERS = 'saved_stickers';
+
+async function initOfflineDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      offlineDB = request.result;
+      resolve(offlineDB);
+    };
+    
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      
+      // Store pour les messages reçus
+      if (!db.objectStoreNames.contains(STORE_MESSAGES)) {
+        const messagesStore = db.createObjectStore(STORE_MESSAGES, { keyPath: 'id' });
+        messagesStore.createIndex('coupleId', 'couple_id', { unique: false });
+        messagesStore.createIndex('createdAt', 'created_at', { unique: false });
+      }
+      
+      // Store pour les messages en attente d'envoi
+      if (!db.objectStoreNames.contains(STORE_PENDING)) {
+        const pendingStore = db.createObjectStore(STORE_PENDING, { keyPath: 'id', autoIncrement: true });
+        pendingStore.createIndex('timestamp', 'timestamp', { unique: false });
+      }
+      if (!db.objectStoreNames.contains(STORE_STICKERS)) {
+        const stickersStore = db.createObjectStore(STORE_STICKERS, { keyPath: 'id' });
+        stickersStore.createIndex('user_id', 'user_id', { unique: false });
+      }
+    };
+  });
+}
+
+async function saveMessageOffline(message) {
+  if (!offlineDB) await initOfflineDB();
+  
+  return new Promise((resolve, reject) => {
+    const transaction = offlineDB.transaction([STORE_MESSAGES], 'readwrite');
+    const store = transaction.objectStore(STORE_MESSAGES);
+    const request = store.put(message);
+    
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function getOfflineMessages(coupleId) {
+  if (!offlineDB) await initOfflineDB();
+  
+  return new Promise((resolve, reject) => {
+    const transaction = offlineDB.transaction([STORE_MESSAGES], 'readonly');
+    const store = transaction.objectStore(STORE_MESSAGES);
+    const index = store.index('coupleId');
+    const request = index.getAll(coupleId);
+    
+    request.onsuccess = () => resolve(request.result || []);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function saveStickerRecord(blob, name) {
+  if (!offlineDB) await initOfflineDB();
+  const sticker = {
+    id: globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    user_id: session.user.id,
+    name,
+    mime_type: blob.type || "image/png",
+    blob,
+    created_at: new Date().toISOString()
+  };
+  return new Promise((resolve, reject) => {
+    const request = offlineDB.transaction([STORE_STICKERS], 'readwrite').objectStore(STORE_STICKERS).put(sticker);
+    request.onsuccess = () => resolve(sticker);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function getSavedStickerRecords() {
+  if (!offlineDB) await initOfflineDB();
+  return new Promise((resolve, reject) => {
+    const request = offlineDB.transaction([STORE_STICKERS], 'readonly').objectStore(STORE_STICKERS).getAll();
+    request.onsuccess = () => resolve((request.result || []).filter(sticker => sticker.user_id === session?.user?.id));
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function deleteStickerRecord(stickerId) {
+  if (!offlineDB) await initOfflineDB();
+  return new Promise((resolve, reject) => {
+    const store = offlineDB.transaction([STORE_STICKERS], 'readwrite').objectStore(STORE_STICKERS);
+    const request = store.get(stickerId);
+    request.onsuccess = () => {
+      if (request.result?.user_id === session?.user?.id) store.delete(stickerId);
+    };
+    request.onerror = () => reject(request.error);
+    store.transaction.oncomplete = resolve;
+    store.transaction.onerror = () => reject(store.transaction.error);
+  });
+}
+
+async function savePendingMessage(messageData) {
+  if (!offlineDB) await initOfflineDB();
+  
+  return new Promise((resolve, reject) => {
+    const transaction = offlineDB.transaction([STORE_PENDING], 'readwrite');
+    const store = transaction.objectStore(STORE_PENDING);
+    const request = store.add({
+      ...messageData,
+      timestamp: Date.now()
+    });
+    
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function getPendingMessages() {
+  if (!offlineDB) await initOfflineDB();
+  
+  return new Promise((resolve, reject) => {
+    const transaction = offlineDB.transaction([STORE_PENDING], 'readonly');
+    const store = transaction.objectStore(STORE_PENDING);
+    const request = store.getAll();
+    
+    request.onsuccess = () => resolve(request.result || []);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function deletePendingMessage(id) {
+  if (!offlineDB) await initOfflineDB();
+  
+  return new Promise((resolve, reject) => {
+    const transaction = offlineDB.transaction([STORE_PENDING], 'readwrite');
+    const store = transaction.objectStore(STORE_PENDING);
+    const request = store.delete(id);
+    
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function syncPendingMessages() {
+  try {
+    const pending = await getPendingMessages();
+    if (pending.length === 0) return;
+    
+    for (const msg of pending) {
+      try {
+        if (msg.scope === 'couple') {
+          await apiCall("/api/chat/send", {
+            method: "POST",
+            body: {
+              coupleId: msg.coupleId,
+              type: msg.type,
+              text: msg.text,
+              mediaPath: msg.mediaPath,
+              mimeType: msg.mimeType,
+              replyToId: msg.replyToId,
+              replyPreview: msg.replyPreview,
+              replyIsMine: msg.replyIsMine
+            }
+          });
+        } else if (msg.scope === 'conv' && msg.convId) {
+          await apiCall(`/api/groups/${msg.convId}/messages`, {
+            method: "POST",
+            body: {
+              type: msg.type,
+              text: msg.text,
+              mediaPath: msg.mediaPath,
+              mimeType: msg.mimeType,
+              replyToId: msg.replyToId,
+              replyPreview: msg.replyPreview,
+              replyIsMine: msg.replyIsMine
+            }
+          });
+        }
+        
+        await deletePendingMessage(msg.id);
+      } catch (e) {
+        console.warn('Failed to sync pending message:', e);
+      }
+    }
+  } catch (e) {
+    console.warn('Error syncing pending messages:', e);
+  }
 }
 
 /* ================= AUDIO CHIME ================= */
@@ -497,8 +663,8 @@ function friendlyError(err) {
     return `Ta session est trop volumineuse (ancien format avec photo intégrée).\n\nDéconnecte-toi puis reconnecte-toi : le problème disparaît définitivement.`;
   }
   // Réseau / serveur éteint
-  if (low.includes("failed to fetch") || low.includes("networkerror") || low.includes("load failed")) {
-    return `Impossible de joindre le serveur.\n\nVérifie ta connexion internet et que l'app est bien lancée (npm start).`;
+  if (low.includes("failed to fetch") || low.includes("networkerror") || low.includes("load failed") || low.includes("en attente du réseau")) {
+    return `En attente du réseau.\n\nVérifie ta connexion internet. Les messages seront envoyés dès que le réseau sera disponible.`;
   }
   // Session expirée
   if (low.includes("401") || low.includes("token") || low.includes("jwt")) {
@@ -532,9 +698,36 @@ function friendlyError(err) {
 }
 
 /* ================= APPEL API ================= */
+let sessionRefreshPromise = null;
+
+function refreshCurrentSession() {
+  if (!sessionRefreshPromise) {
+    const refreshOptions = session?.refresh_token ? { refresh_token: session.refresh_token } : undefined;
+    sessionRefreshPromise = sb.auth.refreshSession(refreshOptions)
+      .then(result => {
+        if (!result.error && result.data.session) session = result.data.session;
+        return result;
+      })
+      .finally(() => { sessionRefreshPromise = null; });
+  }
+  return sessionRefreshPromise;
+}
+
 async function apiCall(pathname, opts = {}) {
-  const token = session?.access_token;
-  const res = await fetch(API + pathname, {
+  // [OFFLINE] Si hors ligne et envoi de message, sauvegarder localement
+  if (!navigator.onLine && (pathname.includes('/send') || pathname.includes('/messages'))) {
+    const body = opts.body || {};
+    await savePendingMessage({
+      ...body,
+      pathname,
+      scope: pathname.includes('/chat/') ? 'couple' : 'conv',
+      coupleId: body.coupleId,
+      convId: pathname.match(/\/groups\/([^\/]+)/)?.[1]
+    });
+    throw new Error("En attente du réseau - Message sauvegardé localement");
+  }
+  
+  const sendRequest = token => fetch(API + pathname, {
     ...opts,
     headers: {
       "Content-Type": "application/json",
@@ -543,6 +736,18 @@ async function apiCall(pathname, opts = {}) {
     },
     body: opts.body ? JSON.stringify(opts.body) : undefined,
   });
+
+  let token = session?.access_token;
+  let res = await sendRequest(token);
+  if (res.status === 401 && token && !pathname.startsWith("/api/auth/")) {
+    const { data: refreshed, error: refreshError } = await refreshCurrentSession();
+    if (!refreshError && refreshed.session) {
+      session = refreshed.session;
+      token = session.access_token;
+      res = await sendRequest(token);
+    }
+  }
+
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data.error || `Erreur ${res.status}`);
   return data;
@@ -551,6 +756,9 @@ async function apiCall(pathname, opts = {}) {
 /* ================= INITIALISATION ================= */
 async function init() {
   loadLocalPreferences();
+
+  // [OFFLINE] Initialiser IndexedDB pour la persistance hors ligne
+  initOfflineDB().catch(() => {});
 
   // [PERFORMANCE] Chargement parallèle pour optimiser le démarrage
   const [sessionResult] = await Promise.all([
@@ -563,8 +771,20 @@ async function init() {
     return renderAuth();
   }
 
+  connectFriendsStoriesRealtime();
+
   sb.auth.onAuthStateChange((_event, newSession) => {
     session = newSession;
+  });
+
+  // [OFFLINE] Écouter les changements de connexion
+  window.addEventListener('online', () => {
+    syncPendingMessages();
+    showToast('Connexion rétablie', 'Les messages en attente sont en cours d\'envoi');
+  });
+  
+  window.addEventListener('offline', () => {
+    showToast('Mode hors ligne', 'En attente du réseau - Les messages seront envoyés dès que possible');
   });
 
   // [PRÉSENCE IMMÉDIATE] Signale tout de suite qu'on est en ligne sans attendre le chargement des données
@@ -579,6 +799,27 @@ async function init() {
   // [FLUIDITÉ] Rattrapage automatique toutes les 4s (filet de sécurité
   // du temps réel : aucun message ne peut plus être manqué)
   startPolling();
+  
+  // [OFFLINE] Synchroniser les messages en attente au démarrage
+  if (navigator.onLine) {
+    syncPendingMessages();
+  }
+}
+
+function connectFriendsStoriesRealtime() {
+  if (friendsStoriesRealtimeChannel) sb.removeChannel(friendsStoriesRealtimeChannel);
+  friendsStoriesRealtimeChannel = sb
+    .channel(`friend-stories-${session.user.id}`)
+    .on("postgres_changes", {
+      event: "*",
+      schema: "public",
+      table: "stories"
+    }, payload => {
+      if (!["friends", "couple"].includes(payload.new?.audience)) return;
+      if (payload.new?.user_id === session?.user?.id) return;
+      if (currentTab === "friends") refreshFriendsStories();
+    })
+    .subscribe();
 }
 
 // Enregistre le SW silencieusement au démarrage. La permission push est
@@ -792,6 +1033,29 @@ function formatLastSeenLabel(iso) {
   return `Était en ligne il y a ${days}j`;
 }
 
+function getStoryTimeDisplay(expiresAt, createdAt) {
+  const expires = expiresAt
+    ? new Date(expiresAt).getTime()
+    : createdAt
+      ? new Date(createdAt).getTime() + 24 * 60 * 60 * 1000
+      : null;
+  if (!Number.isFinite(expires)) return "Disparaît dans 24h";
+  const remaining = expires - Date.now();
+
+  if (remaining <= 0) return "Expirée";
+  
+  const hours = Math.floor(remaining / (60 * 60 * 1000));
+  const minutes = Math.floor((remaining % (60 * 60 * 1000)) / (60 * 1000));
+  
+  if (hours > 0) {
+    return `Disparaît dans ${hours}h${minutes > 0 ? ` ${minutes}min` : ''}`;
+  } else if (minutes > 0) {
+    return `Disparaît dans ${minutes} min`;
+  } else {
+    return "Disparaît dans moins d'une minute";
+  }
+}
+
 function updatePresenceDisplay() {
   const dot = document.getElementById("headerStatusDot");
   const pres = document.getElementById("headerPresence");
@@ -810,7 +1074,7 @@ function updatePresenceDisplay() {
 }
 
 /* ================= AUTHENTIFICATION ULTRA SIMPLE (SE CONNECTER / S'INSCRIRE) ================= */
-let currentAuthTab = "login"; // 'login' ou 'register'
+let currentAuthTab = "register"; // 'login' ou 'register'
 
 function renderAuth() {
   document.getElementById("appHeader").style.display = "none";
@@ -917,8 +1181,7 @@ async function handleRegister() {
     if (res.session) {
       session = res.session;
       await sb.auth.setSession({ access_token: session.access_token, refresh_token: session.refresh_token });
-      // Le profil (nom, avatar) est géré côté serveur (table profiles)
-      await init();
+      await checkAuthAndQuizStatus();
     }
   } catch (err) {
     errEl.textContent = err.message || "Erreur lors de l'inscription.";
@@ -1349,6 +1612,11 @@ function connectRealtime() {
         showToast(partnerInfo.nickname, "A mis à jour sa photo de profil ! ✨");
       }
     })
+    .on("broadcast", { event: "story-update" }, ({ payload }) => {
+      if (payload?.senderId !== session.user.id && payload?.coupleId === coupleId) {
+        loadStoriesBar();
+      }
+    })
     .on("broadcast", { event: "game-sync" }, (payload) => {
       if (payload.payload.senderId === session.user.id) return;
       // [JEU SYNCHRONISÉ + NOTIFICATIONS] Le/la partenaire a pioché ou validé :
@@ -1467,7 +1735,7 @@ async function loadChat() {
     <div class="chat-view">
       <!-- [STORIES] Barre de stories éphémères 24h (style WhatsApp Status) -->
       <div class="stories-bar" id="storiesBar"></div>
-      <input type="file" id="storyFileInput" accept="image/*,video/*" style="display:none;" onchange="handleStoryUpload(event)">
+      <input type="file" id="storyFileInput" accept="image/*,video/*" multiple style="display:none;" onchange="handleStoryUpload(event)">
 
       <div class="chat-messages" id="messagesContainer">
         <div style="text-align:center; padding:30px 10px; color:var(--text-muted); font-size:12px;">
@@ -1496,7 +1764,7 @@ async function loadChat() {
       <div class="chat-input-bar">
         <div class="chat-input-controls">
           <button class="icon-btn" title="Joindre une photo ou vidéo" onclick="document.getElementById('chatFileInput').click()">📎</button>
-          <input type="file" id="chatFileInput" accept="image/*,video/*" style="display:none;" onchange="handleFileSelect(event)">
+          <input type="file" id="chatFileInput" accept="image/*,video/*" multiple style="display:none;" onchange="handleFileSelect(event)">
           <button class="icon-btn" id="micBtn" title="Message vocal" onclick="toggleVoiceRecord()">🎤</button>
           <input type="file" id="chatAudioFileInput" accept="audio/*" style="display:none;" onchange="handleAudioFileSelect(event)">
           <!-- [EMOJI/STICKERS/GIF] Bouton du panneau d'insertion -->
@@ -1574,10 +1842,80 @@ async function loadChatHistory(append = false) {
     if (chatPagination.isLoading || !chatPagination.hasMore) return;
     chatPagination.isLoading = true;
 
-    // Charger les messages avec pagination
-    const { messages, hasMore } = await apiCall(
-      `/api/chat/history?coupleId=${coupleId}&limit=${chatPagination.pageSize}&offset=${chatPagination.loadedCount}`
-    );
+    // [OFFLINE] Si hors ligne, charger depuis IndexedDB
+    if (!navigator.onLine && !append) {
+      try {
+        const offlineMessages = await getOfflineMessages(coupleId);
+        if (offlineMessages.length > 0) {
+          const messages = offlineMessages.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+          chatPagination.messages = messages;
+          chatPagination.loadedCount = messages.length;
+          chatPagination.hasMore = false;
+          chatPagination.isLoading = false;
+          
+          const fragment = document.createDocumentFragment();
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = messages.map(renderMessageHTML).join("");
+          
+          while (tempDiv.firstChild) {
+            fragment.appendChild(tempDiv.firstChild);
+          }
+          
+          box.innerHTML = '';
+          box.appendChild(fragment);
+          bindAllLongPress(box);
+          bindAllSwipeReply(box);
+          scrollChatToBottom(false);
+          
+          showToast('Mode hors ligne', 'Messages chargés localement');
+          return;
+        } else {
+          box.innerHTML = `
+            <div style="text-align:center; margin:auto; color:var(--text-muted); font-size:13px; padding:20px;">
+              <div style="font-size:36px; margin-bottom:8px;">📶</div>
+              <div>En attente du réseau</div>
+              <div style="font-size:11px; opacity:0.8; margin-top:4px;">Vos messages seront envoyés dès que possible</div>
+            </div>
+          `;
+          chatPagination.hasMore = false;
+          chatPagination.isLoading = false;
+          return;
+        }
+      } catch (e) {
+        console.warn('Failed to load offline messages:', e);
+      }
+    }
+
+    if (!append) {
+      const cached = getCache('chatHistory', 2 * 60 * 1000);
+      if (cached?.length) {
+        const fragment = document.createDocumentFragment();
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = cached.map(renderMessageHTML).join("");
+        while (tempDiv.firstChild) fragment.appendChild(tempDiv.firstChild);
+        box.replaceChildren(fragment);
+        bindAllLongPress(box);
+        bindAllSwipeReply(box);
+        scrollChatToBottom(false);
+      }
+    }
+
+    // Charger les messages avec timeout court pour éviter les délais
+    const { messages, hasMore } = await Promise.race([
+      apiCall(
+        `/api/chat/history?coupleId=${coupleId}&limit=${chatPagination.pageSize}&offset=${chatPagination.loadedCount}`
+      ),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error("Délai d'attente dépassé")), 5000)
+      )
+    ]).catch((err) => {
+      // Si timeout, essayer de charger depuis le cache
+      const cached = getCache('chatHistory', 2 * 60 * 1000);
+      if (cached && cached.length > 0) {
+        return { messages: cached, hasMore: false };
+      }
+      throw err;
+    });
 
     if (!messages || messages.length === 0) {
       if (!append) {
@@ -1599,6 +1937,19 @@ async function loadChatHistory(append = false) {
     chatPagination.loadedCount += messages.length;
     chatPagination.hasMore = hasMore;
     chatPagination.isLoading = false;
+    
+    // [PERFORMANCE] Mettre en cache l'historique pour accès instantané
+    if (!append) {
+      setCache('chatHistory', messages);
+    }
+    
+    // [OFFLINE] Sauvegarder les messages dans IndexedDB
+    messages.forEach(msg => {
+      saveMessageOffline({
+        ...msg,
+        couple_id: coupleId
+      }).catch(() => {});
+    });
 
     // Rendu optimisé avec DocumentFragment
     const fragment = document.createDocumentFragment();
@@ -1617,8 +1968,9 @@ async function loadChatHistory(append = false) {
       box.appendChild(fragment);
     }
 
-    // Attacher le long-press uniquement sur les nouveaux messages
+    // Attacher le long-press et swipe-to-reply sur les nouveaux messages
     bindAllLongPress(box);
+    bindAllSwipeReply(box);
     
     if (!append) {
       scrollChatToBottom(false);
@@ -1637,10 +1989,11 @@ function appendMessageToDOM(message) {
   const box = document.getElementById("messagesContainer");
   if (!box) return;
   box.insertAdjacentHTML("beforeend", renderMessageHTML(message));
-  // Attacher le long-press sur le nouveau message ajouté
+  // Attacher le long-press et swipe-to-reply sur le nouveau message ajouté
   const lastRow = box.lastElementChild;
   if (lastRow && lastRow.classList.contains("msg-row")) {
     attachLongPress(lastRow);
+    attachSwipeReply(lastRow);
   }
   scrollChatToBottom(true);
 }
@@ -1758,14 +2111,16 @@ function tickDoubleSvg() {
 
 /* ============================================================
    [UPLOAD DIRECT] Les médias (photos, vidéos, vocaux, stories)
-   partent du navigateur DIRECTEMENT vers Supabase Storage :
+  partent du navigateur DIRECTEMENT vers le stockage configuré :
    - envoi quasi instantané (un seul trajet au lieu de deux)
-   - gros fichiers possibles (plus de relais serveur)
+  - Cloudinary accepte les fichiers jusqu'à 500 Mo par blocs
    - zéro octet de média ne charge la mémoire du serveur
-   Limite : 50 Mo/fichier (plan Supabase gratuit, augmentable dans
-   Dashboard > Storage > Settings > File upload size limit).
+  - Supabase reste limité à 50 Mo/fichier
    ============================================================ */
-const MAX_UPLOAD_BYTES = 50 * 1024 * 1024; // 50 Mo
+const MAX_SUPABASE_UPLOAD_BYTES = 50 * 1024 * 1024;
+const MAX_CLOUDINARY_UPLOAD_BYTES = 500 * 1024 * 1024;
+const CLOUDINARY_CHUNK_BYTES = 20 * 1024 * 1024;
+const CLOUDINARY_CHUNK_THRESHOLD = 100 * 1024 * 1024;
 
 function extForFile(file) {
   const map = { "image/png":"png","image/jpeg":"jpg","image/webp":"webp","video/webm":"webm","video/mp4":"mp4","video/quicktime":"mov","audio/webm":"webm","audio/ogg":"ogg","audio/mpeg":"mp3","audio/mp4":"m4a","audio/wav":"wav" };
@@ -1779,27 +2134,76 @@ function extForFile(file) {
 // renseignés dans config.js, le fichier part vers le CDN Cloudinary
 // (25 Go gratuits, lecture ultra-rapide) et on stocke son URL publique.
 // Sinon : Supabase Storage (par défaut, aucune configuration requise).
-async function uploadMediaDirectly(file, folder) {
-  if (file.size > MAX_UPLOAD_BYTES) {
-    throw new Error("Ce fichier dépasse 50 Mo. Découpe la vidéo ou envoie une version plus légère.");
-  }
-
+async function uploadMediaDirectly(file, folder, onProgress = () => {}) {
   const cloud = cfg.CLOUDINARY_CLOUD_NAME;
   const preset = cfg.CLOUDINARY_UPLOAD_PRESET;
   if (cloud && preset) {
-    const resourceType = file.type.startsWith("video/") ? "video" : "image";
-    const form = new FormData();
-    form.append("file", file);
-    form.append("upload_preset", preset);
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${cloud}/${resourceType}/upload`, {
-      method: "POST",
-      body: form,
-    });
-    const data = await res.json();
-    if (!data.secure_url) {
-      throw new Error(data.error?.message || "Échec de l'envoi vers Cloudinary");
+    if (file.size > MAX_CLOUDINARY_UPLOAD_BYTES) {
+      throw new Error("Le fichier dépasse la limite configurée de 500 Mo.");
     }
+
+    const resourceType = file.type.startsWith("image/") ? "image" : "video";
+    const uploadUrl = `https://api.cloudinary.com/v1_1/${cloud}/${resourceType}/upload`;
+    let data;
+
+    if (file.size > CLOUDINARY_CHUNK_THRESHOLD) {
+      const uploadId = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const chunks = Math.ceil(file.size / CLOUDINARY_CHUNK_BYTES);
+
+      for (let index = 0; index < chunks; index++) {
+        const start = index * CLOUDINARY_CHUNK_BYTES;
+        const end = Math.min(start + CLOUDINARY_CHUNK_BYTES, file.size);
+        const form = new FormData();
+        form.append("file", file.slice(start, end), file.name);
+        form.append("upload_preset", preset);
+
+        let responseData;
+        for (let attempt = 0; attempt < 3; attempt++) {
+          let response;
+          try {
+            response = await fetch(uploadUrl, {
+              method: "POST",
+              headers: {
+                "X-Unique-Upload-Id": uploadId,
+                "Content-Range": `bytes ${start}-${end - 1}/${file.size}`
+              },
+              body: form
+            });
+          } catch (error) {
+            if (attempt === 2) throw new Error("Connexion interrompue pendant l'envoi Cloudinary. Réessaie.");
+            await new Promise(resolve => setTimeout(resolve, 500 * (2 ** attempt)));
+            continue;
+          }
+          responseData = await response.json().catch(() => ({}));
+          if (response.ok) break;
+          if ((response.status < 500 && response.status !== 420) || attempt === 2) {
+            throw new Error(responseData.error?.message || "Échec de l'envoi vers Cloudinary");
+          }
+          await new Promise(resolve => setTimeout(resolve, 500 * (2 ** attempt)));
+        }
+
+        if (!responseData || responseData.error) {
+          throw new Error(responseData?.error?.message || "Échec de l'envoi vers Cloudinary");
+        }
+        data = responseData;
+        onProgress((index + 1) / chunks);
+      }
+    } else {
+      const form = new FormData();
+      form.append("file", file, file.name);
+      form.append("upload_preset", preset);
+      const response = await fetch(uploadUrl, { method: "POST", body: form });
+      data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error?.message || "Échec de l'envoi vers Cloudinary");
+      onProgress(1);
+    }
+
+    if (!data?.secure_url) throw new Error("Cloudinary n'a pas retourné l'URL du média.");
     return { path: data.secure_url, mimeType: file.type || "application/octet-stream" };
+  }
+
+  if (file.size > MAX_SUPABASE_UPLOAD_BYTES) {
+    throw new Error("Configure Cloudinary pour envoyer des fichiers de plus de 50 Mo.");
   }
 
   const ext = extForFile(file);
@@ -1807,23 +2211,11 @@ async function uploadMediaDirectly(file, folder) {
   try {
     const { error } = await sb.storage.from("chat-media").upload(path, file, {
       contentType: file.type || "application/octet-stream",
+      upsert: false
     });
     if (error) {
-      if (file.size <= 5 * 1024 * 1024) {
-        console.warn("[STORAGE] Direct upload error, falling back to data URL:", error.message);
-        const dataUrl = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-        return { path: dataUrl, mimeType: file.type || "application/octet-stream" };
-      }
-      throw new Error(error.message);
-    }
-  } catch (err) {
-    if (file.size <= 5 * 1024 * 1024) {
-      console.warn("[STORAGE] Direct upload exception, falling back to data URL:", err.message);
+      console.warn("[STORAGE] Direct upload error, falling back to data URL:", error.message);
+      // Fallback to data URL for better reliability
       const dataUrl = await new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result);
@@ -1832,7 +2224,16 @@ async function uploadMediaDirectly(file, folder) {
       });
       return { path: dataUrl, mimeType: file.type || "application/octet-stream" };
     }
-    throw err;
+  } catch (err) {
+    console.warn("[STORAGE] Direct upload exception, falling back to data URL:", err.message);
+    // Fallback to data URL for better reliability
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    return { path: dataUrl, mimeType: file.type || "application/octet-stream" };
   }
   return { path, mimeType: file.type || "application/octet-stream" };
 }
@@ -1851,6 +2252,10 @@ function showPendingBubble(text = "⏳ Envoi en cours...") {
 function removePendingBubble(id) {
   if (!id) return;
   document.querySelector(`[data-pending="${id}"]`)?.remove();
+}
+function updatePendingBubble(id, text) {
+  const bubble = document.querySelector(`[data-pending="${id}"] .msg-bubble`);
+  if (bubble) bubble.textContent = text;
 }
 
 /* [CRUD] Détection "message = uniquement des emojis" -> affichage en
@@ -1916,23 +2321,38 @@ function renderMessageHTML(m) {
       body = `<div class="msg-bubble">${escapeHtml(m.text)}</div>`;
     }
   } else if (m.type === "photo") {
-    const regId = registerMedia(m.media_url);
-    body = `
-      <div class="msg-bubble" style="padding:4px; background:none;">
-        <img class="chat-media-preview" src="${escapeAttr(m.media_url)}" alt="Photo" onload="scrollChatToBottom()" onclick="openRegisteredMedia('${regId}', false, false)">
-      </div>
-    `;
+    const mediaUrl = m.media_url || m.media_path;
+    if (!mediaUrl) {
+      body = `<div class="msg-bubble msg-deleted">📷 Photo non disponible</div>`;
+    } else {
+      const regId = registerMedia(mediaUrl);
+      body = `
+        <div class="msg-bubble ${m.text === "sticker" ? "custom-sticker-bubble" : ""}" style="padding:4px; background:none;">
+          <img class="chat-media-preview" src="${escapeAttr(mediaUrl)}" alt="${m.text === "sticker" ? "Sticker" : "Photo"}" 
+               onload="scrollChatToBottom()" 
+               onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'color:#ef4444;font-size:12px;padding:10px;\\'>📷 Photo non disponible</div>'"
+               onclick="openRegisteredMedia('${regId}', false, false)">
+        </div>
+      `;
+    }
   } else if (m.type === "video") {
-    const regId = registerMedia(m.media_url);
-    body = `
-      <div class="msg-bubble" style="padding:4px; background:none;">
-        <video class="chat-video-preview" src="${escapeAttr(m.media_url)}" controls playsinline onclick="openRegisteredMedia('${regId}', false, true)"></video>
-      </div>
-    `;
+    const mediaUrl = m.media_url || m.media_path;
+    if (!mediaUrl) {
+      body = `<div class="msg-bubble msg-deleted">🎬 Vidéo non disponible</div>`;
+    } else {
+      const regId = registerMedia(mediaUrl);
+      body = `
+        <div class="msg-bubble" style="padding:4px; background:none;">
+          <video class="chat-video-preview" src="${escapeAttr(mediaUrl)}" controls playsinline 
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'color:#ef4444;font-size:12px;padding:10px;\\'>🎬 Vidéo non disponible</div>'"
+                 onclick="openRegisteredMedia('${regId}', false, true)"></video>
+        </div>
+      `;
+    }
   } else if (m.type === "voice") {
     body = `
       <div class="msg-bubble" style="display:flex; align-items:center; gap:8px;">
-        <span>🎙️</span><audio class="chat-audio-preview" src="${escapeAttr(m.media_url)}" controls></audio>
+        <span>🎙️</span><audio class="chat-audio-preview" src="${escapeAttr(m.media_url)}" controls preload="metadata"></audio>
       </div>
     `;
   } else if (m.type === "once") {
@@ -1973,6 +2393,7 @@ function renderMessageHTML(m) {
   // On stocke les données dans des data-attributes pour les lire dans openMsgMenu()
   const canEditAttr = (isMe && !m.deleted && m.type === "text" && !isEmojiOnly(m.text)) ? "1" : "0";
   const canDeleteAttr = (isMe && !m.deleted) ? "1" : "0";
+  const authorName = isMe ? myProfile.nickname : partnerInfo.nickname;
 
   return `
     <div class="msg-row ${side}" data-msg-id="${escapeAttr(m.id)}" data-scope="couple"
@@ -1980,7 +2401,8 @@ function renderMessageHTML(m) {
          data-deleted="${m.deleted ? '1' : '0'}" data-can-edit="${canEditAttr}" data-can-delete="${canDeleteAttr}"
          data-created-at="${escapeAttr(m.created_at || '')}" data-delivered-at="${escapeAttr(m.delivered_at || '')}"
          data-read-at="${escapeAttr(m.read_at || '')}" data-text="${escapeAttr(m.text || '')}"
-         data-reply-to-id="${escapeAttr(m.reply_to_id || '')}" data-reply-preview="${escapeAttr(m.reply_preview || '')}">
+         data-reply-to-id="${escapeAttr(m.reply_to_id || '')}" data-reply-preview="${escapeAttr(m.reply_preview || '')}"
+         data-author="${escapeAttr(authorName || '')}">
       ${replyQuoteHtml}
       ${body}
       <div class="msg-meta">
@@ -2023,22 +2445,34 @@ function setReplyTo(msgId, preview, isMine, authorName) {
   _replyPreview = preview;
   _replyIsMine = isMine;
 
-  const bar = ensureReplyBar();
-  if (!bar) return;
-
   let displayName = "Toi";
   if (!isMine) {
     if (authorName) displayName = authorName;
     else if (currentChatContext?.name) displayName = currentChatContext.name;
     else displayName = partnerInfo.nickname || "Partenaire";
   }
-  const authorEl = document.getElementById("replyPreviewAuthor");
-  const textEl = document.getElementById("replyPreviewText");
-  if (authorEl) authorEl.textContent = displayName;
-  if (textEl) textEl.textContent = preview;
 
-  bar.classList.add("active");
-  bar.style.display = "flex";
+  // Mettre à jour immédiatement la barre de réponse si elle existe
+  const bar = document.getElementById("replyPreviewBar");
+  if (bar) {
+    const authorEl = document.getElementById("replyPreviewAuthor");
+    const textEl = document.getElementById("replyPreviewText");
+    if (authorEl) authorEl.textContent = displayName;
+    if (textEl) textEl.textContent = preview;
+    bar.classList.add("active");
+    bar.style.display = "flex";
+  } else {
+    // Créer la barre si elle n'existe pas
+    const ensureBar = ensureReplyBar();
+    if (ensureBar) {
+      const authorEl = document.getElementById("replyPreviewAuthor");
+      const textEl = document.getElementById("replyPreviewText");
+      if (authorEl) authorEl.textContent = displayName;
+      if (textEl) textEl.textContent = preview;
+      ensureBar.classList.add("active");
+      ensureBar.style.display = "flex";
+    }
+  }
 
   const input = document.getElementById("chatTextInput") || document.getElementById("convTextInput");
   if (input) {
@@ -2074,7 +2508,7 @@ async function sendTextMessage() {
   const input = document.getElementById("chatTextInput");
   const text = input.value.trim();
 
-  if (window._pendingFile) {
+  if (window._pendingFiles?.length) {
     return confirmSendAttachment();
   }
 
@@ -2093,53 +2527,62 @@ async function sendTextMessage() {
         ...(replyToId ? { replyToId, replyPreview, replyIsMine } : {}) }
     });
   } catch (e) {
-    alert(friendlyError(e));
+    // [OFFLINE] Si l'erreur est due au mode hors ligne, ne pas alerter (déjà géré par apiCall)
+    if (!e.message.includes('En attente du réseau')) {
+      alert(friendlyError(e));
+    }
   }
 }
 
 /* ================= ENVOI DE FICHIERS / MÉDIAS ================= */
 function handleFileSelect(event) {
-  const file = event.target.files[0];
-  if (!file) return;
+  const files = Array.from(event.target.files || []);
+  if (!files.length) return;
 
-  window._pendingFile = file;
+  window._pendingFiles = files;
   const bar = document.getElementById("attachPreviewBar");
-  document.getElementById("attachFileName").textContent = `Fichier: ${file.name}`;
+  const totalSize = files.reduce((sum, file) => sum + file.size, 0);
+  const fileNames = files.map(file => file.name).join(", ");
+  document.getElementById("attachFileName").textContent = files.length === 1
+    ? `Fichier: ${fileNames}`
+    : `${files.length} médias (${(totalSize / (1024 * 1024)).toFixed(1)} Mo) : ${fileNames}`;
   bar.style.display = "flex";
 }
 
 function cancelAttachment() {
-  window._pendingFile = null;
+  window._pendingFiles = [];
   document.getElementById("chatFileInput").value = "";
   document.getElementById("attachPreviewBar").style.display = "none";
 }
 
 async function confirmSendAttachment() {
-  const file = window._pendingFile;
-  if (!file) return;
-
+  const files = window._pendingFiles || [];
+  if (!files.length) return;
   const isOnce = document.getElementById("onceCheck").checked;
-  const isVideo = file.type.startsWith("video/");
-  const type = isOnce ? "once" : (isVideo ? "video" : "photo");
-
   cancelAttachment();
 
-  /* [UPLOAD DIRECT] Le fichier part du navigateur DIRECTEMENT vers
-     Supabase Storage (rapide, gros fichiers) ; le serveur ne fait
-     qu'enregistrer la ligne du message. Bulle "Envoi..." immédiate. */
-  const pendingId = showPendingBubble();
-  try {
-    const { path, mimeType } = await uploadMediaDirectly(file, `${coupleId}/${type === "once" ? "once" : "media"}`);
-    await apiCall("/api/chat/send", {
-      method: "POST",
-      body: { coupleId, type, mediaPath: path, mimeType }
-    });
-    removePendingBubble(pendingId);
-    await loadChatHistory();
-  } catch (e) {
-    removePendingBubble(pendingId);
-    alert(friendlyError(e));
+  for (let index = 0; index < files.length; index++) {
+    const file = files[index];
+    const type = isOnce ? "once" : (file.type.startsWith("video/") ? "video" : "photo");
+    const pendingId = showPendingBubble(files.length > 1 ? `⏳ Envoi ${index + 1}/${files.length}...` : "⏳ Envoi en cours...");
+    try {
+      const { path, mimeType } = await uploadMediaDirectly(
+        file,
+        `${coupleId}/${type === "once" ? "once" : "media"}`,
+        progress => updatePendingBubble(pendingId, `⏳ ${file.name} : ${Math.round(progress * 100)}%`)
+      );
+      await apiCall("/api/chat/send", {
+        method: "POST",
+        body: { coupleId, type, mediaPath: path, mimeType }
+      });
+    } catch (e) {
+      if (!e.message.includes('En attente du réseau')) alert(`${file.name} : ${friendlyError(e)}`);
+      break;
+    } finally {
+      removePendingBubble(pendingId);
+    }
   }
+  await loadChatHistory();
 }
 
 /* ============================================================
@@ -2378,38 +2821,35 @@ async function startVoiceRecording() {
       const pendingId = showPendingBubble("⏳ Envoi du vocal...");
 
       try {
-        // Encodage Data URL direct : bypass tout problème de Supabase Storage RLS
-        const dataUrl = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(blob);
-        });
-
+        // Convert blob to file for direct upload
+        const file = new File([blob], `voice-${Date.now()}.${actualMime.split('/')[1] || 'webm'}`, { type: actualMime });
+        
         const replyToId = _replyToId;
         const replyPreview = _replyPreview;
         const replyIsMine = _replyIsMine;
         clearReplyTo();
 
         if (currentChatContext) {
+          const { path, mimeType } = await uploadMediaDirectly(file, `conv/${currentChatContext.id}/media`);
           await apiCall(`/api/groups/${currentChatContext.id}/messages`, {
             method: "POST",
             body: {
               type: "voice",
-              mediaDataUrl: dataUrl,
-              mimeType: actualMime,
+              mediaPath: path,
+              mimeType: mimeType,
               ...(replyToId ? { replyToId, replyPreview, replyIsMine } : {})
             }
           });
           await loadConvHistory();
         } else {
+          const { path, mimeType } = await uploadMediaDirectly(file, `${coupleId}/media`);
           await apiCall("/api/chat/send", {
             method: "POST",
             body: {
               coupleId,
               type: "voice",
-              mediaDataUrl: dataUrl,
-              mimeType: actualMime,
+              mediaPath: path,
+              mimeType: mimeType,
               ...(replyToId ? { replyToId, replyPreview, replyIsMine } : {})
             }
           });
@@ -2714,7 +3154,7 @@ function setTruthDareLevel(level) {
 function pickTruthDare() {
   const pool = truthDareCards.filter((c) => c.kind === truthDareKind && c.level === truthDareLevel);
   if (pool.length === 0) {
-    document.getElementById("tdPrompt").textContent = "Aucune carte pour ce niveau. Lance d'abord 'npm run seed' !";
+    document.getElementById("tdPrompt").textContent = "Aucune carte pour ce niveau. Veuillez contacter le support technique.";
     return;
   }
   currentTdCard = pool[Math.floor(Math.random() * pool.length)];
@@ -2982,8 +3422,7 @@ async function loadQuiz() {
         <div style="text-align:center; padding:30px 16px; color:var(--text-muted); font-size:13px;">
           <div style="font-size:36px; margin-bottom:10px;">🔥</div>
           Aucune question dans cette série pour l'instant.<br><br>
-          <span style="font-size:12px;">Lance <b>npm run seed</b> côté serveur pour charger
-          les nouvelles questions, puis rafraîchis l'app.</span>
+          <span style="font-size:12px;">Le contenu sera bientôt disponible. Veuillez réessayer plus tard.</span>
           <div style="margin-top:14px;">
             <button class="btn-secondary" style="width:auto; padding:8px 16px; font-size:12px;" onclick="setQuizMode('classique')">🌸 Revenir au mode Classique</button>
           </div>
@@ -3106,6 +3545,8 @@ async function renderQuizResults(result) {
      chat de groupe avec photos.
    ============================================================ */
 let friendsData = [];        // Amis acceptés (profil + conversation_id)
+let friendStoriesData = [];  // Stories d'amis acceptés et mes stories audience amis
+let friendStoriesError = null;
 let incomingRequests = [];   // Demandes d'ami reçues
 let outgoingRequests = [];   // Demandes d'ami envoyées (en attente)
 let groupsData = [];         // Groupes réels (conversations type 'group')
@@ -3123,6 +3564,8 @@ async function loadFriends() {
         <button class="amis-tab-btn ${currentFriendsSubTab==='amis'?'active':''}" onclick="switchFriendsSubTab('amis')">Amis</button>
         <button class="amis-tab-btn ${currentFriendsSubTab==='groupes'?'active':''}" onclick="switchFriendsSubTab('groupes')">Groupes</button>
       </div>
+      <div class="friends-stories-bar" id="friendsStoriesBar"></div>
+      <input type="file" id="friendStoryFileInput" accept="image/*,video/*" multiple hidden onchange="handleStoryUpload(event, 'friends')">
       <div id="friendsListContainer">
         <div style="text-align:center; padding:24px; color:var(--text-muted); font-size:12px;">Chargement de vos discussions...</div>
       </div>
@@ -3130,19 +3573,93 @@ async function loadFriends() {
   `;
 
   try {
-    // [PHASE 2] Deux appels en parallèle : amis (avec demandes) + groupes
-    const [friendsRes, groupsRes] = await Promise.all([
+    const [friendsRes, groupsRes, storiesRes] = await Promise.all([
       apiCall("/api/friends"),
-      apiCall("/api/groups")
+      apiCall("/api/groups"),
+      apiCall("/api/stories/friends").catch(error => {
+        friendStoriesError = error;
+        return { stories: [] };
+      })
     ]);
     friendsData = friendsRes.friends || [];
     incomingRequests = friendsRes.requests?.incoming || [];
     outgoingRequests = friendsRes.requests?.outgoing || [];
     groupsData = groupsRes.groups || [];
+    friendStoriesData = storiesRes.stories || [];
     renderFriendsSubTabContent();
+    renderFriendsStoriesBar();
+    if (window._friendStoryRefresh) clearInterval(window._friendStoryRefresh);
+    window._friendStoryRefresh = setInterval(() => {
+      if (currentTab === "friends" && !document.hidden) refreshFriendsStories();
+    }, 30000);
   } catch (e) {
     document.getElementById("friendsListContainer").innerHTML = `<div style="color:#ef4444; font-size:12px;">Erreur : ${friendlyError(e)}</div>`;
   }
+}
+
+async function refreshFriendsStories() {
+  if (currentTab !== "friends" || !document.getElementById("friendsStoriesBar")) return;
+  try {
+    const { stories } = await apiCall("/api/stories/friends");
+    friendStoriesData = stories || [];
+    friendStoriesError = null;
+    renderFriendsStoriesBar();
+  } catch (error) {
+    friendStoriesError = error;
+    renderFriendsStoriesBar();
+  }
+}
+
+function renderFriendsStoriesBar() {
+  const bar = document.getElementById("friendsStoriesBar");
+  if (!bar) return;
+  const ownStories = friendStoriesData.filter(story => story.is_mine);
+  const knownFriendIds = new Set(friendsData.map(friend => friend.id));
+  const friendItems = friendsData.map(friend => {
+    const stories = friendStoriesData.filter(story => story.user_id === friend.id);
+    return { friend, stories };
+  });
+  const groupContactIds = [...new Set(friendStoriesData
+    .filter(story => !story.is_mine && !knownFriendIds.has(story.user_id))
+    .map(story => story.user_id))];
+  for (const contactId of groupContactIds) {
+    const story = friendStoriesData.find(item => item.user_id === contactId);
+    friendItems.push({
+      friend: { id: contactId, display_name: story.author_name, avatar_url: story.author_avatar },
+      stories: friendStoriesData.filter(item => item.user_id === contactId)
+    });
+  }
+
+  bar.innerHTML = `
+    ${friendStoriesError ? `<div class="friends-stories-warning">Stories amis indisponibles. Exécute scripts/migrate_friend_stories.sql dans Supabase, puis recharge.</div>` : ''}
+    <div class="friends-story-item" onclick="${ownStories.length ? 'openMyFriendStories()' : 'document.getElementById(\'friendStoryFileInput\').click()'}">
+      <div class="story-circle me ${ownStories.length ? 'has-story' : 'empty'}">
+        <div class="story-inner">${renderAvatarHTML(myProfile.avatar)}</div>
+        <button class="story-add-badge" title="Ajouter une story pour mes amis" aria-label="Ajouter une story" onclick="event.stopPropagation(); document.getElementById('friendStoryFileInput').click()">+</button>
+      </div>
+      <div class="story-label">Ma story</div>
+    </div>
+    ${friendItems.map(({ friend, stories }) => `
+      <button class="friends-story-item friends-story-button" onclick="openFriendStories('${escapeAttr(friend.id)}')" aria-label="Story de ${escapeAttr(friend.display_name)}">
+        <div class="story-circle ${stories.length ? 'has-story' : 'empty'}">
+          <div class="story-inner">${renderAvatarHTML(friend.avatar_url)}</div>
+        </div>
+        <div class="story-label">${escapeHtml(friend.display_name)}</div>
+      </button>
+    `).join("")}
+  `;
+}
+
+function openMyFriendStories() {
+  const stories = friendStoriesData.filter(story => story.is_mine);
+  if (stories.length) openStoryViewer(stories, 0);
+  else document.getElementById("friendStoryFileInput")?.click();
+}
+
+function openFriendStories(friendId) {
+  const stories = friendStoriesData.filter(story => story.user_id === friendId);
+  if (stories.length) openStoryViewer(stories, 0);
+  else showToast("Pas encore de story", "Cet ami n'a pas publié de story visible pour ses amis.");
 }
 
 function switchFriendsSubTab(subTab) {
@@ -3512,8 +4029,9 @@ async function loadConvHistory() {
     }
 
     box.innerHTML = messages.map(renderConvMessageHTML).join("");
-    // Attacher le long-press sur tous les messages de conv chargés
+    // Attacher le long-press et swipe-to-reply sur tous les messages de conv chargés
     bindAllLongPress(box);
+    bindAllSwipeReply(box);
     box.scrollTop = box.scrollHeight;
     // [FLUIDITÉ] + [TICKS AMIS] conversation ouverte = messages lus
     convPollSince = new Date().toISOString();
@@ -3545,12 +4063,20 @@ function renderConvMessageHTML(m) {
       body = `<div class="msg-bubble">${escapeHtml(m.text || "")}</div>`;
     }
   } else if (m.type === "photo") {
-    const regId = registerMedia(m.media_url);
-    body = `
-      <div class="msg-bubble" style="padding:4px; background:none;">
-        <img class="chat-media-preview" src="${escapeAttr(m.media_url)}" alt="Photo" onload="scrollChatToBottom()" onclick="openRegisteredMedia('${regId}', false, false)">
-      </div>
-    `;
+    const mediaUrl = m.media_url || m.media_path;
+    if (!mediaUrl) {
+      body = `<div class="msg-bubble msg-deleted">📷 Photo non disponible</div>`;
+    } else {
+      const regId = registerMedia(mediaUrl);
+      body = `
+        <div class="msg-bubble ${m.text === "sticker" ? "custom-sticker-bubble" : ""}" style="padding:4px; background:none;">
+          <img class="chat-media-preview" src="${escapeAttr(mediaUrl)}" alt="${m.text === "sticker" ? "Sticker" : "Photo"}" 
+               onload="scrollChatToBottom()" 
+               onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'color:#ef4444;font-size:12px;padding:10px;\\'>📷 Photo non disponible</div>'"
+               onclick="openRegisteredMedia('${regId}', false, false)">
+        </div>
+      `;
+    }
   } else if (m.type === "video") {
     body = `
       <div class="msg-bubble" style="padding:4px; background:none;">
@@ -3560,7 +4086,7 @@ function renderConvMessageHTML(m) {
   } else if (m.type === "voice") {
     body = `
       <div class="msg-bubble" style="display:flex; align-items:center; gap:8px;">
-        <span>🎙️</span><audio class="chat-audio-preview" src="${escapeAttr(m.media_url)}" controls></audio>
+        <span>🎙️</span><audio class="chat-audio-preview" src="${escapeAttr(m.media_url)}" controls preload="metadata"></audio>
       </div>
     `;
   }
@@ -3584,6 +4110,7 @@ function renderConvMessageHTML(m) {
   // [LONG-PRESS] Les actions sont dans le menu contextuel (appui long)
   const canEditAttr = (isMe && !m.deleted && m.type === "text" && !isEmojiOnly(m.text)) ? "1" : "0";
   const canDeleteAttr = (isMe && !m.deleted) ? "1" : "0";
+  const authorName = isMe ? myProfile.nickname : (m.user_name || "Membre");
 
   // [REPLY] Bulle citée si ce message est une réponse
   const replyAuthor = m.reply_is_mine ? (isMe ? "Toi" : (m.user_name || "Membre")) : (isMe ? (m.user_name || "Membre") : "Toi");
@@ -3597,7 +4124,7 @@ function renderConvMessageHTML(m) {
          data-deleted="${m.deleted ? '1' : '0'}" data-can-edit="${canEditAttr}" data-can-delete="${canDeleteAttr}"
          data-created-at="${escapeAttr(m.created_at || '')}" data-delivered-at="${escapeAttr(m.delivered_at || '')}"
          data-read-at="${escapeAttr(m.read_at || '')}" data-text="${escapeAttr(m.text || '')}"
-         data-author-name="${escapeAttr(m.user_name || '')}"
+         data-author="${escapeAttr(authorName || '')}"
          data-reply-to-id="${escapeAttr(m.reply_to_id || '')}" data-reply-preview="${escapeAttr(m.reply_preview || '')}">
       ${!isMe ? `<div style="font-size:11px; font-weight:600; color:var(--accent-gold); margin:0 4px 2px;">${escapeHtml(m.user_name || "Membre")}</div>` : ""}
       ${replyQuoteHtml}
@@ -3754,7 +4281,7 @@ function handleReplyFromMenu() {
     rPreview = "📎 Fichier";
   }
 
-  const rAuthor = row.dataset.authorName || "";
+  const rAuthor = row.dataset.author || "";
   setReplyTo(msgId, rPreview, isMe, rAuthor);
 }
 
@@ -3819,6 +4346,11 @@ function openMsgMenu(row) {
       <span>🗑️</span><span>Supprimer pour tout le monde</span>
     </button>`;
   }
+  if (!isDeleted && type === "photo" && row.querySelector(".chat-media-preview")) {
+    actionBtns += `<button class="msg-menu-btn" onclick="saveStickerFromMessage()">
+      <span>🎟️</span><span>Enregistrer comme sticker</span>
+    </button>`;
+  }
   // Copier le texte (si texte)
   if (type === "text" && text) {
     actionBtns += `<button class="msg-menu-btn" onclick="copySelectedMessageText()">
@@ -3880,6 +4412,13 @@ function bindAllLongPress(container) {
   });
 }
 
+// Attache le swipe-to-reply à tous les .msg-row présents dans un conteneur
+function bindAllSwipeReply(container) {
+  container.querySelectorAll(".msg-row").forEach((row) => {
+    attachSwipeReply(row);
+  });
+}
+
 /* [SWIPE-TO-REPLY] Glisser un message vers la droite pour répondre.
    Sur mobile : touchstart -> touchend, si décalage horizontal > 60px
    et décalage vertical < 40px (geste non ambigu). */
@@ -3888,11 +4427,13 @@ function attachSwipeReply(row) {
   row._swipeReplyAttached = true;
 
   let startX = 0, startY = 0, moved = false;
+  let touchStartTime = 0;
 
   row.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
     moved = false;
+    touchStartTime = Date.now();
   }, { passive: true });
 
   row.addEventListener("touchmove", (e) => {
@@ -3910,14 +4451,21 @@ function attachSwipeReply(row) {
   row.addEventListener("touchend", (e) => {
     if (!moved) return;
     const dx = e.changedTouches[0].clientX - startX;
+    const touchDuration = Date.now() - touchStartTime;
+    
     row.style.transform = "";
     row.classList.remove("swiping");
-    if (dx > 60) {
+    
+    // Réduire le seuil pour iOS et ajuster selon la durée du geste
+    const swipeThreshold = (dx > 40 && touchDuration < 500) || dx > 60;
+    
+    if (swipeThreshold) {
       // Déclencher la réponse
       const msgId = row.dataset.msgId;
       const isMe = row.dataset.mine === "1";
       const text = row.dataset.text || row.querySelector(".msg-bubble")?.textContent || "";
       const msgType = row.dataset.type || "text";
+      const authorName = row.dataset.author || (isMe ? myProfile.nickname : partnerInfo.nickname);
       let preview = "";
       if (msgType === "text") preview = text.slice(0, 60) + (text.length > 60 ? "…" : "");
       else if (msgType === "photo") preview = "📷 Photo";
@@ -3925,10 +4473,63 @@ function attachSwipeReply(row) {
       else if (msgType === "voice") preview = "🎙️ Vocal";
       else preview = "📎 Fichier";
       if (navigator.vibrate) navigator.vibrate(20);
-      setReplyTo(msgId, preview, isMe);
+      setReplyTo(msgId, preview, isMe, authorName);
     }
     moved = false;
   }, { passive: true });
+  
+  // Support desktop mouse events
+  let mouseDown = false;
+  let mouseStartX = 0;
+  
+  row.addEventListener("mousedown", (e) => {
+    mouseDown = true;
+    mouseStartX = e.clientX;
+  });
+  
+  row.addEventListener("mousemove", (e) => {
+    if (!mouseDown) return;
+    const dx = e.clientX - mouseStartX;
+    if (dx > 20) {
+      const shift = Math.min(dx * 0.35, 55);
+      row.style.transform = `translateX(${shift}px)`;
+      row.classList.add("swiping");
+      moved = true;
+    }
+  });
+  
+  row.addEventListener("mouseup", (e) => {
+    mouseDown = false;
+    if (!moved) return;
+    const dx = e.clientX - mouseStartX;
+    row.style.transform = "";
+    row.classList.remove("swiping");
+    
+    if (dx > 60) {
+      const msgId = row.dataset.msgId;
+      const isMe = row.dataset.mine === "1";
+      const text = row.dataset.text || row.querySelector(".msg-bubble")?.textContent || "";
+      const msgType = row.dataset.type || "text";
+      const authorName = row.dataset.author || (isMe ? myProfile.nickname : partnerInfo.nickname);
+      let preview = "";
+      if (msgType === "text") preview = text.slice(0, 60) + (text.length > 60 ? "…" : "");
+      else if (msgType === "photo") preview = "📷 Photo";
+      else if (msgType === "video") preview = "🎬 Vidéo";
+      else if (msgType === "voice") preview = "🎙️ Vocal";
+      else preview = "📎 Fichier";
+      setReplyTo(msgId, preview, isMe, authorName);
+    }
+    moved = false;
+  });
+  
+  row.addEventListener("mouseleave", () => {
+    mouseDown = false;
+    if (moved) {
+      row.style.transform = "";
+      row.classList.remove("swiping");
+      moved = false;
+    }
+  });
 }
 
 // ✏️ Modifier mon message texte (couple : 'couple' / conversation : 'conv')
@@ -4069,6 +4670,7 @@ async function pollConvUpdates() {
 const EMOJI_PICKER_SET = "😀 😃 😄 😁 😆 😅 🤣 😂 🙂 😉 😊 😍 🥰 😘 😗 😋 😜 🤪 🤗 🤔 🤨 😐 😴 😢 😭 😤 😠 🤯 😳 🥵 🥶 😱 🤠 🤡 👻 💀 🤖 😈 👅 👄 💋 🌹 🥀 💐 🎁 💝 ❤️ 🧡 💛 💚 💙 💜 🖤 💔 💞 💓 💘 💕 ✨ 🔥 🎉 🎊 🥂 🍷 🍫 🌙 ⭐ 🌈 🦄 🐶 🐱 😺 🐼 🐵 💦 💍 👑 🙈 🙉 🙊 💪 🙏 👍 👏 🤝 🫶 😇 🥺 😬 🙄 🤭 🤫 😎 🤩 🥳 😇".split(/\s+/).filter((v, i, a) => v && a.indexOf(v) === i);
 const STICKER_SET = "😍 🥰 😘 ❣️ 💋 ❤️ 💘 💝 🌹 🔥 🥵 😈 🍑 🍌 💦 🤤 😜 🫶 🙈 💃 🍾 🎁 ✨ 💎 🥂 🌙 🐻 🐼 🥺 😇 😎 🤩".split(/\s+/).filter((v, i, a) => v && a.indexOf(v) === i);
 let emojiPanelInputId = null; // champ de saisie ciblé par le panneau
+const stickerObjectUrls = new Set();
 
 // Ouvre/ferme le panneau (couple : 'chatTextInput' / conversation : 'convTextInput')
 function toggleEmojiPanel(inputId) {
@@ -4083,28 +4685,31 @@ function toggleEmojiPanel(inputId) {
 function hideEmojiPanel() {
   const panel = document.getElementById("emojiPanel");
   if (panel) panel.style.display = "none";
+  stickerObjectUrls.forEach(url => URL.revokeObjectURL(url));
+  stickerObjectUrls.clear();
 }
 
 function renderEmojiTab(tab) {
   const panel = document.getElementById("emojiPanel");
   if (!panel) return;
-  const tenorKey = cfg.TENOR_API_KEY;
+  panel.dataset.activeTab = tab;
 
   let content = "";
   if (tab === "emoji") {
     content = `<div class="emoji-grid">${EMOJI_PICKER_SET.map((e) => `<button class="emoji-cell" onclick="insertEmoji('${e}')">${e}</button>`).join("")}</div>`;
   } else if (tab === "stickers") {
-    content = `<div class="emoji-grid stickers">${STICKER_SET.map((e) => `<button class="emoji-cell big" onclick="sendEmojiSticker('${e}')">${e}</button>`).join("")}</div>
-      <div class="emoji-hint">Appuie sur un sticker pour l'envoyer en GRAND directement 💥</div>`;
+    content = `
+      <div class="sticker-library-actions">
+        <button class="btn-secondary" onclick="document.getElementById('customStickerInput').click()">＋ Ajouter une image</button>
+        <input id="customStickerInput" type="file" accept="image/*" hidden onchange="addCustomSticker(event)">
+      </div>
+      <div id="savedStickerGrid" class="saved-sticker-grid"><div class="emoji-hint">Chargement de tes stickers...</div></div>
+      <div class="emoji-grid stickers">${STICKER_SET.map((e) => `<button class="emoji-cell big" onclick="sendEmojiSticker('${e}')">${e}</button>`).join("")}</div>`;
   } else if (tab === "gif") {
-    if (!tenorKey) {
-      content = `<div class="emoji-hint">Pour les GIFs : crée une clé gratuite sur tenor.com (Google Cloud) et ajoute <b>TENOR_API_KEY</b> dans <b>public/config.js</b>.<br>Les emojis et stickers fonctionnent déjà ! ✨</div>`;
-    } else {
-      content = `
-        <input class="input-field" id="gifSearchInput" placeholder="Rechercher un GIF... (ex: amour, drôle)" onkeydown="if(event.key==='Enter')searchGifs()">
-        <div id="gifResults" class="gif-grid"><div class="emoji-hint">Tape un mot-clé puis Entrée 🔎</div></div>
-      `;
-    }
+    content = `
+      <input class="input-field" id="gifSearchInput" placeholder="Rechercher un GIF... (ex: amour, drôle)" onkeydown="if(event.key==='Enter')searchGifs()">
+      <div id="gifResults" class="gif-grid"><div class="emoji-hint">Tape un mot-clé puis Entrée 🔎</div></div>
+    `;
   }
 
   panel.innerHTML = `
@@ -4116,6 +4721,109 @@ function renderEmojiTab(tab) {
     </div>
     <div class="emoji-body">${content}</div>
   `;
+  if (tab === "stickers") renderSavedStickerGrid();
+}
+
+async function renderSavedStickerGrid() {
+  const grid = document.getElementById("savedStickerGrid");
+  if (!grid) return;
+  stickerObjectUrls.forEach(url => URL.revokeObjectURL(url));
+  stickerObjectUrls.clear();
+  try {
+    const stickers = await getSavedStickerRecords();
+    if (grid !== document.getElementById("savedStickerGrid")) return;
+    grid.innerHTML = stickers.length ? stickers.map(sticker => {
+      const url = URL.createObjectURL(sticker.blob);
+      stickerObjectUrls.add(url);
+      return `<div class="saved-sticker-tile">
+        <button class="saved-sticker-send" title="Envoyer ${escapeAttr(sticker.name)}" onclick="sendSavedSticker('${escapeAttr(sticker.id)}')"><img src="${escapeAttr(url)}" alt="${escapeAttr(sticker.name)}"></button>
+        <button class="saved-sticker-remove" title="Supprimer le sticker" onclick="removeSavedSticker('${escapeAttr(sticker.id)}')">×</button>
+      </div>`;
+    }).join("") : `<div class="emoji-hint">Tes stickers enregistrés apparaîtront ici. Tu peux aussi enregistrer une photo reçue depuis son menu.</div>`;
+  } catch (error) {
+    grid.innerHTML = `<div class="emoji-hint">La bibliothèque de stickers n'est pas disponible sur cet appareil.</div>`;
+  }
+}
+
+async function addCustomSticker(event) {
+  const file = event.target.files?.[0];
+  event.target.value = "";
+  if (!file) return;
+  try {
+    let blob = file;
+    if (file.type !== "image/gif") {
+      const compressed = await compressImageToDataUrl(file, 512, 0.82);
+      if (!compressed) throw new Error("Cette image ne peut pas être utilisée comme sticker.");
+      blob = await (await fetch(compressed)).blob();
+    }
+    await saveStickerRecord(blob, file.name || "Sticker");
+    showToast("Sticker enregistré", "Disponible dans ta bibliothèque sur cet appareil.");
+    renderSavedStickerGrid();
+  } catch (error) {
+    alert(error.message || "Impossible d'enregistrer ce sticker.");
+  }
+}
+
+async function saveStickerFromMessage() {
+  const url = _currentMenuRow?.querySelector(".chat-media-preview")?.src;
+  closeMsgMenu();
+  if (!url) return;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Image inaccessible");
+    const original = await response.blob();
+    let blob = original;
+    if (original.type !== "image/gif") {
+      const file = new File([original], "sticker-image", { type: original.type || "image/jpeg" });
+      const compressed = await compressImageToDataUrl(file, 512, 0.82);
+      if (!compressed) throw new Error("Cette image ne peut pas être enregistrée comme sticker.");
+      blob = await (await fetch(compressed)).blob();
+    }
+    await saveStickerRecord(blob, "Sticker enregistré");
+    showToast("Sticker enregistré", "Ajouté à ta bibliothèque sur cet appareil.");
+  } catch (error) {
+    alert("Impossible d'enregistrer cette image comme sticker. Vérifie ta connexion et réessaie.");
+  }
+}
+
+async function removeSavedSticker(stickerId) {
+  await deleteStickerRecord(stickerId);
+  renderSavedStickerGrid();
+}
+
+async function sendSavedSticker(stickerId) {
+  hideEmojiPanel();
+  if (!currentChatContext && soloMode) {
+    alert("Invite ton/ta partenaire pour envoyer des stickers !");
+    return;
+  }
+  let pendingId = null;
+  try {
+    const sticker = (await getSavedStickerRecords()).find(item => item.id === stickerId);
+    if (!sticker) throw new Error("Sticker introuvable dans ta bibliothèque.");
+    const file = new File([sticker.blob], sticker.name || "sticker", { type: sticker.mime_type });
+    pendingId = showPendingBubble("⏳ Envoi du sticker...");
+    const folder = currentChatContext
+      ? `conv/${currentChatContext.id}/media`
+      : `${coupleId}/media`;
+    const { path, mimeType } = await uploadMediaDirectly(file, folder);
+    if (currentChatContext) {
+      await apiCall(`/api/groups/${currentChatContext.id}/messages`, {
+        method: "POST",
+        body: { type: "photo", text: "sticker", mediaPath: path, mimeType }
+      });
+      await loadConvHistory();
+    } else {
+      await apiCall("/api/chat/send", {
+        method: "POST",
+        body: { coupleId, type: "photo", text: "sticker", mediaPath: path, mimeType }
+      });
+    }
+  } catch (error) {
+    alert(friendlyError(error));
+  } finally {
+    removePendingBubble(pendingId);
+  }
 }
 
 // Insère un emoji dans le champ de saisie ciblé
@@ -4147,22 +4855,20 @@ async function sendEmojiSticker(emoji) {
 
 // Recherche de GIFs via l'API Tenor (optionnelle)
 async function searchGifs() {
-  const key = cfg.TENOR_API_KEY;
   const q = document.getElementById("gifSearchInput")?.value?.trim();
   const box = document.getElementById("gifResults");
-  if (!key || !q || !box) return;
+  if (!q || !box) return;
   box.innerHTML = `<div class="emoji-hint">Recherche...</div>`;
   try {
-    const res = await fetch(`https://tenor.googleapis.com/v2/search?q=${encodeURIComponent(q)}&key=${key}&limit=12&media_filter=gif`);
-    const data = await res.json();
+    const data = await apiCall(`/api/content/gifs?q=${encodeURIComponent(q)}`);
     const results = data.results || [];
     if (!results.length) { box.innerHTML = `<div class="emoji-hint">Aucun GIF trouvé 🙈</div>`; return; }
     box.innerHTML = results.map((r) => {
       const url = r.media_formats?.gif?.url;
-      return url ? `<img class="gif-cell" src="${escapeAttr(url)}" alt="GIF" onclick="sendGif('${escapeAttr(url)}')">` : "";
+      return url ? `<img class="gif-cell" src="${escapeAttr(url)}" alt="GIF Tenor" onclick="sendGif('${escapeAttr(url)}')">` : "";
     }).join("");
   } catch (e) {
-    box.innerHTML = `<div class="emoji-hint">Erreur de recherche GIF 😕</div>`;
+    box.innerHTML = `<div class="emoji-hint">${escapeHtml(e.message || "Erreur de recherche GIF")}</div>`;
   }
 }
 
@@ -4247,7 +4953,7 @@ async function loadStoriesBar() {
     <div onclick="myStories.length ? openStoryViewer(myStories, 0) : document.getElementById('storyFileInput').click()">
       <div class="story-circle me ${myStories.length ? 'has-story' : 'empty'}">
         <div class="story-inner">${renderAvatarHTML(myProfile.avatar)}</div>
-        ${!myStories.length ? '<div class="story-add-badge">+</div>' : ''}
+        <button class="story-add-badge" title="Ajouter une story" aria-label="Ajouter une story" onclick="event.stopPropagation(); document.getElementById('storyFileInput').click()">+</button>
       </div>
       <div class="story-label">${myStories.length ? 'Ma story' : '+ Ajouter'}</div>
     </div>
@@ -4271,35 +4977,51 @@ function handlePartnerStoryClick() {
   }
 }
 
-// Publication d'une story : sélection -> légende -> envoi -> barre à jour
-// Fichier en attente de publication (story)
-let _storyPendingFile = null;
-
-async function handleStoryUpload(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  if (soloMode) { alert("Invite ton/ta partenaire pour partager des stories !"); return; }
-
-  // Réinitialiser l'input pour permettre de re-sélectionner le même fichier
-  event.target.value = "";
-
-  // [STORY PREVIEW] Afficher l'aperçu plein écran avec légende inline
-  showStoryPreview(file);
+function broadcastStoryUpdate() {
+  if (!realtimeChatChannel) return;
+  realtimeChatChannel.send({
+    type: "broadcast",
+    event: "story-update",
+    payload: { coupleId, senderId: session?.user?.id }
+  }).catch(() => {});
 }
 
-function showStoryPreview(file) {
-  _storyPendingFile = file;
+// Publication d'une story : sélection -> légende -> envoi -> barre à jour
+// Fichier en attente de publication (story)
+let _storyPendingFiles = [];
+let _storyPreviewObjectUrl = null;
+let _storyQueueTotal = 0;
+let _storyAudience = "couple";
+
+async function handleStoryUpload(event, audience = "couple") {
+  const files = Array.from(event.target.files || []);
+  if (!files.length) return;
+
+  event.target.value = "";
+  if (soloMode && audience === "couple") { alert("Invite ton/ta partenaire pour partager des stories !"); return; }
+
+  _storyAudience = audience;
+  _storyPendingFiles = files;
+  _storyQueueTotal = files.length;
+  showStoryPreview(files[0], true, 1, files.length);
+}
+
+function showStoryPreview(file, resetCaption = false, position = 1, total = _storyQueueTotal) {
   const overlay = document.getElementById("storyPreviewOverlay");
   const mediaWrap = document.getElementById("storyPreviewMedia");
   const caption = document.getElementById("storyPreviewCaption");
   if (!overlay) return;
 
-  // Nettoyer l'aperçu précédent
+  const previousPreviewUrl = _storyPreviewObjectUrl;
+  _storyPreviewObjectUrl = null;
   mediaWrap.innerHTML = "";
-  if (caption) { caption.value = ""; caption.style.height = "40px"; }
+  if (previousPreviewUrl) URL.revokeObjectURL(previousPreviewUrl);
+  if (resetCaption && caption) { caption.value = ""; caption.style.height = "40px"; }
+  const count = document.getElementById("storyPreviewCount");
+  if (count) count.textContent = total > 1 ? `${position} / ${total}` : "";
 
-  // Générer l'aperçu
   const url = URL.createObjectURL(file);
+  _storyPreviewObjectUrl = url;
   if (file.type.startsWith("video/")) {
     const vid = document.createElement("video");
     vid.src = url; vid.controls = true; vid.autoplay = false; vid.playsInline = true;
@@ -4313,70 +5035,95 @@ function showStoryPreview(file) {
   }
 
   overlay.classList.add("active");
-  if (caption) setTimeout(() => caption.focus(), 200);
+  if (resetCaption && caption) setTimeout(() => caption.focus(), 200);
 }
 
 function cancelStoryPreview() {
-  _storyPendingFile = null;
+  _storyPendingFiles = [];
+  _storyQueueTotal = 0;
   const overlay = document.getElementById("storyPreviewOverlay");
   if (overlay) overlay.classList.remove("active");
   const mediaWrap = document.getElementById("storyPreviewMedia");
-  if (mediaWrap) {
-    // Libérer l'URL objet pour éviter les fuites mémoire
-    const media = mediaWrap.querySelector("img, video");
-    if (media?.src) URL.revokeObjectURL(media.src);
-    mediaWrap.innerHTML = "";
+  if (mediaWrap) mediaWrap.innerHTML = "";
+  if (_storyPreviewObjectUrl) URL.revokeObjectURL(_storyPreviewObjectUrl);
+  _storyPreviewObjectUrl = null;
+  const sendBtn = document.querySelector(".story-preview-send-btn");
+  if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = "➤"; }
+}
+
+async function publishSingleStory(file, caption, onProgress, audience) {
+  const storyFolder = audience === "friends" ? `${session.user.id}/stories` : `${coupleId}/stories`;
+  const storyBody = fields => ({ audience, ...(audience === "couple" ? { coupleId } : {}), caption, ...fields });
+  if (cfg.CLOUDINARY_CLOUD_NAME && cfg.CLOUDINARY_UPLOAD_PRESET) {
+    const { path, mimeType } = await uploadMediaDirectly(file, storyFolder, onProgress);
+    await apiCall("/api/stories", { method: "POST", body: storyBody({ mediaPath: path, mimeType }) });
+    return;
   }
+
+  if (file.type.startsWith("image/")) {
+    const dataUrl = await compressImageToDataUrl(file, 1080, 0.82);
+    if (dataUrl) {
+      await apiCall("/api/stories", { method: "POST", body: storyBody({ mediaDataUrl: dataUrl }) });
+      onProgress(1);
+      return;
+    }
+  }
+
+  if (file.size > MAX_SUPABASE_UPLOAD_BYTES) {
+    throw new Error("Cette vidéo dépasse 50 Mo. Configure Cloudinary pour publier des vidéos plus lourdes.");
+  }
+
+  const path = `${storyFolder}/${Date.now()}-${session.user.id}.${extForFile(file)}`;
+  const { error } = await sb.storage.from("chat-media").upload(path, file, {
+    contentType: file.type || "application/octet-stream",
+    upsert: false
+  });
+  if (error) throw new Error("Échec du stockage de la story. Vérifie les droits Supabase ou configure Cloudinary.");
+  onProgress(1);
+  await apiCall("/api/stories", {
+    method: "POST",
+    body: storyBody({ mediaPath: path, mimeType: file.type || "application/octet-stream" })
+  });
 }
 
 async function publishStoryFromPreview() {
-  const file = _storyPendingFile;
-  if (!file) return;
-
+  const files = [..._storyPendingFiles];
+  if (!files.length) return;
   const caption = document.getElementById("storyPreviewCaption")?.value?.trim() || "";
   const sendBtn = document.querySelector(".story-preview-send-btn");
-  if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = "⏳"; }
+  if (sendBtn) sendBtn.disabled = true;
+  let published = 0;
 
-  try {
-    /* [STORY UPLOAD] On convertit toujours en base64 et on envoie via le
-       serveur Node.js (qui a la service_role key et bypass la RLS Storage).
-       Plus fiable que l'upload direct depuis le navigateur (RLS Storage). */
-    let toProcess = file;
-
-    // Compression des images pour alléger
-    if (file.type.startsWith("image/")) {
-      const dataUrlCompressed = await compressImageToDataUrl(file, 1080, 0.82);
-      if (dataUrlCompressed) {
-        // Envoyer directement la dataUrl compressée
-        await apiCall("/api/stories", {
-          method: "POST",
-          body: { coupleId, mediaDataUrl: dataUrlCompressed, caption }
-        });
-        cancelStoryPreview();
-        showToast("🌟 Story publiée", "Visible pendant 24h !");
+  for (let index = 0; index < files.length; index++) {
+    const file = files[index];
+    _storyPendingFiles = files.slice(index);
+    if (index > 0) showStoryPreview(file, false, index + 1, _storyQueueTotal);
+    try {
+      await publishSingleStory(file, caption, progress => {
+        if (sendBtn) sendBtn.textContent = files.length > 1
+          ? `${index + 1}/${files.length} · ${Math.round(progress * 100)}%`
+          : `${Math.round(progress * 100)}%`;
+      }, _storyAudience);
+      published++;
+    } catch (error) {
+      showStoryPreview(file, false, index + 1, _storyQueueTotal);
+      if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = "➤"; }
+      alert(`Story ${index + 1}/${files.length} non publiée : ${friendlyError(error)}\n\nTu peux réessayer ; les stories déjà publiées ne seront pas renvoyées.`);
+      if (published) {
         loadStoriesBar();
-        return;
+        broadcastStoryUpdate();
       }
+      return;
     }
+  }
 
-    // Vidéo ou fallback image : lecture en base64
-    const dataUrl = await new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(toProcess);
-    });
-
-    await apiCall("/api/stories", {
-      method: "POST",
-      body: { coupleId, mediaDataUrl: dataUrl, caption }
-    });
-    cancelStoryPreview();
-    showToast("🌟 Story publiée", "Visible pendant 24h !");
+  cancelStoryPreview();
+  showToast("🌟 Stories publiées", `${published} ${published > 1 ? "stories publiées" : "story publiée"} · visibles pendant 24h`);
+  if (_storyAudience === "friends") {
+    await refreshFriendsStories();
+  } else {
     loadStoriesBar();
-  } catch (e) {
-    alert(friendlyError(e));
-    if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = "➤"; }
+    broadcastStoryUpdate();
   }
 }
 
@@ -4395,6 +5142,30 @@ function openStoryViewer(list, startIndex) {
     clearInterval(storyTimer);
     viewer.remove();
   }
+
+  function moveStory(direction) {
+    clearInterval(storyTimer);
+    viewer.querySelector("video")?.pause();
+    const nextIndex = index + direction;
+    if (nextIndex < 0) return;
+    if (nextIndex >= stories.length) { close(); return; }
+    index = nextIndex;
+    render();
+  }
+
+  let touchStartX = null;
+  viewer.addEventListener("touchstart", event => {
+    touchStartX = event.changedTouches[0]?.clientX ?? null;
+  }, { passive: true });
+  viewer.addEventListener("touchend", event => {
+    if (touchStartX === null) return;
+    const deltaX = event.changedTouches[0].clientX - touchStartX;
+    touchStartX = null;
+    if (Math.abs(deltaX) > 55) {
+      event.preventDefault();
+      moveStory(deltaX < 0 ? 1 : -1);
+    }
+  }, { passive: false });
 
   function render() {
     const story = stories[index];
@@ -4416,7 +5187,7 @@ function openStoryViewer(list, startIndex) {
         <div class="avatar-img" style="border-color:#fff; color:#000; font-size:16px;">${renderAvatarHTML(story.author_avatar)}</div>
         <div style="flex:1; font-size:13px; font-weight:600;">
           ${escapeHtml(story.author_name)}
-          <div style="font-size:10px; opacity:0.7;">${story.is_mine && elapsed > 0 ? `il y a ${elapsed}h` : "à l'instant"} · disparaît dans 24h</div>
+          <div style="font-size:10px; opacity:0.7;">${getStoryTimeDisplay(story.expires_at, story.created_at)}</div>
         </div>
         ${story.is_mine ? `<button class="icon-btn" title="Supprimer ma story" onclick="deleteStory('${story.id}')">🗑️</button>` : ""}
         <button class="icon-btn" onclick="document.getElementById('storyViewer')?.remove(); clearInterval(storyTimer);">✕</button>
@@ -4425,9 +5196,14 @@ function openStoryViewer(list, startIndex) {
         ${isVideo
           ? `<video src="${escapeAttr(story.media_url)}" autoplay playsinline controls></video>`
           : `<img src="${escapeAttr(story.media_url)}" alt="Story">`}
+        <button class="story-tap-zone previous" aria-label="Story précédente"></button>
+        <button class="story-tap-zone next" aria-label="Story suivante"></button>
       </div>
       ${story.caption ? `<div class="story-caption">${escapeHtml(story.caption)}</div>` : ""}
     `;
+
+    viewer.querySelector(".story-tap-zone.previous")?.addEventListener("click", () => moveStory(-1));
+    viewer.querySelector(".story-tap-zone.next")?.addEventListener("click", () => moveStory(1));
 
     // Barre de progression + passage automatique à la story suivante
     const fill = document.getElementById("storyFill");
@@ -4458,6 +5234,7 @@ async function deleteStory(storyId) {
     clearInterval(storyTimer);
     document.getElementById("storyViewer")?.remove();
     loadStoriesBar();
+    broadcastStoryUpdate();
   } catch (e) { alert(friendlyError(e)); }
 }
 
@@ -4723,4 +5500,4 @@ function openPartnerDetails() {
   openSettingsModal();
 }
 
-window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", startApp);

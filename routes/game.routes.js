@@ -89,7 +89,7 @@ router.post("/draw", requireAuth, async (req, res) => {
       .from("game_cards")
       .select("*", { count: "exact", head: true });
     const total = count || 0;
-    if (total === 0) return res.status(404).json({ error: "Aucune carte en banque (npm run seed ?)" });
+    if (total === 0) return res.status(404).json({ error: "Aucune carte disponible pour le moment. Veuillez réessayer plus tard." });
     const offset = Math.floor(Math.random() * total);
 
     const { data: cards, error: cardError } = await supabase

@@ -13,6 +13,7 @@ Application de couple et d'amis avec chat temps réel, quiz de compatibilité, j
 - **Présence en temps réel** : voir quand votre partenaire est en ligne
 - **Thèmes personnalisables** : plusieurs ambiances (nuit étoilée, rose passion, émeraude, etc.)
 - **Photo de profil synchronisée** : changements en temps réel
+- **Stickers et GIFs** : recherche Tenor, stickers personnels enregistrés sur l'appareil et envoi dans tous les chats
 
 ### 👥 Mode Amis & Groupes
 - **Ajout d'amis par numéro de téléphone** : recherchez vos amis qui utilisent l'app
@@ -22,11 +23,16 @@ Application de couple et d'amis avec chat temps réel, quiz de compatibilité, j
 - **Confirmations de lecture** : ticks de livraison et lecture (style WhatsApp)
 - **Réponses aux messages** : glisser pour répondre (style WhatsApp)
 - **Édition et suppression** : modifiez ou supprimez vos messages
+- **Stickers personnalisés** : ajoutez une image ou enregistrez une photo/GIF reçu depuis le menu du message
 
 ### 📱 Stories (24h)
 - **Photos et vidéos éphémères** : partages qui disparaissent après 24h
+- **Publication multiple** : sélectionnez plusieurs photos ou vidéos en une fois ; le bouton + reste disponible après publication
+- **Stories d'amis** : stories visibles par les amis acceptés et les membres de groupes partagés, même sans amitié directe
 - **Légendes personnalisées** : ajoutez du texte à vos stories
 - **Style WhatsApp Status** : interface familière et intuitive
+
+Les stories publiées dans le chat couple apparaissent aussi dans le rail Amis. Les stories sont visibles par les amis acceptés et les membres de groupes partagés. Pour activer ces audiences sur une base déjà créée, exécutez `scripts/migrate_friend_stories.sql` dans le SQL Editor Supabase.
 
 ### 🔔 Notifications
 - **Notifications push** : alertes même quand l'app est fermée
@@ -107,15 +113,25 @@ cp .env.example .env
 SUPABASE_URL=https://votre-projet.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=eyJ votre_clé_service_role
 PORT=3000
+TENOR_API_KEY=votre_cle_tenor
 ```
 
-### 5. Initialiser la base de données
+### 5. Activer les GIFs Tenor
+
+1. Créez un projet dans [Google Cloud Console](https://console.cloud.google.com/).
+2. Activez **Tenor API** dans la bibliothèque d'API.
+3. Créez une clé API dans **APIs et services > Identifiants**.
+4. Ajoutez `TENOR_API_KEY=votre_cle` au `.env` du serveur, puis redémarrez `npm start`.
+
+La clé reste côté serveur et ne doit pas être ajoutée à `public/config.js`. La bibliothèque de stickers personnels est conservée sur l'appareil utilisé. Le stockage et le nombre d'envois dépendent de l'espace disponible sur l'appareil, du quota Cloudinary/Supabase et des limites de Tenor.
+
+### 6. Initialiser la base de données
 
 1. Allez dans le **SQL Editor** de votre projet Supabase
 2. Exécutez le contenu du fichier `schema.sql`
 3. Cela créera toutes les tables nécessaires et les politiques de sécurité
 
-### 6. Seed du contenu (optionnel)
+### 7. Seed du contenu (optionnel)
 
 ```bash
 # Remplir les tables de contenu (quiz, jeu, mots doux)

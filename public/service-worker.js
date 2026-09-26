@@ -1,5 +1,5 @@
 // Service Worker pour Amour & Complices
-const CACHE_NAME = 'amour-complices-v1';
+const CACHE_NAME = 'amour-complices-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -19,6 +19,7 @@ self.addEventListener('install', event => {
         console.log('Cache ouvert');
         return cache.addAll(urlsToCache);
       })
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -33,21 +34,28 @@ self.addEventListener('activate', event => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
 // Interception des requêtes
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
+    (async () => {
+      try {
+        const response = await fetch(event.request);
+        const requestUrl = new URL(event.request.url);
+        if (response.ok && requestUrl.origin === self.location.origin && urlsToCache.includes(requestUrl.pathname)) {
+          const cache = await caches.open(CACHE_NAME);
+          await cache.put(event.request, response.clone());
         }
-        return fetch(event.request);
-      })
+        return response;
+      } catch (error) {
+        return (await caches.match(event.request)) || Response.error();
+      }
+    })()
   );
 });
 
