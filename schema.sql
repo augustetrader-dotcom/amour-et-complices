@@ -443,7 +443,8 @@ create index if not exists idx_group_messages_unread on group_messages(conversat
 create table if not exists stories (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
-  couple_id uuid not null references couples(id) on delete cascade,
+  couple_id uuid references couples(id) on delete cascade,
+  audience text not null default 'couple' check (audience in ('couple', 'friends')),
   media_path text not null,          -- Storage : {coupleId}/stories/...
   mime_type text,
   caption text,
@@ -451,19 +452,76 @@ create table if not exists stories (
   expires_at timestamptz not null default (now() + interval '24 hours')
 );
 create index if not exists idx_stories_couple on stories(couple_id, expires_at desc);
+alter table stories alter column couple_id drop not null;
+alter table stories add column if not exists audience text not null default 'couple';
+do $$
+begin
+  alter table stories add constraint stories_audience_check check (audience in ('couple', 'friends'));
+exception when duplicate_object then
+  null;
+end $$;
+create index if not exists idx_stories_friends_expiry on stories(audience, user_id, expires_at desc);
 
 alter table stories enable row level security;
 drop policy if exists "Un membre du couple voit les stories" on stories;
 drop policy if exists "Un membre du couple publie sa story" on stories;
 drop policy if exists "Chacun supprime sa propre story" on stories;
+drop policy if exists "Amis acceptes voient les stories amis" on stories;
+create or replace function public.can_view_story_from_group(story_owner uuid)
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+set row_security = off
+as $$
+  select exists (
+    select 1
+    from public.conversation_members viewer_member
+    join public.conversation_members story_owner_member
+      on story_owner_member.conversation_id = viewer_member.conversation_id
+    join public.conversations
+      on conversations.id = viewer_member.conversation_id
+    where viewer_member.user_id = auth.uid()
+      and story_owner_member.user_id = story_owner
+      and conversations.type = 'group'
+  );
+$$;
+revoke all on function public.can_view_story_from_group(uuid) from public, anon;
+grant execute on function public.can_view_story_from_group(uuid) to authenticated;
+
 create policy "Un membre du couple voit les stories"
-  on stories for select using (exists (
-    select 1 from couples
-    where couples.id = stories.couple_id
-    and (couples.user_a = auth.uid() or couples.user_b = auth.uid())
-  ));
+  on stories for select using (
+    user_id = auth.uid()
+    or (
+      audience = 'couple' and exists (
+        select 1 from couples
+        where couples.id = stories.couple_id
+        and (couples.user_a = auth.uid() or couples.user_b = auth.uid())
+      )
+    )
+    or (
+      audience in ('couple', 'friends') and exists (
+        select 1 from friends
+        where (friends.user_id = auth.uid() and friends.friend_id = stories.user_id)
+           or (friends.friend_id = auth.uid() and friends.user_id = stories.user_id)
+      )
+    )
+    or (
+      audience in ('couple', 'friends') and public.can_view_story_from_group(stories.user_id)
+    )
+  );
 create policy "Un membre du couple publie sa story"
-  on stories for insert with check (auth.uid() = user_id);
+  on stories for insert with check (
+    auth.uid() = user_id and (
+      (audience = 'friends' and couple_id is null)
+      or (audience = 'couple' and exists (
+        select 1 from couples
+        where couples.id = stories.couple_id
+        and (couples.user_a = auth.uid() or couples.user_b = auth.uid())
+      ))
+    )
+  );
 create policy "Chacun supprime sa propre story"
   on stories for delete using (auth.uid() = user_id);
 
@@ -579,6 +637,14 @@ begin
   ) then
     alter publication supabase_realtime add table public.group_messages;
   end if;
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime'
+      and schemaname = 'public'
+      and tablename = 'stories'
+  ) then
+    alter publication supabase_realtime add table public.stories;
+  end if;
 exception when others then
   raise notice 'Realtime non activé par SQL : utilise Database > Replication dans le dashboard.';
 end $$;
@@ -605,6 +671,12 @@ create policy "Accès média chat et stories"
         and (couples.user_a = auth.uid() or couples.user_b = auth.uid())
       )
       or
+      -- 2. Stories d'amis : {userId}/stories/...
+      (
+        (storage.foldername(name))[1] = auth.uid()::text
+        and (storage.foldername(name))[2] = 'stories'
+      )
+      or
       -- 2. Chemins de conversation : conv/{conversationId}/...
       (
         (storage.foldername(name))[1] = 'conv'
@@ -618,6 +690,25 @@ create policy "Accès média chat et stories"
   )
   with check (
     bucket_id = 'chat-media'
+    and (
+      exists (
+        select 1 from couples
+        where couples.id::text = (storage.foldername(name))[1]
+          and (couples.user_a = auth.uid() or couples.user_b = auth.uid())
+      )
+      or (
+        (storage.foldername(name))[1] = auth.uid()::text
+        and (storage.foldername(name))[2] = 'stories'
+      )
+      or (
+        (storage.foldername(name))[1] = 'conv'
+        and exists (
+          select 1 from conversation_members m
+          where m.conversation_id::text = (storage.foldername(name))[2]
+            and m.user_id = auth.uid()
+        )
+      )
+    )
   );
 
 -- ------------------------------------------------------------

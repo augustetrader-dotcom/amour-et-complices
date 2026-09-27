@@ -37,37 +37,55 @@ function extFromMime(mime) {
 // [FLUIDITÉ] `since` = ne renvoyer QUE les messages plus récents
 // (utilisé par le polling de secours toutes les 4s : requêtes minuscules)
 router.get("/history", requireAuth, async (req, res) => {
-  const { coupleId, since } = req.query;
+  const { coupleId, since, before } = req.query;
   const couple = await assertCoupleMember(coupleId, req.user.id);
   if (!couple) return res.status(403).json({ error: "Accès refusé" });
+
+  const requestedLimit = Number.parseInt(req.query.limit, 10);
+  const limit = Number.isFinite(requestedLimit) ? Math.min(Math.max(requestedLimit, 1), 50) : 50;
+  const requestedOffset = Number.parseInt(req.query.offset, 10);
+  const offset = Number.isFinite(requestedOffset) ? Math.max(requestedOffset, 0) : 0;
 
   let query = supabase
     .from("messages")
     .select("*")
-    .eq("couple_id", coupleId)
-    .order("created_at", { ascending: true });
-  if (since) query = query.gt("created_at", since);
-
-  const { data, error } = await query;
-
-  if (error) return res.status(500).json({ error: translateError(error.message) });
-
-  // [CONFIRMATIONS DE LECTURE] Le destinataire vient de charger l'historique :
-  // tous les messages qui lui sont adressés et pas encore "distribués" sont
-  // marqués delivered_at -> l'expéditeur verra ✓✓ (double trait gris).
-  try {
-    await supabase
-      .from("messages")
-      .update({ delivered_at: new Date().toISOString() })
-      .eq("couple_id", coupleId)
-      .neq("from_user", req.user.id)
-      .is("delivered_at", null);
-  } catch (e) {
-    // Colonne delivered_at optionnelle / en attente de migration SQL
+    .eq("couple_id", coupleId);
+  if (since) {
+    query = query.gt("created_at", since).order("created_at", { ascending: true }).limit(limit);
+  } else {
+    if (before) query = query.lt("created_at", before);
+    query = query.order("created_at", { ascending: false }).range(offset, offset + limit - 1);
   }
 
-  const enriched = await Promise.all(
-    data.map(async (m) => {
+  const { data: fetched, error } = await query;
+
+  if (error) return res.status(500).json({ error: translateError(error.message) });
+  const data = since ? (fetched || []) : (fetched || []).reverse();
+
+  // La confirmation ne doit pas retarder l'affichage de l'historique.
+  const receivedIds = data.filter(message => message.from_user !== req.user.id && !message.delivered_at).map(message => message.id);
+  if (receivedIds.length) {
+    supabase.from("messages")
+      .update({ delivered_at: new Date().toISOString() })
+      .in("id", receivedIds)
+      .then(() => {})
+      .catch(() => {});
+  }
+
+  const storagePaths = [...new Set(data
+    .filter(message => message.media_path && message.type !== "once" && !/^(https?:|data:)/i.test(message.media_path))
+    .map(message => message.media_path))];
+  let signedUrls = new Map();
+  if (storagePaths.length) {
+    const { data: signed, error: signingError } = await supabase.storage
+      .from(BUCKET)
+      .createSignedUrls(storagePaths, 3600);
+    if (!signingError) {
+      signedUrls = new Map((signed || []).map(item => [item.path, item.signedUrl]));
+    }
+  }
+
+  const enriched = data.map((m) => {
       const base = {
         ...m,
         from: m.from_user, // Garantit la compatibilité avec le frontend
@@ -75,19 +93,16 @@ router.get("/history", requireAuth, async (req, res) => {
       };
 
       if (m.media_path && m.type !== "once") {
-        // [CLOUDINARY] URL https = déjà publique, pas de signature nécessaire
-        if (/^https?:\/\//i.test(m.media_path)) {
+        if (/^(https?:|data:)/i.test(m.media_path)) {
           return { ...base, media_url: m.media_path, media_path: undefined };
         }
-        const { data: signed } = await supabase.storage.from(BUCKET).createSignedUrl(m.media_path, 3600);
-        return { ...base, media_url: signed?.signedUrl || null, media_path: undefined };
+        return { ...base, media_url: signedUrls.get(m.media_path) || null, media_path: undefined };
       }
       const { media_path, ...rest } = base; // Ne jamais exposer le chemin brut d'un "once"
       return rest;
-    })
-  );
+  });
 
-  res.json({ messages: enriched });
+  res.json({ messages: enriched, hasMore: !since && data.length === limit });
 });
 
 // POST /api/chat/send
@@ -226,12 +241,17 @@ router.post("/view-once", requireAuth, async (req, res) => {
     if (/^https?:\/\//i.test(message.media_path || "")) {
       return res.json({ mediaUrl: message.media_path, dataUrl: message.media_path, mimeType: message.mime_type });
     }
+    
+    // Try signed URL first (more reliable for large files)
+    const { data: signed } = await supabase.storage.from(BUCKET).createSignedUrl(message.media_path, 600);
+    if (signed?.signedUrl) {
+      return res.json({ mediaUrl: signed.signedUrl, dataUrl: signed.signedUrl, mimeType: message.mime_type });
+    }
+    
+    // Fallback to direct download if signed URL fails
     const { data: blob, error: downloadError } = await supabase.storage.from(BUCKET).download(message.media_path);
     if (downloadError) {
-      // Secours : URL signée de 5 minutes si le téléchargement serveur échoue
-      const { data: signed } = await supabase.storage.from(BUCKET).createSignedUrl(message.media_path, 300);
-      if (!signed?.signedUrl) return res.status(500).json({ error: downloadError.message });
-      return res.json({ mediaUrl: signed.signedUrl, dataUrl: signed.signedUrl, mimeType: message.mime_type });
+      return res.status(500).json({ error: "Le média n'est plus disponible ou a été supprimé." });
     }
 
     const buffer = Buffer.from(await blob.arrayBuffer());
@@ -243,7 +263,7 @@ router.post("/view-once", requireAuth, async (req, res) => {
     res.json({ mediaUrl: dataUrl, dataUrl, mimeType: mime });
   } catch (err) {
     console.error("Erreur view-once:", err);
-    res.status(500).json({ error: "Impossible de charger le média éphémère: " + err.message });
+    res.status(500).json({ error: "Impossible de charger le média éphémère. Veuillez réessayer." });
   }
 });
 
