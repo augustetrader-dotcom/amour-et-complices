@@ -1856,73 +1856,9 @@ async function loadChatHistory(append = false) {
     if (chatPagination.isLoading || !chatPagination.hasMore) return;
     chatPagination.isLoading = true;
 
-    // [OFFLINE] Si hors ligne, charger depuis IndexedDB
-    if (!navigator.onLine && !append) {
-      try {
-        const offlineMessages = await getOfflineMessages(coupleId);
-        if (offlineMessages.length > 0) {
-          const messages = offlineMessages.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
-          chatPagination.messages = messages;
-          chatPagination.loadedCount = messages.length;
-          chatPagination.hasMore = false;
-          chatPagination.isLoading = false;
-          
-          const fragment = document.createDocumentFragment();
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = messages.map(renderMessageHTML).join("");
-          
-          while (tempDiv.firstChild) {
-            fragment.appendChild(tempDiv.firstChild);
-          }
-          
-          box.innerHTML = '';
-          box.appendChild(fragment);
-          bindAllLongPress(box);
-          bindAllSwipeReply(box);
-          scrollChatToBottom(false);
-          
-          showToast('Mode hors ligne', 'Messages chargés localement');
-          return;
-        } else {
-          box.innerHTML = `
-            <div style="text-align:center; margin:auto; color:var(--text-muted); font-size:13px; padding:20px;">
-              <div style="font-size:36px; margin-bottom:8px;">📶</div>
-              <div>En attente du réseau</div>
-              <div style="font-size:11px; opacity:0.8; margin-top:4px;">Vos messages seront envoyés dès que possible</div>
-            </div>
-          `;
-          chatPagination.hasMore = false;
-          chatPagination.isLoading = false;
-          return;
-        }
-      } catch (e) {
-        console.warn('Failed to load offline messages:', e);
-      }
-    }
-
-    if (!append) {
-      const cached = getCache('chatHistory', 2 * 60 * 1000);
-      if (cached?.length) {
-        hasCachedHistory = true;
-        chatPagination.messages = cached;
-        chatPagination.loadedCount = cached.length;
-        chatPagination.oldestCursor = cached[0]?.created_at || null;
-        const fragment = document.createDocumentFragment();
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = cached.map(renderMessageHTML).join("");
-        while (tempDiv.firstChild) fragment.appendChild(tempDiv.firstChild);
-        box.replaceChildren(fragment);
-        bindAllLongPress(box);
-        bindAllSwipeReply(box);
-        scrollChatToBottom(false);
-      }
-    }
-
-    const cursor = append && chatPagination.oldestCursor
-      ? `&before=${encodeURIComponent(chatPagination.oldestCursor)}`
-      : "";
+    // Charger les messages avec pagination
     const { messages, hasMore } = await apiCall(
-      `/api/chat/history?coupleId=${coupleId}&limit=${chatPagination.pageSize}${cursor}`
+      `/api/chat/history?coupleId=${coupleId}&limit=${chatPagination.pageSize}&offset=${chatPagination.loadedCount}`
     );
 
     if (!messages || messages.length === 0) {
