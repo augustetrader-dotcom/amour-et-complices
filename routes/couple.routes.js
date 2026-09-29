@@ -123,12 +123,16 @@ router.get("/mine", requireAuth, async (req, res) => {
 
   // [PHASE 2] Garantit qu'une conversation "couple" existe (couples créés
   // avant la migration : le trigger SQL ne s'applique qu'aux nouveaux).
-  await ensureCoupleConversation(couple);
+  const conversationSetup = ensureCoupleConversation(couple);
 
   let partnerInfo = { id: partnerId, nickname: "Moitié", avatar: null, last_seen: null, phone: null, is_online: false };
 
   try {
-    const { data: partnerProfile } = await supabase.from("profiles").select("*").eq("id", partnerId).maybeSingle();
+    const [profileResult] = await Promise.all([
+      supabase.from("profiles").select("*").eq("id", partnerId).maybeSingle(),
+      conversationSetup,
+    ]);
+    const partnerProfile = profileResult.data;
     if (partnerProfile) {
       // [PHASE 1] Présence : "en ligne" = heartbeat de moins de 90s
       const isOnline =

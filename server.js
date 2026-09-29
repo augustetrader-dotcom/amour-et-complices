@@ -109,6 +109,14 @@ app.use("/api/push", pushRoutes);
 const loveQuizRoutes = require("./routes/love-quiz.routes");
 app.use("/api/love-quiz", loveQuizRoutes);
 
+app.get("/api/public-config", (req, res) => {
+  res.set("Cache-Control", "public, max-age=300");
+  res.json({
+    cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME || "",
+    cloudinaryUploadPreset: process.env.CLOUDINARY_UPLOAD_PRESET || "",
+  });
+});
+
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 
 // ------------------------------------------------------------

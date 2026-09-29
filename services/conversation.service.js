@@ -181,10 +181,32 @@ async function signMediaPath(mediaPath) {
   }
 }
 
+async function signMediaPaths(mediaPaths) {
+  const paths = [...new Set((mediaPaths || []).filter(Boolean))];
+  const signedUrls = new Map(paths
+    .filter(path => /^(https?|data):/i.test(path))
+    .map(path => [path, path]));
+  const storagePaths = paths.filter(path => !/^(https?|data):/i.test(path));
+  if (!storagePaths.length) return signedUrls;
+
+  try {
+    const { data, error } = await supabase.storage.from(BUCKET).createSignedUrls(storagePaths, 3600);
+    if (!error) {
+      for (const item of data || []) {
+        if (item.signedUrl) signedUrls.set(item.path, item.signedUrl);
+      }
+    }
+  } catch (err) {
+    console.warn("Impossible de signer les médias en lot:", err.message);
+  }
+  return signedUrls;
+}
+
 // Un chemin de média est-il légitime ? (Storage Supabase OU URL Cloudinary OU Data URL)
 function isValidMediaPath(path, prefix) {
   if (!path) return false;
   if (/^https:\/\/res\.cloudinary\.com\//i.test(path)) return true; // CDN Cloudinary
+  if (/^https:\/\/media\.tenor\.com\//i.test(path)) return true; // GIF officiel Tenor
   if (/^data:/i.test(path)) return true; // Fallback data URL
   return path.startsWith(prefix);
 }
@@ -196,6 +218,7 @@ module.exports = {
   ensureCoupleConversation,
   normalizePhone,
   findProfileByPhone,
+  signMediaPaths,
   decodeDataUrl,
   extFromMime,
   uploadConversationMedia,

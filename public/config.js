@@ -1,9 +1,15 @@
 // Configuration Supabase & API dynamique (compatible PC, iPhone/iOS et tunnels distants)
+const nativeRuntime = window.Capacitor?.isNativePlatform?.() ||
+  window.location.protocol === "capacitor:" || window.location.protocol === "file:";
+const pageOrigin = window.location.origin && window.location.origin !== "null"
+  ? window.location.origin
+  : "http://localhost:3000";
+
 window.APP_CONFIG = {
   SUPABASE_URL: "https://pqhnvekhayfpyquzlzgz.supabase.co",
   SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxaG52ZWtoYXlmcHlxdXpsemd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0MTA0NjgsImV4cCI6MjEwNDk4NjQ2OH0.4kdQkdXDQfuN-AGOHUYQa0i6_Wf4KaCGAx2-W1PBcWk",
-  // Utilise automatiquement l'adresse du serveur d'où la page est ouverte (IP locale ou tunnel public HTTPS)
-  API_BASE: (window.location.origin && window.location.origin !== "null") ? window.location.origin : "http://localhost:3000",
+  // Le backend de production est servi par la même application Vercel.
+  API_BASE: window.APP_API_BASE || (nativeRuntime ? "https://amour-et-complices.vercel.app" : pageOrigin),
 
   // ============================================================
   // [CLOUDINARY — OPTIONNEL] Stockage des photos/vidéos sur le CDN

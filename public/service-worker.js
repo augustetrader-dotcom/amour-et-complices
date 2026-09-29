@@ -1,11 +1,12 @@
 // Service Worker pour Amour & Complices
-const CACHE_NAME = 'amour-complices-v1';
+const CACHE_NAME = 'amour-complices-v3';
 const urlsToCache = [
   '/',
   '/index.html',
   '/css/style.css',
   '/js/app.js',
   '/js/config.js',
+  '/js/supabase.js',
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png'
@@ -19,6 +20,7 @@ self.addEventListener('install', event => {
         console.log('Cache ouvert');
         return cache.addAll(urlsToCache);
       })
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -33,21 +35,34 @@ self.addEventListener('activate', event => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
 // Interception des requêtes
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+  if (event.request.method !== 'GET') return;
+
+  const requestUrl = new URL(event.request.url);
+  const isAppShellAsset = requestUrl.origin === self.location.origin &&
+    urlsToCache.includes(requestUrl.pathname);
+
+  if (isAppShellAsset) {
+    const networkUpdate = caches.open(CACHE_NAME).then(cache =>
+      fetch(event.request).then(response => {
+        if (response.ok) cache.put(event.request, response.clone());
+        return response;
       })
+    );
+    event.waitUntil(networkUpdate.catch(() => {}));
+    event.respondWith(caches.match(event.request).then(cached => cached || networkUpdate));
+    return;
+  }
+
+  event.respondWith(
+    (async () => {
+      return fetch(event.request);
+    })()
   );
 });
 
@@ -56,4 +71,32 @@ self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
+});
+
+self.addEventListener("push", event => {
+  let data = { title: "💌 Amour & Complices", body: "Nouveau message", url: "/" };
+  try {
+    if (event.data) data = { ...data, ...event.data.json() };
+  } catch (error) {}
+
+  event.waitUntil(self.registration.showNotification(data.title, {
+    body: data.body,
+    icon: "/icons/icon-192.png",
+    badge: "/icons/icon-192.png",
+    tag: data.tag || "amour-complices",
+    renotify: true,
+    vibrate: [100, 50, 100],
+    data: { url: data.url || "/" },
+  }));
+});
+
+self.addEventListener("notificationclick", event => {
+  event.notification.close();
+  const url = event.notification.data?.url || "/";
+  event.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then(clientList => {
+    for (const client of clientList) {
+      if (client.url.includes(self.location.origin) && "focus" in client) return client.focus();
+    }
+    return self.clients.openWindow(url);
+  }));
 });

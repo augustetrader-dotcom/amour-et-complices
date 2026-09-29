@@ -13,7 +13,7 @@ const {
   assertConversationMember,
   findProfileByPhone,
   uploadConversationMedia,
-  signMediaPath,
+  signMediaPaths,
   decodeDataUrl,   // [ALBUM] décodage des photos souvenirs
   extFromMime,     // [ALBUM] extension de fichier pour le Storage
   isValidMediaPath, // [CLOUDINARY] validation des chemins de médias
@@ -198,49 +198,55 @@ router.get("/:id/messages", requireAuth, async (req, res) => {
     const conv = await assertConversationMember(req.params.id, req.user.id);
     if (!conv) return res.status(403).json({ error: "Accès refusé" });
 
+    const requestedLimit = Number.parseInt(req.query.limit, 10);
+    const limit = Number.isFinite(requestedLimit) ? Math.min(Math.max(requestedLimit, 1), 50) : 50;
     let query = supabase
       .from("group_messages")
       .select("*")
-      .eq("conversation_id", conv.id)
-      .order("created_at", { ascending: true });
-    if (req.query.since) query = query.gt("created_at", req.query.since);
+      .eq("conversation_id", conv.id);
+    if (req.query.since) {
+      query = query.gt("created_at", req.query.since).order("created_at", { ascending: true }).limit(limit);
+    } else {
+      if (req.query.before) query = query.lt("created_at", req.query.before);
+      query = query.order("created_at", { ascending: false }).limit(limit);
+    }
 
     const { data: messages, error } = await query;
     if (error) return res.status(500).json({ error: translateError(error.message) });
+    const orderedMessages = req.query.since ? (messages || []) : (messages || []).reverse();
 
-    // [CONFIRMATIONS] Le destinataire charge la conversation :
-    // les messages qui lui sont adressés passent en "distribué" (✓✓)
-    await supabase
+    // Les confirmations ne retardent pas le rendu de l'historique.
+    supabase
       .from("group_messages")
       .update({ delivered_at: new Date().toISOString() })
       .eq("conversation_id", conv.id)
       .neq("from_user", req.user.id)
-      .is("delivered_at", null);
+      .is("delivered_at", null)
+      .then(() => {})
+      .catch(() => {});
 
-    // Enrichit chaque message : profil de l'expéditeur + URL signée du média
-    const enriched = await Promise.all(
-      (messages || []).map(async (m) => {
-        let media_url = null;
-        if (m.media_path) media_url = await signMediaPath(m.media_path);
+    const senderIds = [...new Set(orderedMessages.map(message => message.from_user).filter(Boolean))];
+    const mediaPaths = orderedMessages.map(message => message.media_path).filter(Boolean);
+    const [profilesResult, signedUrls] = await Promise.all([
+      senderIds.length
+        ? supabase.from("profiles").select("id, display_name, avatar_url").in("id", senderIds)
+        : Promise.resolve({ data: [] }),
+      signMediaPaths(mediaPaths),
+    ]);
+    const profiles = new Map((profilesResult.data || []).map(profile => [profile.id, profile]));
+    const enriched = orderedMessages.map(message => {
+      const sender = profiles.get(message.from_user);
+      const { media_path, ...rest } = message;
+      return {
+        ...rest,
+        from: message.from_user,
+        user_name: sender?.display_name || "Membre",
+        user_avatar: sender?.avatar_url || "💫",
+        media_url: media_path ? signedUrls.get(media_path) || null : null,
+      };
+    });
 
-        const { data: sender } = await supabase
-          .from("profiles")
-          .select("display_name, avatar_url")
-          .eq("id", m.from_user)
-          .maybeSingle();
-
-        return {
-          ...m,
-          from: m.from_user, // compatibilité avec le rendu frontend
-          user_name: sender?.display_name || "Membre",
-          user_avatar: sender?.avatar_url || "💫",
-          media_url,
-          media_path: undefined,
-        };
-      })
-    );
-
-    res.json({ messages: enriched });
+    res.json({ messages: enriched, hasMore: !req.query.since && (messages || []).length === limit });
   } catch (err) {
     res.status(500).json({ error: translateError(err.message) });
   }
