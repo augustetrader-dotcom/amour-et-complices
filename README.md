@@ -125,19 +125,27 @@ TENOR_API_KEY=votre_cle_tenor
 
 La clé reste côté serveur et ne doit pas être ajoutée à `public/config.js`. La bibliothèque de stickers personnels est conservée sur l'appareil utilisé. Le stockage et le nombre d'envois dépendent de l'espace disponible sur l'appareil, du quota Cloudinary/Supabase et des limites de Tenor.
 
+<<<<<<< HEAD
 ### 6. Activer les uploads Cloudinary
 
 Dans **Vercel > Project > Settings > Environment Variables**, configurez `CLOUDINARY_CLOUD_NAME` et `CLOUDINARY_UPLOAD_PRESET`, puis redéployez. Le preset unsigned doit limiter les formats et tailles autorisés. L'application récupère ces deux valeurs publiques depuis `/api/public-config`; ne mettez jamais `CLOUDINARY_API_SECRET` dans le frontend. Tant que ces variables ne sont pas configurées, les uploads restent sur Supabase Storage.
 
 ### 7. Initialiser la base de données
+=======
+### 6. Initialiser la base de données
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 
 1. Allez dans le **SQL Editor** de votre projet Supabase
 2. Exécutez le contenu du fichier `schema.sql`
 3. Cela créera toutes les tables nécessaires et les politiques de sécurité
 
+<<<<<<< HEAD
 Pour une base déjà installée, exécutez aussi `scripts/migrate_story_views.sql` dans le SQL Editor afin d'activer le suivi des vues de stories.
 
 ### 8. Seed du contenu (optionnel)
+=======
+### 7. Seed du contenu (optionnel)
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 
 ```bash
 # Remplir les tables de contenu (quiz, jeu, mots doux)

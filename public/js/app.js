@@ -250,6 +250,7 @@ function applyPersonalizationSettings(settings) {
 
 async function startApp() {
   showLoadingScreen();
+<<<<<<< HEAD
   registerServiceWorkerSilently().catch(() => {});
   cloudinaryConfigPromise = loadCloudinaryPublicConfig();
   if (!API && window.Capacitor?.isNativePlatform?.()) {
@@ -257,6 +258,8 @@ async function startApp() {
       "Adresse du serveur manquante : configurez APP_API_BASE en HTTPS pour Android.";
     return;
   }
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
   await checkAuthAndQuizStatus();
 }
 
@@ -312,6 +315,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (quizSubmitBtn) quizSubmitBtn.addEventListener('click', submitLoveQuiz);
 });
 
+<<<<<<< HEAD
+=======
+// ================= SERVICE WORKER (PWA) =================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('Service Worker enregistré avec succès:', registration.scope);
+      })
+      .catch(error => {
+        console.log('Erreur d\'enregistrement du Service Worker:', error);
+      });
+  });
+}
+
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 let session = null;
 let coupleId = null;
 let soloMode = false; // Accès à l'app sans partenaire encore lié
@@ -746,8 +765,11 @@ function refreshCurrentSession() {
 }
 
 async function apiCall(pathname, opts = {}) {
+<<<<<<< HEAD
   if (!API) throw new Error("Adresse du serveur manquante. Configurez APP_API_BASE avec l'URL HTTPS de production.");
 
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
   // [OFFLINE] Si hors ligne et envoi de message, sauvegarder localement
   if (!navigator.onLine && (pathname.includes('/send') || pathname.includes('/messages'))) {
     const body = opts.body || {};
@@ -761,6 +783,7 @@ async function apiCall(pathname, opts = {}) {
     throw new Error("En attente du réseau - Message sauvegardé localement");
   }
   
+<<<<<<< HEAD
   const sendRequest = token => {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), API_TIMEOUT_MS);
@@ -780,6 +803,17 @@ async function apiCall(pathname, opts = {}) {
       throw error;
     }).finally(() => clearTimeout(timeout));
   };
+=======
+  const sendRequest = token => fetch(API + pathname, {
+    ...opts,
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(opts.headers || {})
+    },
+    body: opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 
   let token = session?.access_token;
   let res = await sendRequest(token);
@@ -1877,7 +1911,10 @@ let chatPagination = {
 
 async function loadChatHistory(append = false) {
   let hasCachedHistory = false;
+<<<<<<< HEAD
   const chatHistoryCacheKey = `chatHistory_${coupleId || session?.user?.id || "solo"}`;
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
   try {
     const box = document.getElementById("messagesContainer");
     if (!box) return;
@@ -1991,7 +2028,11 @@ async function loadChatHistory(append = false) {
     
     // [PERFORMANCE] Mettre en cache l'historique pour accès instantané
     if (!append) {
+<<<<<<< HEAD
       setCache(chatHistoryCacheKey, messages);
+=======
+      setCache('chatHistory', messages);
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
     }
     
     // [OFFLINE] Sauvegarder les messages dans IndexedDB
@@ -2188,9 +2229,12 @@ function extForFile(file) {
 // (25 Go gratuits, lecture ultra-rapide) et on stocke son URL publique.
 // Sinon : Supabase Storage (par défaut, aucune configuration requise).
 async function uploadMediaDirectly(file, folder, onProgress = () => {}) {
+<<<<<<< HEAD
   if (!cfg.CLOUDINARY_CLOUD_NAME || !cfg.CLOUDINARY_UPLOAD_PRESET) {
     await cloudinaryConfigPromise;
   }
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
   const cloud = cfg.CLOUDINARY_CLOUD_NAME;
   const preset = cfg.CLOUDINARY_UPLOAD_PRESET;
   if (cloud && preset) {
@@ -3659,8 +3703,11 @@ async function loadFriends() {
     outgoingRequests = friendsRes.requests?.outgoing || [];
     groupsData = groupsRes.groups || [];
     friendStoriesData = storiesRes.stories || [];
+<<<<<<< HEAD
     setCache(friendsCacheKey, { friends: friendsData, incomingRequests, outgoingRequests, groups: groupsData });
     setCache(`friendStories_${session.user.id}`, friendStoriesData);
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
     renderFriendsSubTabContent();
     renderFriendsStoriesBar();
     if (window._friendStoryRefresh) clearInterval(window._friendStoryRefresh);
@@ -3677,7 +3724,10 @@ async function refreshFriendsStories() {
   try {
     const { stories } = await apiCall("/api/stories/friends");
     friendStoriesData = stories || [];
+<<<<<<< HEAD
     setCache(`friendStories_${session.user.id}`, friendStoriesData);
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
     friendStoriesError = null;
     renderFriendsStoriesBar();
   } catch (error) {
@@ -3714,7 +3764,10 @@ function renderFriendsStoriesBar() {
         <button class="story-add-badge" title="Ajouter une story pour mes amis" aria-label="Ajouter une story" onclick="event.stopPropagation(); document.getElementById('friendStoryFileInput').click()">+</button>
       </div>
       <div class="story-label">Ma story</div>
+<<<<<<< HEAD
       ${ownStories.length ? `<div class="story-view-count-badge">👁 ${ownStories[0].view_count || 0}</div>` : ""}
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
     </div>
     ${friendItems.map(({ friend, stories }) => `
       <button class="friends-story-item friends-story-button" onclick="openFriendStories('${escapeAttr(friend.id)}')" aria-label="Story de ${escapeAttr(friend.display_name)}">
@@ -4123,6 +4176,7 @@ async function loadConvHistory(loadOlder = false) {
       return;
     }
     box.innerHTML = messages.map(renderConvMessageHTML).join("");
+<<<<<<< HEAD
     bindAllLongPress(box);
     bindAllSwipeReply(box);
     if (scrollToBottom) box.scrollTop = box.scrollHeight;
@@ -4171,6 +4225,19 @@ async function loadConvHistory(loadOlder = false) {
       state.refreshPending = false;
       if (currentChatContext?.id === convId) loadConvHistory();
     }
+=======
+    // Attacher le long-press et swipe-to-reply sur tous les messages de conv chargés
+    bindAllLongPress(box);
+    bindAllSwipeReply(box);
+    box.scrollTop = box.scrollHeight;
+    // [FLUIDITÉ] + [TICKS AMIS] conversation ouverte = messages lus
+    convPollSince = new Date().toISOString();
+    apiCall(`/api/groups/${convId}/delivered`, { method: "POST" }).catch(() => {});
+    apiCall(`/api/groups/${convId}/seen`, { method: "POST" }).catch(() => {});
+  } catch (e) {
+    const box = document.getElementById("convMessagesContainer");
+    if (box) box.innerHTML = `<div style="text-align:center; color:#ef4444; font-size:12px; padding:20px;">Erreur : ${friendlyError(e)}</div>`;
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
   }
 }
 
@@ -5339,6 +5406,7 @@ function openStoryViewer(list, startIndex) {
     viewer.querySelector(".story-tap-zone.previous")?.addEventListener("click", () => moveStory(-1));
     viewer.querySelector(".story-tap-zone.next")?.addEventListener("click", () => moveStory(1));
 
+<<<<<<< HEAD
     if (!story.is_mine && !viewsRecorded.has(story.id)) {
       const media = viewer.querySelector(isVideo ? "video" : "img");
       const recordView = () => {
@@ -5355,6 +5423,8 @@ function openStoryViewer(list, startIndex) {
       }
     }
 
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
     // Barre de progression + passage automatique à la story suivante
     const fill = document.getElementById("storyFill");
     if (fill && !isVideo) {

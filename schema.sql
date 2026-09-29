@@ -461,6 +461,7 @@ exception when duplicate_object then
   null;
 end $$;
 create index if not exists idx_stories_friends_expiry on stories(audience, user_id, expires_at desc);
+<<<<<<< HEAD
 
 create table if not exists story_views (
   story_id uuid not null references stories(id) on delete cascade,
@@ -470,6 +471,8 @@ create table if not exists story_views (
 );
 create index if not exists idx_story_views_viewer on story_views(viewer_id, viewed_at desc);
 alter table story_views enable row level security;
+=======
+>>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 
 alter table stories enable row level security;
 drop policy if exists "Un membre du couple voit les stories" on stories;
