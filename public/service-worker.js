@@ -70,6 +70,7 @@ self.addEventListener('fetch', event => {
         }
         return response;
       } catch (error) {
+        // En cas d'erreur réseau, on essaie de servir depuis le cache
         return (await caches.match(event.request)) || Response.error();
       }
     })()
@@ -78,7 +79,10 @@ self.addEventListener('fetch', event => {
 
 // Gestion des messages (pour les mises à jour)
 self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
+  // Vérification de l'origine du message pour la sécurité
+  if (event.origin !== self.location.origin) return;
+  
+  if (event.data?.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
 });
