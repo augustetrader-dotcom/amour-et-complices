@@ -471,8 +471,6 @@ create table if not exists story_views (
 );
 create index if not exists idx_story_views_viewer on story_views(viewer_id, viewed_at desc);
 alter table story_views enable row level security;
-=======
->>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 
 alter table stories enable row level security;
 drop policy if exists "Un membre du couple voit les stories" on stories;

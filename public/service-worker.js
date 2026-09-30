@@ -1,9 +1,5 @@
 // Service Worker pour Amour & Complices
-<<<<<<< HEAD
 const CACHE_NAME = 'amour-complices-v3';
-=======
-const CACHE_NAME = 'amour-complices-v2';
->>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 const urlsToCache = [
   '/',
   '/index.html',
@@ -66,10 +62,6 @@ self.addEventListener('fetch', event => {
 
   event.respondWith(
     (async () => {
-      return fetch(event.request);
-=======
-  event.respondWith(
-    (async () => {
       try {
         const response = await fetch(event.request);
         const requestUrl = new URL(event.request.url);
@@ -81,7 +73,8 @@ self.addEventListener('fetch', event => {
       } catch (error) {
         return (await caches.match(event.request)) || Response.error();
       }
->>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
+    })()
+  );
     })()
   );
 });

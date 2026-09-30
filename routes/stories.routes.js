@@ -203,23 +203,6 @@ router.get("/friends", requireAuth, async (req, res) => {
         ...(story.user_id === userId ? { view_count: viewCounts.get(story.id) || 0 } : {}),
       };
     });
-=======
-    const enriched = await Promise.all((stories || []).map(async story => {
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("display_name, avatar_url")
-        .eq("id", story.user_id)
-        .maybeSingle();
-      return {
-        ...story,
-        media_url: await signMediaPath(story.media_path),
-        media_path: undefined,
-        author_name: profile?.display_name || (story.user_id === userId ? "Moi" : "Ami"),
-        author_avatar: profile?.avatar_url || "🌸",
-        is_mine: story.user_id === userId,
-      };
-    }));
->>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
     res.json({ stories: enriched });
   } catch (err) {
     res.status(500).json({ error: translateError(err.message) });
@@ -289,9 +272,6 @@ router.get("/:id/views", requireAuth, async (req, res) => {
     res.status(500).json({ error: translateError(err.message) });
   }
 });
-
-=======
->>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
 // ------------------------------------------------------------
 // POST /api/stories   body: { coupleId, mediaPath?, mediaDataUrl?, caption?, mimeType? }
 // Publie une story valable 24h (photo ou vidéo).
