@@ -175,8 +175,13 @@ server.headersTimeout = 66000;   // doit rester > keepAliveTimeout
 server.keepAliveTimeout = 65000;
 server.requestTimeout = 180000;  // 3 min : assez pour un envoi mobile 4G d'une vidéo
 
-server.listen(PORT, () => {
-  console.log(`App démarrée sur http://localhost:${PORT}`);
-  console.log("Le temps réel du chat passe par Supabase Realtime (postgres_changes), pas par ce serveur.");
-  console.log("Protections actives : rate limiting global+auth+uploads, rejet des gros payloads, timeouts, filet anti-crash.");
-});
+// [VERCEL] Export pour déploiement Vercel
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  server.listen(PORT, () => {
+    console.log(`App démarrée sur http://localhost:${PORT}`);
+    console.log("Le temps réel du chat passe par Supabase Realtime (postgres_changes), pas par ce serveur.");
+    console.log("Protections actives : rate limiting global+auth+uploads, rejet des gros payloads, timeouts, filet anti-crash.");
+  });
+}
