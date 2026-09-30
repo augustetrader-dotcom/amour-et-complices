@@ -262,15 +262,19 @@ async function startApp() {
 
 async function checkAuthAndQuizStatus() {
   try {
+    console.log('[INIT] Checking auth status...');
     const { data: { session } } = await sb.auth.getSession();
+    console.log('[INIT] Session:', session ? 'found' : 'not found');
     
     if (!session) {
+      console.log('[INIT] No session, showing auth screen');
       hideLoadingScreen();
       renderAuth();
       return;
     }
     
     // Vérifier si le questionnaire a été complété
+    console.log('[INIT] Checking profile...');
     const profileController = new AbortController();
     const profileTimeout = setTimeout(() => profileController.abort(), 8000);
     let profile;
@@ -281,7 +285,9 @@ async function checkAuthAndQuizStatus() {
         .eq('id', session.user.id)
         .abortSignal(profileController.signal)
         .single());
+      console.log('[INIT] Profile:', profile);
     } catch (error) {
+      console.error('[INIT] Profile fetch error:', error);
       profile = null;
     } finally {
       clearTimeout(profileTimeout);
@@ -289,13 +295,16 @@ async function checkAuthAndQuizStatus() {
     
     if (profile && !profile.love_quiz_completed) {
       // Montrer le questionnaire
+      console.log('[INIT] Showing love quiz');
       showLoveQuizScreen();
     } else {
       // Questionnaire déjà complété ou erreur, continuer normalement
+      console.log('[INIT] Initializing app');
       hideLoadingScreen();
       init();
     }
   } catch (error) {
+    console.error('[INIT] Auth check error:', error);
     hideLoadingScreen();
     renderAuth();
   }
