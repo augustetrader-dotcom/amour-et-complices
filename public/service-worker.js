@@ -43,7 +43,6 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
-     HEAD
   const requestUrl = new URL(event.request.url);
   const isAppShellAsset = requestUrl.origin === self.location.origin &&
     urlsToCache.includes(requestUrl.pathname);
@@ -75,7 +74,7 @@ self.addEventListener('fetch', event => {
       }
     })()
   );
-  
+});
 
 // Gestion des messages (pour les mises à jour)
 self.addEventListener('message', event => {
@@ -110,6 +109,5 @@ self.addEventListener("notificationclick", event => {
     }
     return self.clients.openWindow(url);
   }));
-});
 });
 

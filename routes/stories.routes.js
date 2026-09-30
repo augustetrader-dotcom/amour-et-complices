@@ -180,7 +180,6 @@ router.get("/friends", requireAuth, async (req, res) => {
       .order("created_at", { ascending: false });
     if (error) return res.status(500).json({ error: translateError(error.message) });
 
-<<<<<<< HEAD
     const authorIds = [...new Set((stories || []).map(story => story.user_id).filter(Boolean))];
     const ownStoryIds = (stories || []).filter(story => story.user_id === userId).map(story => story.id);
     const [profilesResult, signedUrls, viewCounts] = await Promise.all([
@@ -209,7 +208,6 @@ router.get("/friends", requireAuth, async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 router.post("/:id/view", requireAuth, async (req, res) => {
   try {
     const { data: story, error } = await supabase
