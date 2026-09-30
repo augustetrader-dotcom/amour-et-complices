@@ -21,8 +21,8 @@ window.APP_CONFIG = {
   //   3. Remplis les 2 valeurs ci-dessous (nom du cloud + nom du preset)
   // Si laissé vide : les médias passent par Supabase Storage (par défaut).
   // ============================================================
-  CLOUDINARY_CLOUD_NAME: "",
-  CLOUDINARY_UPLOAD_PRESET: "",
+  CLOUDINARY_CLOUD_NAME: "vqaauhwx",
+  CLOUDINARY_UPLOAD_PRESET: "ml_default",
 
   // ============================================================
   // [TENOR — OPTIONNEL] GIFs dans les chats.
