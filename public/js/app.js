@@ -250,7 +250,6 @@ function applyPersonalizationSettings(settings) {
 
 async function startApp() {
   showLoadingScreen();
-<<<<<<< HEAD
   registerServiceWorkerSilently().catch(() => {});
   cloudinaryConfigPromise = loadCloudinaryPublicConfig();
   if (!API && window.Capacitor?.isNativePlatform?.()) {
