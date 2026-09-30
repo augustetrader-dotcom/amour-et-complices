@@ -273,10 +273,10 @@ async function checkAuthAndQuizStatus() {
       return;
     }
     
-    // Vérifier si le questionnaire a été complété
+    // Vérifier si le questionnaire a été complété (sans bloquer)
     console.log('[INIT] Checking profile...');
     const profileController = new AbortController();
-    const profileTimeout = setTimeout(() => profileController.abort(), 8000);
+    const profileTimeout = setTimeout(() => profileController.abort(), 5000);
     let profile;
     try {
       ({ data: profile } = await sb
@@ -293,15 +293,16 @@ async function checkAuthAndQuizStatus() {
       clearTimeout(profileTimeout);
     }
     
+    // Toujours initialiser l'app, même si le questionnaire n'est pas complété
+    // Le questionnaire sera montré plus tard si nécessaire
+    console.log('[INIT] Initializing app');
+    hideLoadingScreen();
+    init();
+    
     if (profile && !profile.love_quiz_completed) {
-      // Montrer le questionnaire
+      // Montrer le questionnaire après l'initialisation
       console.log('[INIT] Showing love quiz');
-      showLoveQuizScreen();
-    } else {
-      // Questionnaire déjà complété ou erreur, continuer normalement
-      console.log('[INIT] Initializing app');
-      hideLoadingScreen();
-      init();
+      setTimeout(() => showLoveQuizScreen(), 1000);
     }
   } catch (error) {
     console.error('[INIT] Auth check error:', error);
