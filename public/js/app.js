@@ -262,21 +262,17 @@ async function startApp() {
 
 async function checkAuthAndQuizStatus() {
   try {
-    console.log('[INIT] Checking auth status...');
     const { data: { session } } = await sb.auth.getSession();
-    console.log('[INIT] Session:', session ? 'found' : 'not found');
     
     if (!session) {
-      console.log('[INIT] No session, showing auth screen');
       hideLoadingScreen();
       renderAuth();
       return;
     }
     
-    // Vérifier si le questionnaire a été complété (sans bloquer)
-    console.log('[INIT] Checking profile...');
+    // Vérifier si le questionnaire a été complété
     const profileController = new AbortController();
-    const profileTimeout = setTimeout(() => profileController.abort(), 5000);
+    const profileTimeout = setTimeout(() => profileController.abort(), 8000);
     let profile;
     try {
       ({ data: profile } = await sb
@@ -285,27 +281,21 @@ async function checkAuthAndQuizStatus() {
         .eq('id', session.user.id)
         .abortSignal(profileController.signal)
         .single());
-      console.log('[INIT] Profile:', profile);
     } catch (error) {
-      console.error('[INIT] Profile fetch error:', error);
       profile = null;
     } finally {
       clearTimeout(profileTimeout);
     }
     
-    // Toujours initialiser l'app, même si le questionnaire n'est pas complété
-    // Le questionnaire sera montré plus tard si nécessaire
-    console.log('[INIT] Initializing app');
-    hideLoadingScreen();
-    init();
-    
     if (profile && !profile.love_quiz_completed) {
-      // Montrer le questionnaire après l'initialisation
-      console.log('[INIT] Showing love quiz');
-      setTimeout(() => showLoveQuizScreen(), 1000);
+      // Montrer le questionnaire
+      showLoveQuizScreen();
+    } else {
+      // Questionnaire déjà complété ou erreur, continuer normalement
+      hideLoadingScreen();
+      init();
     }
   } catch (error) {
-    console.error('[INIT] Auth check error:', error);
     hideLoadingScreen();
     renderAuth();
   }
