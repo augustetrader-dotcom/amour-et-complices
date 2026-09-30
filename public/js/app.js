@@ -782,7 +782,7 @@ async function apiCall(pathname, opts = {}) {
     throw new Error("En attente du réseau - Message sauvegardé localement");
   }
   
-<<<<<<< HEAD
+
   const sendRequest = token => {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), API_TIMEOUT_MS);
@@ -2210,7 +2210,6 @@ function extForFile(file) {
 // (25 Go gratuits, lecture ultra-rapide) et on stocke son URL publique.
 // Sinon : Supabase Storage (par défaut, aucune configuration requise).
 async function uploadMediaDirectly(file, folder, onProgress = () => {}) {
-<<<<<<< HEAD
   if (!cfg.CLOUDINARY_CLOUD_NAME || !cfg.CLOUDINARY_UPLOAD_PRESET) {
     await cloudinaryConfigPromise;
   }
@@ -4146,7 +4145,6 @@ async function loadConvHistory(loadOlder = false) {
       return;
     }
     box.innerHTML = messages.map(renderConvMessageHTML).join("");
-<<<<<<< HEAD
     bindAllLongPress(box);
     bindAllSwipeReply(box);
     if (scrollToBottom) box.scrollTop = box.scrollHeight;
@@ -4195,18 +4193,6 @@ async function loadConvHistory(loadOlder = false) {
       state.refreshPending = false;
       if (currentChatContext?.id === convId) loadConvHistory();
     }
-    // Attacher le long-press et swipe-to-reply sur tous les messages de conv chargés
-    bindAllLongPress(box);
-    bindAllSwipeReply(box);
-    box.scrollTop = box.scrollHeight;
-    // [FLUIDITÉ] + [TICKS AMIS] conversation ouverte = messages lus
-    convPollSince = new Date().toISOString();
-    apiCall(`/api/groups/${convId}/delivered`, { method: "POST" }).catch(() => {});
-    apiCall(`/api/groups/${convId}/seen`, { method: "POST" }).catch(() => {});
-  } catch (e) {
-    const box = document.getElementById("convMessagesContainer");
-    if (box) box.innerHTML = `<div style="text-align:center; color:#ef4444; font-size:12px; padding:20px;">Erreur : ${friendlyError(e)}</div>`;
->>>>>>> 6878f4e57709fd7c72a379a771ffe42335cf2d05
   }
 }
 
@@ -5375,7 +5361,6 @@ function openStoryViewer(list, startIndex) {
     viewer.querySelector(".story-tap-zone.previous")?.addEventListener("click", () => moveStory(-1));
     viewer.querySelector(".story-tap-zone.next")?.addEventListener("click", () => moveStory(1));
 
-<<<<<<< HEAD
     if (!story.is_mine && !viewsRecorded.has(story.id)) {
       const media = viewer.querySelector(isVideo ? "video" : "img");
       const recordView = () => {
@@ -5442,7 +5427,7 @@ async function showStoryViewers(storyId) {
         <strong>${escapeHtml(view.name)}</strong>
         <time>${escapeHtml(time)}</time>
       </div>`;
-    }).join("") : "Personne n’a encore vu cette story.";
+    }).join("") : "Personne n'a encore vu cette story.";
     const story = [...myStories, ...friendStoriesData].find(item => item.id === storyId);
     if (story) story.view_count = views.length;
     const countButton = viewer.querySelector(".story-view-count-button");
